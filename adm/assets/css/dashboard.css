@@ -1,0 +1,109 @@
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
+::selection {
+    background: #ffc107 !important;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+body {
+    background-color: #eaeef3;
+}
+
+.menu-header {
+    color: #FFF !important;
+}
+
+.sidebar {
+    background-color: #007BFF;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: calc(100vh - 56px);
+    transition: all 0.3s;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #c7cace;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul .active a {
+    color: #ecedee;
+    background-color: #185597;
+}
+
+.sidebar ul ul a {
+    padding-left: 2.5rem;
+    background-color: #046bda;
+}
+
+
+/*Seletor utilizado para ativar o botão ocultar menu em PC*/
+
+.sidebar.toggled {
+    margin-left: -250px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+    .sidebar.toggled {
+        margin-left: 0px;
+    }
+}
+
+.sidebar [data-toggle="collapse"] {
+    position: relative;
+}
+
+.sidebar [data-toggle="collapse"]:before {
+    content: "\f0d7";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 1rem;
+}
+
+.sidebar [aria-expanded="true"] {
+    background-color: #0a3a6d;
+}
+
+.sidebar [aria-expanded="true"]:before {
+    content: "\f0d8";
+}
+
+.content {
+    background: #d3d3d3;
+    width: 100%;
+}
+
+.titulo {
+    font-size: 2.0rem !important;
+}
+
+.d-flex {
+    background: #FFF;
+}
+
+.list-group-item {
+    background: #FFF;
+}
+
+.table-responsive {
+    border-radius: 20px;
+}

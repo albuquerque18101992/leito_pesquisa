@@ -1,0 +1,191 @@
+/**
+ * ---------------------------------------------------------------------
+ * Gestão de ativo
+ * Inicio de projeto 2020
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------,
+ * Desenvolvedor responsavel: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * ---------------------------------------------------------------------
+ */
+
+
+/*Cores setadas por variaveis*/
+
+:root {
+    --primeira-cor: #ee561a;
+    --segunda-cor: #e9946cc7;
+    --terceira-cor: #783c00;
+    --quarta-cor: #ceae8fda;
+}
+
+
+/*btn de limpar campo dos emprestimos de funcionarios aos equipamentos*/
+
+.btn-clean-emprestimos {
+    background-color: var(--primeira-cor);
+    color: #FFF;
+}
+
+.btn-clean-emprestimos:hover {
+    color: white;
+}
+
+
+/*btn de limpar campo dos emprestimos de funcionarios aos equipamentos*/
+
+.btn-clean-emprestimos-vazia {
+    background-color: var(--segunda-cor);
+    color: #FFF;
+}
+
+.btn-clean-emprestimos-vazia:hover {
+    color: white;
+}
+
+
+/*btn de histórico do notebook do list_notebbok_undiade*/
+
+.btn-com-historico {
+    background-color: var(--terceira-cor);
+    color: #FFF;
+}
+
+.btn-com-historico:hover {
+    color: white;
+}
+
+
+/*btn de histórico do notebook do list_notebbok_undiade*/
+
+.btn-sem-historico {
+    background-color: var(--quarta-cor);
+    color: #FFF;
+}
+
+.btn-sem-historico:hover {
+    color: white;
+}
+
+::selection {
+    background: #ffcb00 !important;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+body {
+    background-color: #eaeef3;
+    text-decoration: none !important;
+}
+
+.menu-header {
+    color: #FFF !important;
+}
+
+.sidebar {
+    background-color: #28A745;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: calc(100vh - 56px);
+    transition: all 0.3s;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    /*#c7cace*/
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul .active a {
+    color: #fff;
+    /*#ecedee*/
+    background-color: #18682a;
+}
+
+.sidebar ul ul a {
+    padding-left: 2.5rem;
+    background-color: #0b4719;
+}
+
+.sidebar.toggled {
+    margin-left: -250px;
+}
+
+.titulo {
+    font-size: 2.0rem !important;
+}
+
+
+/*Ocultando a barra de menu esquerda quando e medida da tela for de 768px*/
+
+@media (max-width: 768px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+    .sidebar.toggled {
+        margin-left: 0px;
+    }
+}
+
+.sidebar [data-toggle="collapse"] {
+    position: relative;
+}
+
+.sidebar [data-toggle="collapse"]:before {
+    content: "\f0d7";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 1rem;
+}
+
+.sidebar [aria-expanded="true"] {
+    background-color: #034211;
+}
+
+.sidebar [aria-expanded="true"]:before {
+    content: "\f0d8";
+}
+
+.content {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.titulo {
+    font-size: 2.0rem !important;
+}
+
+@media (max-width: 768px) {
+    .titulo {
+        font-size: 1.5rem !important;
+    }
+}
+
+
+/*Visualizar com modal, aqui iremos deixar a listagem maiores e centralizadas*/
+
+dt,
+dd {
+    border-width: 3px;
+    border-color: black;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+dd:hover {
+    background: #ececec;
+}
+
+
+/*Deixar a lista onde esta o link redirecionando para os equipamentos sem o underline de link*/
+
+tbody tr td a {
+    text-decoration: none !important;
+    color: black;
+}
