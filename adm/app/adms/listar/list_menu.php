@@ -49,7 +49,7 @@ include_once 'app/adms/include/head.php';
                 if (($resultado_menu) AND ( $resultado_menu->num_rows != 0)) {
                     ?>
                     <div class="table-responsive">
-                        <table class="table table-dark table-bordered table-hover">
+                        <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>

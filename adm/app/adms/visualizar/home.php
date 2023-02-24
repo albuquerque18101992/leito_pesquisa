@@ -54,14 +54,6 @@ include_once 'app/adms/include/head.php';
                     <div class="mr-auto p2">
                         <h2 class="display-4 titulo">HISA Satisfação de Leitos</h2>
                     </div>
-                    <div class="btn-group btn-sm">
-                        <button type="button" class="btn btn-success btn btn-prymary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Site
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="http://localhost/leito_pesquisa/site/home" target=_blank><i class="fas fa-hand-point-right"></i> Página Principal</a>
-                        </div>
-                    </div>
 
                 </div>
                 <br>

@@ -1,4 +1,19 @@
 <?php
+
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
+ 
 if (!isset($seg)) {
     exit;
 }
@@ -18,13 +33,13 @@ include_once 'app/adms/include/head.php';
             <div class="list-group-item">
                 <div class="d-flex">
                     <div class="mr-auto p-2">
-                        <h2 class="display-4 titulo">Lista de Usuários</h2>
+                        <h2 class="display-4 titulo">Lista de Pacientes</h2>
                     </div>
                     <div class="p-2">
                         <?php
-                        $btn_cad = carregar_btn('cadastrar/cad_usuario', $conn);
+                        $btn_cad = carregar_btn('cadastrar/cad_paciente', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_usuario' class='btn btn-dark btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_paciente' class='btn btn-success btn-sm'>Cadastrar</a>";
                         }
                         ?>
                     </div>
@@ -37,13 +52,13 @@ include_once 'app/adms/include/head.php';
                 ?>
 
                 <div class="table-responsive">
-                    <table id="listar-usuarios" class="table table-striped table-hover" style="width:100%">
+                    <table id="listar-pacientes" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nome</th>
-                                <th>Email</th>
-                                <th>Nível de Acesso</th>
+                                <th>Telefone</th>
+                                <th>Endereço</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -52,7 +67,7 @@ include_once 'app/adms/include/head.php';
 
             </div>
 
-            <div class="modal fade" id="visualizarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="visualizarPaciente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -74,7 +89,7 @@ include_once 'app/adms/include/head.php';
         <?php
         //include_once 'app/adms/include/rodape_lib.php';
         ?>
-
+        
         <script src="<?php echo pg; ?>/adm/assets/js/personalizado.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -84,11 +99,11 @@ include_once 'app/adms/include/head.php';
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#listar-usuarios').DataTable({
+                $('#listar-pacientes').DataTable({
                     "processing": true,
                     "serverSide": true,
                     "ajax": {
-                        "url": "../app/adms/listar/list_usuario_tables.php",
+                        "url": "../app/adms/listar/list_pacientes_tables.php",
                         "type": "POST"
                     },
                 });

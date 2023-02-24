@@ -22,7 +22,7 @@ include_once 'app/adms/include/head.php';
                         <?php
                         $btn_cad = carregar_btn('cadastrar/cad_pagina', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_pagina' class='btn btn-dark btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_pagina' class='btn btn-success btn-sm'>Cadastrar</a>";
                         }
                         ?>
                     </div>
@@ -55,7 +55,7 @@ include_once 'app/adms/include/head.php';
                 if (($resultado_pg) AND ( $resultado_pg->num_rows != 0)) {
                     ?>
                     <div class="table-responsive">
-                        <table class="table table-dark table-hover">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th class="border border-light">ID</th>
@@ -80,15 +80,15 @@ include_once 'app/adms/include/head.php';
 
                                                 $btn_vis = carregar_btn('visualizar/vis_pagina', $conn);
                                                 if ($btn_vis) {
-                                                    echo "<a href='" . pg . "/visualizar/vis_pagina?id=" . $row_pg['id'] . "' class='btn btn-light btn-sm'>Visualizar</a> ";
+                                                    echo "<a href='" . pg . "/visualizar/vis_pagina?id=" . $row_pg['id'] . "' class='btn btn-primary btn-sm'>Visualizar</a> ";
                                                 }
                                                 $btn_edit = carregar_btn('editar/edit_pagina', $conn);
                                                 if ($btn_edit) {
-                                                    echo "<a href='" . pg . "/editar/edit_pagina?id=" . $row_pg['id'] . "' class='btn btn-light btn-sm'>Editar </a> ";
+                                                    echo "<a href='" . pg . "/editar/edit_pagina?id=" . $row_pg['id'] . "' class='btn btn-warning btn-sm'>Editar </a> ";
                                                 }
                                                 $btn_apagar = carregar_btn('processa/apagar_pagina', $conn);
                                                 if ($btn_apagar) {
-                                                    echo "<a href='" . pg . "/processa/apagar_pagina?id=" . $row_pg['id'] . "' class='btn btn-light btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
+                                                    echo "<a href='" . pg . "/processa/apagar_pagina?id=" . $row_pg['id'] . "' class='btn btn-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
                                                 }
                                                 ?>
                                             </span>
