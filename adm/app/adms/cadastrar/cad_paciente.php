@@ -50,17 +50,17 @@ include_once 'app/adms/include/head.php';
                     unset($_SESSION['msg']);
                 }
                 ?>
-                <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_paciente" enctype="multipart/form-data">
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
+                <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_paciente" enctype="multipart/form-data" autocomplete="off">
+                    <div class="form-row ">
+                        <div class="form-group col-md-12 was-validated">
                             <label>
                                 Nome
                             </label>
-                            <input name="nome_paciente" type="text" class="form-control" id="nome_paciente" placeholder="Nome completo do usuário" value="<?php
+                            <input name="nome_paciente" type="text" class="form-control is-valid" id="nome_paciente" placeholder="Nome completo do usuário" value="<?php
                                 if (isset($_SESSION['dados']['nome_paciente'])) {
                                     echo $_SESSION['dados']['nome_paciente'];
                                 }
-                                ?>">
+                                ?>" required>
                         </div>
                     </div>
 
@@ -73,7 +73,6 @@ include_once 'app/adms/include/head.php';
                                 }
                                 ?>">
                         </div>
-
                     </div>
 
                     <div class="form-row">
@@ -89,14 +88,14 @@ include_once 'app/adms/include/head.php';
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 was-validated">
                             <?php
                             $result_sit_user = "SELECT * FROM adms_situacao_paciente ORDER BY descricao_situacao ASC";
                             $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                             ?>
                             Situação do Usuário </label>
-                            <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control">
-                                <option>SELECIONAR</option>
+                            <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                <option value="">SELECIONAR</option>
                                 <?php
                                 while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
                                     if (isset($_SESSION['dados']['adms_sits_usuario_id']) and ($_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {

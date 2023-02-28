@@ -44,51 +44,54 @@ if (($resultado_edit_user) AND ( $resultado_edit_user->num_rows != 0)) {
                     ?>
                     <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_perfil" enctype="multipart/form-data">  
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-6 was-validated">
                                 <label>                                
-                                    <span class="text-danger">*</span> Nome
+                                     Nome
                                 </label>
-                                <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome do usuário completo" value="<?php
+                                <input name="nome" type="text" class="form-control is-valid" id="nome" placeholder="Nome do usuário completo" value="<?php
                                 if (isset($_SESSION['dados']['nome'])) {
                                     echo $_SESSION['dados']['nome'];
                                 } elseif (isset($row_edit_user['nome'])) {
                                     echo $row_edit_user['nome'];
                                 }
-                                ?>">
+                                ?>" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label><span class="text-danger">*</span> E-mail</label>
-                                <input name="email" type="email" class="form-control" id="email" placeholder="O melhor e-mail do usuário" value="<?php
+
+                            <div class="form-group col-md-6 was-validated">
+                                <label> E-mail</label>
+                                <input name="email" type="email" class="form-control is-valid" id="email" placeholder="E-mail do usuário" value="<?php
                                 if (isset($_SESSION['dados']['email'])) {
                                     echo $_SESSION['dados']['email'];
                                 } elseif (isset($row_edit_user['email'])) {
                                     echo $row_edit_user['email'];
                                 }
-                                ?>">
+                                ?>" required>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-md-5 was-validated">
                                 <label>                                
-                                    <span class="text-danger">*</span> Usuário
+                                     Usuário
                                 </label>
-                                <input name="usuario" type="text" class="form-control" id="nome" placeholder="Nome de usuário para login" value="<?php
+                                <input name="usuario" type="text" class="form-control is-valid" id="nome" placeholder="Nome de usuário para login" value="<?php
                                 if (isset($_SESSION['dados']['usuario'])) {
                                     echo $_SESSION['dados']['usuario'];
                                 } elseif (isset($row_edit_user['usuario'])) {
                                     echo $row_edit_user['usuario'];
                                 }
-                                ?>">
+                                ?>" required>
                             </div>
-                            <div class="form-group col-md-4">
+
+                            <div class="form-group col-md-4 was-validated">
                                 <label> Senha</label>
-                                <input name="senha" type="password" class="form-control" id="email" placeholder="A senha deve ter 6 caracteres" value="<?php
+                                <input name="senha" type="password" class="form-control is-valid" id="email" placeholder="A senha deve ter 6 caracteres" value="<?php
                                 if (isset($_SESSION['dados']['senha'])) {
                                     echo $_SESSION['dados']['senha'];
                                 }
-                                ?>">
+                                ?>" required>
                             </div>
+
                             <div class="form-group col-md-3">
                                 <label> Apelido </label>
                                 <input name="apelido" type="text" class="form-control" id="email" placeholder="Apelido do usuário" value="<?php
@@ -100,28 +103,8 @@ if (($resultado_edit_user) AND ( $resultado_edit_user->num_rows != 0)) {
                                 ?>">
                             </div>
                         </div>
-                        
-                        <div class="form-row">
-                            <input type="hidden" name="imagem_antiga" value="<?php echo $row_edit_user['imagem']; ?>">
-                            <div class="form-group col-md-6">
-                                <label> Foto </label>
-                                <input type="file" name="imagem" onchange="previewImagem();">
-                            </div>  
-                            <div class="form-group col-md-6">
-                                <?php
-                                if (isset($row_edit_user['imagem'])) {
-                                    $imagem_antiga = pg . '/assets/imagens/usuario/' . $row_edit_user['id'] . '/' . $row_edit_user['imagem'];
-                                } else {
-                                    $imagem_antiga = pg . '/assets/imagens/usuario/preview_img.png';
-                                }
-                                ?>
-                                <img src="<?php echo $imagem_antiga; ?>" id="preview-user" class="img-thumbnail" style="width: 150px; height: 150px;">
-                            </div>                       
-                        </div>
 
-                        <p>
-                            <span class="text-danger">* </span>Campo obrigatório
-                        </p>
+                        <br>
                         <input name="SendEditPerfil" type="submit" class="btn btn-warning" value="Salvar">
                     </form>
                 </div>    
@@ -129,25 +112,7 @@ if (($resultado_edit_user) AND ( $resultado_edit_user->num_rows != 0)) {
 
             <?php
             include_once 'app/adms/include/rodape_lib.php';
-            ?>
-            <script>
-                function previewImagem() {
-                    var imagem = document.querySelector('input[name=imagem').files[0];
-                    var preview = document.querySelector('#preview-user');
-
-                    var reader = new FileReader();
-
-                    reader.onloadend = function () {
-                        preview.src = reader.result;
-                    }
-
-                    if (imagem) {
-                        reader.readAsDataURL(imagem);
-                    } else {
-                        preview.src = "";
-                    }
-                }
-            </script>  
+            ?> 
         </div>
     </body>
     <?php

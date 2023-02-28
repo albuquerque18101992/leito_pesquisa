@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
+ 
 if (!isset($seg)) {
     exit;
 }
@@ -10,7 +24,7 @@ if (!empty($SendCadUser)) {
     //Retirar campo da validação vazio
     $dados_apelido = $dados['apelido'];
     unset($dados['apelido']);
-    //var_dump($dados);
+    
     //validar nenhum campo vazio
     $erro = false;
     include_once 'lib/lib_vazio.php';
@@ -53,25 +67,13 @@ if (!empty($SendCadUser)) {
             $erro = true;
             $_SESSION['msg'] = "<div class='alert alert-danger'>Este nome de usuario já está cadastrado!</div>";
         }
-    }
 
-    //Criar as variaveis da foto quando a mesma não está sendo cadastrada
-    if (empty($_FILES['imagem']['name'])) {
-        $campo_foto = "";
-        $valor_foto = "";
-    }
-    //validar extensão da imagem
-    else {
-        $foto = $_FILES['imagem'];
-        include_once 'lib/lib_val_img_ext.php';
-        if (!validarExtensao($foto['type'])) {
+        //Proibir cadastro de cracha
+        $result_user_dupli = "SELECT id FROM adms_usuarios WHERE num_cracha='" . $dados_validos['num_cracha'] . "'";
+        $resultado_user_dupli = mysqli_query($conn, $result_user_dupli);
+        if (($resultado_user_dupli) AND ( $resultado_user_dupli->num_rows != 0 )) {
             $erro = true;
-            $_SESSION['msg'] = "<div class='alert alert-danger'>Extensão da foto inválida!</div>";
-        } else {
-            include_once 'lib/lib_caracter_esp.php';
-            $foto['name'] = caracterEspecial($foto['name']);
-            $campo_foto = "imagem,";
-            $valor_foto = "'" . $foto['name'] . "',";
+            $_SESSION['msg'] = "<div class='alert alert-danger'>Este número de crachá já está cadastrado!</div>";
         }
     }
 
@@ -86,26 +88,20 @@ if (!empty($SendCadUser)) {
         //Criptografar a senha
         $dados_validos['senha'] = password_hash($dados_validos['senha'], PASSWORD_DEFAULT);
 
-        $result_cad_user = "INSERT INTO adms_usuarios (nome, email, usuario, senha, $campo_foto adms_niveis_acesso_id, adms_sits_usuario_id, created) VALUES (
+        $result_cad_user = "INSERT INTO adms_usuarios (nome, email, apelido, num_cracha, usuario, senha, adms_niveis_acesso_id, adms_sits_usuario_id, created) VALUES (
         '" . $dados_validos['nome'] . "',
         '" . $dados_validos['email'] . "',
+            '$dados_apelido',
+        '" . $dados_validos['num_cracha'] . "',
         '" . $dados_validos['usuario'] . "',
         '" . $dados_validos['senha'] . "',
-        $valor_foto
         '" . $dados_validos['adms_niveis_acesso_id'] . "',
         '" . $dados_validos['adms_sits_usuario_id'] . "',
         NOW())";
 
         mysqli_query($conn, $result_cad_user);
         if (mysqli_insert_id($conn)) {
-            unset($_SESSION['dados']);
-            //var_dump($_FILES['imagem']);
-            //Redimensionar a imagem e fazer upload
-            if (!empty($foto['name'])) {
-                include_once 'lib/lib_upload.php';
-                $destino = "assets/imagens/usuario/" . mysqli_insert_id($conn) . "/";
-                upload($foto, $destino, 150, 150);
-            }
+            unset($_SESSION['dados']);            
 
             $_SESSION['msg'] = "<div class='alert alert-success'>Usuário cadastrado com sucesso!</div>";
             $url_destino = pg . '/listar/list_usuario';

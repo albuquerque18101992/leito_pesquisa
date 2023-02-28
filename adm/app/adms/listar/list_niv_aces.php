@@ -41,7 +41,7 @@ include_once 'app/adms/include/head.php';
                         }
                         $btn_cad = carregar_btn('cadastrar/cad_niv_aces', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_niv_aces' class='btn btn-dark btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_niv_aces' class='btn btn-success btn-sm'>Cadastrar</a>";
                         }
                         ?>
                     </div>

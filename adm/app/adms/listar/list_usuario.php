@@ -18,13 +18,13 @@ include_once 'app/adms/include/head.php';
             <div class="list-group-item">
                 <div class="d-flex">
                     <div class="mr-auto p-2">
-                        <h2 class="display-4 titulo">Lista de Usuários</h2>
+                        <h2 class="display-4 titulo">Usuários</h2>
                     </div>
                     <div class="p-2">
                         <?php
                         $btn_cad = carregar_btn('cadastrar/cad_usuario', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_usuario' class='btn btn-dark btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_usuario' class='btn btn-success btn-sm'>Cadastrar</a>";
                         }
                         ?>
                     </div>

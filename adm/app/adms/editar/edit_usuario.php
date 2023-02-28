@@ -1,4 +1,19 @@
 <?php
+
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
+ 
 if (!isset($seg)) {
     exit;
 }
@@ -40,7 +55,7 @@ if (!empty($id)) {
                                     <?php
                                     $btn_list = carregar_btn('listar/list_usuario', $conn);
                                     if ($btn_list) {
-                                        echo "<a href='" . pg . "/listar/list_usuario' class='btn btn-outline-info btn-sm'>Listar</a> ";
+                                        echo "<a href='" . pg . "/listar/list_usuario' class='btn btn-outline-info btn-sm'>Votlar</a> ";
                                     }
                                     $btn_vis = carregar_btn('visualizar/vis_usuario', $conn);
                                     if ($btn_vis) {
@@ -86,54 +101,68 @@ if (!empty($id)) {
                             ?>">
 
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4 was-validated">
                                     <label>                                
-                                        <span class="text-danger">*</span> Nome
+                                         Nome
                                     </label>
-                                    <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome do usuário completo" value="<?php
+                                    <input name="nome" type="text" class="form-control is-valid" id="nome" placeholder="Nome do usuário completo" value="<?php
                                     if (isset($_SESSION['dados']['nome'])) {
                                         echo $_SESSION['dados']['nome'];
                                     } elseif (isset($row_edit_user['nome'])) {
                                         echo $row_edit_user['nome'];
                                     }
-                                    ?>">
+                                    ?>" required>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label><span class="text-danger">*</span> E-mail</label>
-                                    <input name="email" type="email" class="form-control" id="email" placeholder="O melhor e-mail do usuário" value="<?php
+
+                                <div class="form-group col-md-4 was-validated">
+                                    <label> E-mail</label>
+                                    <input name="email" type="email" class="form-control is-valid" id="email" placeholder="E-mail do usuário" value="<?php
                                     if (isset($_SESSION['dados']['email'])) {
                                         echo $_SESSION['dados']['email'];
                                     } elseif (isset($row_edit_user['email'])) {
                                         echo $row_edit_user['email'];
                                     }
-                                    ?>">
+                                    ?>" required>
+                                </div>
+
+                                <div class="form-group col-md-4 was-validated">
+                                    <label> N° Crachá</label>
+                                    <input name="num_cracha" type="text" class="form-control is-valid" id="num_cracha" placeholder="Número do crachá" value="<?php
+                                    if (isset($_SESSION['dados']['num_cracha'])) {
+                                        echo $_SESSION['dados']['num_cracha'];
+                                    } elseif (isset($row_edit_user['num_cracha'])) {
+                                        echo $row_edit_user['num_cracha'];
+                                    }
+                                    ?>" required>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-5 was-validated">
                                     <label>                                
-                                        <span class="text-danger">*</span> Usuário
+                                         Usuário
                                     </label>
-                                    <input name="usuario" type="text" class="form-control" id="nome" placeholder="Nome de usuário para login" value="<?php
+                                    <input name="usuario" type="text" class="form-control is-valid" id="nome" placeholder="Nome de usuário para login" value="<?php
                                     if (isset($_SESSION['dados']['usuario'])) {
                                         echo $_SESSION['dados']['usuario'];
                                     } elseif (isset($row_edit_user['usuario'])) {
                                         echo $row_edit_user['usuario'];
                                     }
-                                    ?>">
+                                    ?>" required>
                                 </div>
-                                <div class="form-group col-md-4">
+
+                                <div class="form-group col-md-4 was-validated">
                                     <label> Senha</label>
-                                    <input name="senha" type="password" class="form-control" id="email" placeholder="A senha deve ter 6 caracteres" value="<?php
+                                    <input name="senha" type="password" class="form-control is-valid" id="email" placeholder="A senha deve ter 6 caracteres" value="<?php
                                     if (isset($_SESSION['dados']['senha'])) {
                                         echo $_SESSION['dados']['senha'];
                                     }
-                                    ?>">
+                                    ?>" required>
                                 </div>
+
                                 <div class="form-group col-md-3">
-                                    <label> Apelido </label>
-                                    <input name="apelido" type="text" class="form-control" id="email" placeholder="Apelido do usuário" value="<?php
+                                    <label> Identificador </label>
+                                    <input name="apelido" type="text" class="form-control" id="email" placeholder="Identificação do usuário" value="<?php
                                     if (isset($_SESSION['dados']['apelido'])) {
                                         echo $_SESSION['dados']['apelido'];
                                     } elseif (isset($row_edit_user['apelido'])) {
@@ -144,14 +173,14 @@ if (!empty($id)) {
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6 was-validated">
                                     <?php
                                     $result_niv_ac = "SELECT id, nome FROM adms_niveis_acessos WHERE ordem >= '".$_SESSION['ordem']."' ORDER BY nome ASC";
                                     $resultado_niv_ac = mysqli_query($conn, $result_niv_ac);
                                     ?>
-                                    <label><span class="text-danger">*</span> Nível de Acesso </label>
-                                    <select name="adms_niveis_acesso_id" id="adms_niveis_acesso_id" class="form-control">
-                                        <option value="">Selecione</option>
+                                    <label> Nível de Acesso </label>
+                                    <select name="adms_niveis_acesso_id" id="adms_niveis_acesso_id" class="form-control is-valid" required>
+                                        <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_niv_ac = mysqli_fetch_assoc($resultado_niv_ac)) {
                                             if (isset($_SESSION['dados']['adms_niveis_acesso_id']) AND ( $_SESSION['dados']['adms_niveis_acesso_id'] == $row_niv_ac['id'])) {
@@ -166,14 +195,14 @@ if (!empty($id)) {
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-6 was-validated">
                                     <?php
                                     $result_sit_user = "SELECT id, nome FROM adms_sits_usuarios ORDER BY nome ASC";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label><span class="text-danger">*</span> Situação do Usuário </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control">
-                                        <option value="">Selecione</option>
+                                    <label> Situação do Usuário </label>
+                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                        <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
                                             if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
@@ -190,27 +219,7 @@ if (!empty($id)) {
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <input type="hidden" name="imagem_antiga" value="<?php echo $row_edit_user['imagem']; ?>">
-                                <div class="form-group col-md-6">
-                                    <label> Foto </label>
-                                    <input type="file" name="imagem" onchange="previewImagem();">
-                                </div>  
-                                <div class="form-group col-md-6">
-                                    <?php
-                                    if (isset($row_edit_user['imagem'])) {
-                                        $imagem_antiga = pg . '/assets/imagens/usuario/'.$row_edit_user['id'].'/'.$row_edit_user['imagem'];
-                                    }else{
-                                       $imagem_antiga = pg.'/assets/imagens/usuario/preview_img.png'; 
-                                    }
-                                    ?>
-                                    <img src="<?php echo $imagem_antiga; ?>" id="preview-user" class="img-thumbnail" style="width: 150px; height: 150px;">
-                                </div>                       
-                            </div>
-
-                            <p>
-                                <span class="text-danger">* </span>Campo obrigatório
-                            </p>
+                            <br>
                             <input name="SendEditUser" type="submit" class="btn btn-warning" value="Salvar">
                         </form>
                     </div>    

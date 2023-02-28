@@ -72,15 +72,15 @@ while ($row_usuarios = mysqli_fetch_array($resultado_usuarios)) {
     $dado[] = $row_usuarios["nome_nivac"];
 
     if ($btn_vis) {
-        $btn_vis_val =  "<a href='" . pg . "/visualizar/vis_usuario?id=" . $row_usuarios['id'] . "' title='Visualizar' data-toggle='modal' data-target='#visualizarUsuario' class='btn btn-outline-primary btn-sm'><i class='fa fa-eye'></i></a> ";
+        $btn_vis_val =  "<a href='" . pg . "/visualizar/vis_usuario?id=" . $row_usuarios['id'] . "' title='Visualizar' data-toggle='modal' data-target='#visualizarUsuario' class='btn btn-outline-primary btn-sm'>Visualizar</a> ";
     }
     
     if ($btn_edit) {
-        $btn_edit_val = "<a href='" . pg . "/editar/edit_usuario?id=" . $row_usuarios['id'] . "' title='Editar' class='btn btn-outline-warning btn-sm'><i class='far fa-edit'></i> </a> ";
+        $btn_edit_val = "<a href='" . pg . "/editar/edit_usuario?id=" . $row_usuarios['id'] . "' title='Editar' class='btn btn-outline-warning btn-sm'>Editar </a> ";
     }
 
     if ($btn_apagar) {
-        $btn_apagar_val = "<a href='" . pg . "/processa/apagar_usuario?id=" . $row_usuarios['id'] . "' title='Deletar' class='btn btn-outline-danger btn-sm apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'><i class='far fa-trash-alt'></i> </a> ";
+        $btn_apagar_val = "<a href='" . pg . "/processa/apagar_usuario?id=" . $row_usuarios['id'] . "' title='Deletar' class='btn btn-outline-danger btn-sm apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'>Apagar </a> ";
     }
 
     $dado[] = $btn_vis_val . $btn_edit_val . $btn_apagar_val;

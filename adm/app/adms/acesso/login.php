@@ -22,8 +22,8 @@ include_once 'app/adms/include/head_login.php';
 
 <body class="text-center">
     <form class="form-signin" method="POST" action="<?php echo pg . '/acesso/valida'; ?>">
-        <img class="mb-4" src="<?php echo pg; ?>/assets/imagens/logo_login/leito_icon.png" alt="Leito" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Área Restrita <br> Pesquisa de satisfação leitos</h1>
+        <img class="mb-4" src="<?php echo pg; ?>/assets/imagens/logo_login/leito_icon.png" alt="Leito" width="150" height="150">
+        <h1 class="h3 mb-3 font-weight-normal"> Satisfação Leitos</h1>
         <?php
         if (isset($_SESSION['msg'])) {
             echo $_SESSION['msg'];
@@ -40,7 +40,8 @@ include_once 'app/adms/include/head_login.php';
         <div class="form-group">
             <input name="senha" type="password" class="form-control" placeholder="Digite a senha" required>
         </div>
-        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Acessar" name="SendLogin">
+        <input type="submit" class="btn btn-lg btn-primary btn-block" value="Entrar" name="SendLogin">
+        <br>
 
     </form>
 </body>

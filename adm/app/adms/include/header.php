@@ -27,7 +27,7 @@ $prim_nome = $nome[0];
     <a class="sidebar-toggle text-light mr-3">
         <span class="navbar-toggler-icon"></span>
     </a>
-    <a class="navbar-brand" href="#">HISA</a>
+    <a class="navbar-brand" href="<?php echo pg . '/visualizar/home'; ?>"><img src="<?php echo pg; ?>/assets/imagens/logo_barra/ints-logo-barra.png" title="INTS"></a>
 
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
@@ -44,7 +44,7 @@ $prim_nome = $nome[0];
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="<?php echo pg .'/visualizar/vis_perfil'; ?>"><i class="fas fa-user"></i> Perfil</a>
-                    <a class="dropdown-item" href="<?php echo pg; ?>/acesso/sair"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                    <a class="dropdown-item" href="<?php echo pg; ?>/acesso/sair"><i class="fa fa-power-off"></i> Sair</a>
                 </div>
             </li>
         </ul>                

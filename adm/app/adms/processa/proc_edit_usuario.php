@@ -6,13 +6,11 @@ if (!isset($seg)) {
 $SendEditUser = filter_input(INPUT_POST, 'SendEditUser', FILTER_SANITIZE_STRING);
 if ($SendEditUser) {
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    //var_dump($dados);
     
     //Retirar campo da validação vazio
     $dados_apelido = $dados['apelido'];
     $dados_senha = $dados['senha'];
-    $dados_imagem_antiga = $dados['imagem_antiga'];
-    unset($dados['apelido'], $dados['senha'], $dados['imagem_antiga']);
+    unset($dados['apelido'], $dados['senha']);
     
     //validar nenhum campo vazio
     $erro = false;
@@ -48,6 +46,14 @@ if ($SendEditUser) {
             $erro = true;
             $_SESSION['msg'] = "<div class='alert alert-danger'>Este nome de usuario já está cadastrado!</div>";
         }
+
+        //Proibir cadastro de cracha
+        $result_user_dupli = "SELECT id FROM adms_usuarios WHERE num_cracha='" . $dados_validos['num_cracha'] . "' AND id<>'".$dados['id']."' ";
+        $resultado_user_dupli = mysqli_query($conn, $result_user_dupli);
+        if (($resultado_user_dupli) AND ( $resultado_user_dupli->num_rows != 0 )) {
+            $erro = true;
+            $_SESSION['msg'] = "<div class='alert alert-danger'>Este número de crachá já está cadastrado!</div>";
+        }
     }    
     
     //validar senha
@@ -77,26 +83,6 @@ if ($SendEditUser) {
         $valor_apelido = "'" . $dados_apelido . "',";
     }
     
-    //Validar imagem
-    //Criar as variaveis da foto quando a mesma não está sendo cadastrada
-    if (empty($_FILES['imagem']['name'])) {
-        $campo_foto = "";
-        $valor_foto = "";
-    }
-    //validar extensão da imagem
-    else {
-        $foto = $_FILES['imagem'];
-        include_once 'lib/lib_val_img_ext.php';
-        if (!validarExtensao($foto['type'])) {
-            $erro = true;
-            $_SESSION['msg'] = "<div class='alert alert-danger'>Extensão da foto inválida!</div>";
-        } else {
-            include_once 'lib/lib_caracter_esp.php';
-            $foto['name'] = caracterEspecial($foto['name']);
-            $campo_foto = "imagem = ";
-            $valor_foto = "'" . $foto['name'] . "',";
-        }
-    }
 
     //Houve erro em algum campo será redirecionado para o login, não há erro no formulário tenta editar no banco
     if ($erro) {
@@ -110,9 +96,9 @@ if ($SendEditUser) {
                 nome='" . $dados_validos['nome'] . "',
                 $campo_apelido $valor_apelido
                 email='" . $dados_validos['email'] . "',
+                num_cracha='" . $dados_validos['num_cracha'] . "',
                 usuario='" . $dados_validos['usuario'] . "',
-                $campo_senha $valor_senha 
-                $campo_foto $valor_foto
+                $campo_senha $valor_senha
                 adms_niveis_acesso_id='" . $dados_validos['adms_niveis_acesso_id'] . "',
                 adms_sits_usuario_id='" . $dados_validos['adms_sits_usuario_id'] . "',
                 modified=NOW() 
@@ -122,14 +108,7 @@ if ($SendEditUser) {
                
         if (mysqli_affected_rows($conn)) {
             unset($_SESSION['dados']);    
-            //Redimensionar a imagem e fazer upload
-            if (!empty($foto['name'])) {
-                include_once 'lib/lib_upload.php';                
-                $destino = "assets/imagens/usuario/" . $dados['id'] . "/";
-                $destino_apagar = $destino.$dados_imagem_antiga;
-                apagarFoto($destino_apagar);
-                upload($foto, $destino, 150, 150);
-            }
+
             $_SESSION['msg'] = "<div class='alert alert-success'>Usuário editado com sucesso!</div>";
             $url_destino = pg . '/listar/list_usuario';
             header("Location: $url_destino");

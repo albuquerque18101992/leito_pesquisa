@@ -112,6 +112,9 @@ if (!empty($id)) {
                             <dt class="col-sm-3">Nome</dt>
                             <dd class="col-sm-9"><?php echo $row_user_vis['nome']; ?></dd>
 
+                            <dt class="col-sm-3">Crachá</dt>
+                            <dd class="col-sm-9"><?php echo $row_user_vis['num_cracha']; ?></dd>
+
                             <dt class="col-sm-3">Apelido</dt>
                             <dd class="col-sm-9"><?php echo $row_user_vis['apelido']; ?></dd>
 

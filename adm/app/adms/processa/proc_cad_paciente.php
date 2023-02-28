@@ -20,11 +20,6 @@ $SendCadPaciente = filter_input(INPUT_POST, 'SendCadPaciente', FILTER_SANITIZE_S
 if (!empty($SendCadPaciente)) {
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    //Retirar campo da validação vazio
-    //$dados_apelido = $dados['apelido'];
-    //unset($dados['apelido']);
-    
-
     //validar nenhum campo vazio
     $erro = false;
     include_once 'lib/lib_vazio.php';
@@ -34,12 +29,12 @@ if (!empty($SendCadPaciente)) {
         $_SESSION['msg'] = "<div class='alert alert-danger'>Necessário preencher todos os campos para cadastrar o Paciente!</div>";
     } 
 
-        //Proibir cadastro de usuario duplicado
-        $result_user_dupli = "SELECT id FROM adms_paciente WHERE nome_paciente='" . $dados_validos['usuario'] . "'";
-        $resultado_user_dupli = mysqli_query($conn, $result_user_dupli);
-        if (($resultado_user_dupli) AND ( $resultado_user_dupli->num_rows != 0 )) {
+        //Proibir cadastro de paciente duplicado
+        $result_paciente_dupli = "SELECT id FROM adms_paciente WHERE nome_paciente='" . $dados_validos['nome_paciente'] . "'";
+        $resultado_paciente_dupli = mysqli_query($conn, $result_paciente_dupli);
+        if (($resultado_paciente_dupli) AND ( $resultado_paciente_dupli->num_rows != 0 )) {
             $erro = true;
-            $_SESSION['msg'] = "<div class='alert alert-danger'>Este nome de usuario já está cadastrado!</div>";
+            $_SESSION['msg'] = "<div class='alert alert-danger'>Este nome de Paciente já está cadastrado!</div>";
         }
     }
     
@@ -52,20 +47,20 @@ if (!empty($SendCadPaciente)) {
         header("Location: $url_destino");
     } else {
         
-        $result_cad_user = "INSERT INTO adms_paciente (nome_paciente, telefone, endereco, adms_situacao_paciente_id, created, cadastrador) VALUES (
+        $result_cad_paciente = "INSERT INTO adms_paciente (nome_paciente, telefone, endereco, adms_situacao_paciente_id, created, cadastrador) VALUES (
         '" . $dados_validos['nome_paciente'] . "',
         '" . $dados_validos['telefone'] . "',
         '" . $dados_validos['endereco'] . "',
         '" . $dados_validos['adms_situacao_paciente_id'] . "',
-        'NOW()',
-        '" . $dados_validos['cadastrador'] . "')";
+        NOW(),
+        '" . $_SESSION['id'] . "')";
 
-        mysqli_query($conn, $result_cad_user);
+        mysqli_query($conn, $result_cad_paciente);
         if (mysqli_insert_id($conn)) {
             unset($_SESSION['dados']);
 
             $_SESSION['msg'] = "<div class='alert alert-success'>Paciente cadastrado com sucesso!</div>";
-            $url_destino = pg . '/listar/list_usuario';
+            $url_destino = pg . '/listar/list_paciente';
             header("Location: $url_destino");
         } else {
             //$dados['apelido'] = $dados_apelido;
@@ -76,7 +71,4 @@ if (!empty($SendCadPaciente)) {
         }
     }
 
-    $_SESSION['msg'] = "<div class='alert alert-danger'>Página não encontrada!!!!!!!!</div>";
-    $url_destino = pg . '/acesso/login';
-    header("Location: $url_destino");
 
