@@ -6,9 +6,12 @@ if (!isset($seg)) {
 
 $SendCadAvaliacao = filter_input(INPUT_POST, 'SendCadAvaliacao', FILTER_SANITIZE_STRIPPED);
 if ($SendCadAvaliacao) {
-    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+    $opcoes = $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-    var_dump($dados);
+   
+foreach ($opcoes as $opcao) {
+  echo $opcao . "<br>";
+}
     
 
 
