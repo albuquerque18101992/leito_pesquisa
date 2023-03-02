@@ -35,7 +35,7 @@ if ($_SESSION['adms_niveis_acesso_id'] == 1) {
             nivac.nome nome_nivac
             FROM adms_usuarios user
             INNER JOIN adms_niveis_acessos nivac ON nivac.id=user.adms_niveis_acesso_id
-            WHERE nivac.ordem > '" . $_SESSION['ordem'] . "'";
+            WHERE nivac.ordem >= '" . $_SESSION['ordem'] . "'";
 }
 
 if (!empty($requestData['search']['value'])) {   // se houver um parametro de pesquisa, $requestData['search']['value'] contem o parametro de pesquisa

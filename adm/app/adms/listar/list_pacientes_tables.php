@@ -45,7 +45,7 @@ $resultado_usuarios = mysqli_query($conn, $result_usuarios);
 require '../../../lib/lib_permissao.php';
 $btn_vis = carregar_btn('visualizar/vis_usuario', $conn);
 $btn_edit = carregar_btn('editar/edit_usuario', $conn);
-$btn_avaliacao = carregar_btn('editar/edit_usuario', $conn);
+$btn_avaliacao = carregar_btn('cadastrar/cad_avaliacao', $conn);
 $btn_apagar = carregar_btn('processa/apagar_usuario', $conn);
 //Iniciando as variaveis abaixo como vazio para nao dar erro, caso a permissão do botao for negativa
 $btn_vis_val = "";

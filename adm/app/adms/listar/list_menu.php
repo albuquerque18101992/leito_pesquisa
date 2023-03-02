@@ -22,7 +22,7 @@ include_once 'app/adms/include/head.php';
                         <?php
                         $btn_cad = carregar_btn('cadastrar/cad_menu', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_menu' class='btn btn-dark btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_menu' class='btn btn-outline-success btn-sm'>Cadastrar</a>";
                         }
                         ?>
                     </div>
@@ -80,26 +80,26 @@ include_once 'app/adms/include/head.php';
                                                 $btn_or_nivac = carregar_btn('processa/proc_ordem_menu_item', $conn);
                                                 if ($qnt_linhas_exe == 1) {
                                                     if ($btn_or_nivac) {
-                                                        echo "<button class='btn btn-dark btn-sm disabled'><i class='fas fa-angle-double-up'></i></button> ";
+                                                        echo "<button class='btn btn-info btn-sm disabled'><i class='fas fa-angle-double-up'></i></button> ";
                                                     }
                                                 } else {
                                                     if ($btn_or_nivac) {
-                                                        echo "<a href='" . pg . "/processa/proc_ordem_menu_item?id=" . $row_menu['id'] . "' class='btn btn-dark btn-sm'><i class='fas fa-angle-double-up'></i></a> ";
+                                                        echo "<a href='" . pg . "/processa/proc_ordem_menu_item?id=" . $row_menu['id'] . "' class='btn btn-info btn-sm'><i class='fas fa-angle-double-up'></i></a> ";
                                                     }
                                                 }
                                                 $qnt_linhas_exe++;
 
                                                 $btn_vis = carregar_btn('visualizar/vis_menu', $conn);
                                                 if ($btn_vis) {
-                                                    echo "<a href='" . pg . "/visualizar/vis_menu?id=" . $row_menu['id'] . "' class='btn btn-dark btn-sm'>Visualizar</a> ";
+                                                    echo "<a href='" . pg . "/visualizar/vis_menu?id=" . $row_menu['id'] . "' class='btn btn-outline-primary btn-sm'>Visualizar</a> ";
                                                 }
                                                 $btn_edit = carregar_btn('editar/edit_menu', $conn);
                                                 if ($btn_edit) {
-                                                    echo "<a href='" . pg . "/editar/edit_menu?id=" . $row_menu['id'] . "' class='btn btn-dark btn-sm'>Editar </a> ";
+                                                    echo "<a href='" . pg . "/editar/edit_menu?id=" . $row_menu['id'] . "' class='btn btn-outline-warning btn-sm'>Editar </a> ";
                                                 }
                                                 $btn_apagar = carregar_btn('processa/apagar_menu', $conn);
                                                 if ($btn_apagar) {
-                                                    echo "<a href='" . pg . "/processa/apagar_menu?id=" . $row_menu['id'] . "' class='btn btn-dark btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
+                                                    echo "<a href='" . pg . "/processa/apagar_menu?id=" . $row_menu['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
                                                 }
                                                 ?>
                                             </span>

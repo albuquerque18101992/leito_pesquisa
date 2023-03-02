@@ -41,7 +41,7 @@ include_once 'app/adms/include/head.php';
                         }
                         $btn_cad = carregar_btn('cadastrar/cad_niv_aces', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_niv_aces' class='btn btn-success btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_niv_aces' class='btn btn-outline-success btn-sm'>Cadastrar</a>";
                         }
                         ?>
                     </div>
@@ -109,15 +109,15 @@ include_once 'app/adms/include/head.php';
 
                                                 $btn_vis = carregar_btn('visualizar/vis_niv_aces', $conn);
                                                 if ($btn_vis) {
-                                                    echo "<a href='" . pg . "/visualizar/vis_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-primary btn-sm'>Visualizar</a> ";
+                                                    echo "<a href='" . pg . "/visualizar/vis_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-outline-primary btn-sm'>Visualizar</a> ";
                                                 }
                                                 $btn_edit = carregar_btn('editar/edit_niv_aces', $conn);
                                                 if ($btn_edit) {
-                                                    echo "<a href='" . pg . "/editar/edit_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-warning btn-sm'>Editar </a> ";
+                                                    echo "<a href='" . pg . "/editar/edit_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-outline-warning btn-sm'>Editar </a> ";
                                                 }
                                                 $btn_apagar = carregar_btn('processa/apagar_niv_aces', $conn);
                                                 if ($btn_apagar) {
-                                                    echo "<a href='" . pg . "/processa/apagar_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
+                                                    echo "<a href='" . pg . "/processa/apagar_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
                                                 }
                                                 ?>
                                             </span>

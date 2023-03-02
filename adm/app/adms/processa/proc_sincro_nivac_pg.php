@@ -62,5 +62,5 @@ while ($row_niv_acesso = mysqli_fetch_array($resultado_niv_acesso)) {
     }
 }
 $_SESSION['msg'] = "<div class='alert alert-success'>Páginas sincronizadas com sucesso</div>";
-$url_destino = pg . "/listar/list_pagina";
+$url_destino = pg . "/listar/list_niv_aces";
 header("Location: $url_destino");

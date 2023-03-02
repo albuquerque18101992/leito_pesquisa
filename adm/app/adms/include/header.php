@@ -22,6 +22,11 @@ $resultado_user_hd = mysqli_query($conn, $result_user_hd);
 $row_user_hd = mysqli_fetch_assoc($resultado_user_hd);
 $nome = explode(" ", $row_user_hd['nome']);
 $prim_nome = $nome[0];
+
+//nivel de acesso do usuário
+$niv_acesso = "SELECT id, nome FROM adms_niveis_acessos WHERE id='" . $_SESSION['adms_niveis_acesso_id'] . "' LIMIT 1";
+$nivel_acesso = mysqli_query($conn, $niv_acesso);
+$row_nivel_acesso = mysqli_fetch_assoc($nivel_acesso);
 ?>
 <nav class="navbar navbar-expand navbar-dark bg-primary">
     <a class="sidebar-toggle text-light mr-3">
@@ -43,6 +48,7 @@ $prim_nome = $nome[0];
                      &nbsp;<span class="d-none d-sm-inline"><?php echo $prim_nome; ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="<?php echo pg; ?>/visualizar/home"><i class="fas fa-key"></i> <?php echo $row_nivel_acesso['nome']; ?></a>
                     <a class="dropdown-item" href="<?php echo pg .'/visualizar/vis_perfil'; ?>"><i class="fas fa-user"></i> Perfil</a>
                     <a class="dropdown-item" href="<?php echo pg; ?>/acesso/sair"><i class="fa fa-power-off"></i> Sair</a>
                 </div>

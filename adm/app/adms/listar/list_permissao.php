@@ -60,7 +60,7 @@ if (!empty($id)) {
                                 <?php
                                 $btn_list = carregar_btn('listar/list_niv_aces', $conn);
                                 if ($btn_list) {
-                                    echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-dark btn-sm'>Voltar</a>";
+                                    echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-info btn-sm'>Voltar</a>";
                                 }
                                 ?>
                             </div>
@@ -153,7 +153,7 @@ if (!empty($id)) {
                                             <td><?php
                                                 $btn_edit = carregar_btn('editar/edit_permissao', $conn);
                                                 if ($btn_edit) {
-                                                    echo "<a href='" . pg . "/editar/edit_permissao?id=" . $row_niv_ac['id'] . "' class='btn btn-warning btn-sm'>Editar </a> ";
+                                                    echo "<a href='" . pg . "/editar/edit_permissao?id=" . $row_niv_ac['id'] . "' class='btn btn-outline-warning btn-sm'>Editar </a> ";
                                                 }
 
                                                 $btn_ordem_menu = carregar_btn('processa/proc_ordem_menu', $conn);
