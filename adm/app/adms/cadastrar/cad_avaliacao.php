@@ -22,7 +22,11 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 if (!empty($id)) {
     
-    $result_edit_user = "SELECT * FROM adms_paciente WHERE id='$id' LIMIT 1";
+    $result_edit_user = "SELECT meus_paciente.*,
+    situacao.descricao_situacao, situacao.id
+    FROM adms_paciente meus_paciente
+    INNER JOIN adms_situacao_paciente situacao ON situacao.id=meus_paciente.adms_situacao_paciente_id
+    WHERE meus_paciente.id='$id' LIMIT 1";
 
     $resultado_edit_user = mysqli_query($conn, $result_edit_user);
     //Verificar se encontrou a página no banco de dados
@@ -44,6 +48,7 @@ if (!empty($id)) {
                         <div class="d-flex">
                             <div class="mr-auto p-2">
                                 <h2 class="display-4 titulo">Avaliação de Leito</h2>
+                                <kbd><?php echo $row_edit_user['descricao_situacao'] ." - ". $row_edit_user['nome_paciente'] ." id:". $id?></kbd>
                             </div>
                             <div class="p-2">
                                 <span class = "d-none d-md-block">
@@ -65,37 +70,11 @@ if (!empty($id)) {
                         }
                         ?>
                         <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_avaliacao" enctype="multipart/form-data" autocomplete="off">  
-                            <input type="hidden" name="id" value="<?php
-                            if (isset($row_edit_user['id'])) {
-                                echo $row_edit_user['id'];
+                            <input type="number" name="adms_paciente_id" id="adms_paciente_id" value="<?php
+                            if (isset($id)) {
+                                echo $id;
                             }
                             ?>">
-
-                            <div class="form-row">
-                                <div class="form-group col-md-4 was-validated">
-                                    <label> Nome </label>
-                                    <input name="nome" type="text" class="form-control is-valid" id="nome" placeholder="Nome do usuário completo" value="<?php
-                                    if (isset($_SESSION['dados']['nome_paciente'])) {
-                                        echo $_SESSION['dados']['nome_paciente'];
-                                    } elseif (isset($row_edit_user['nome_paciente'])) {
-                                        echo $row_edit_user['nome_paciente'];
-                                    }
-                                    ?>" required>
-                                </div>
-                            </div>
-
-                            
-                            <?php
-                                 $resul_pergunta = "SELECT id, descricao_pergunta FROM adms_pergunta";
-                                 $resultado_pergunta = mysqli_query($conn, $resul_pergunta);
-                 
-                                 if (($resultado_pergunta) AND ( $resultado_pergunta->num_rows != 0)) {
-                                    while ($row_pergunta = mysqli_fetch_assoc($resultado_pergunta)) {
-                                        //echo $row_pergunta['id'];
-                                        //echo $row_pergunta['descricao_pergunta'];
-                                    }
-                                 }
-                            ?>
 
                             <div class="form-row">
                                 <div class="form-group col-md-12 was-validated">
@@ -104,11 +83,11 @@ if (!empty($id)) {
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
                                     <label> Recepção </label>
-                                    <select name="recp" id="recp" class="form-control is-valid" required>
+                                    <select name="pergunta1" id="pergunta1" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['recp']) AND ( $_SESSION['dados']['recp'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta1']) AND ( $_SESSION['dados']['pergunta1'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -124,11 +103,11 @@ if (!empty($id)) {
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
                                     <label> Organização e limpeza </label>
-                                    <select name="limpeza" id="limpeza" class="form-control is-valid" required>
+                                    <select name="pergunta2" id="pergunta2" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['limpeza']) AND ( $_SESSION['dados']['limpeza'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta2']) AND ( $_SESSION['dados']['pergunta2'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -143,12 +122,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Estrutura física (Acomodação, iluminação, climatização) </label>
+                                    <select name="pergunta3" id="pergunta3" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta3']) AND ( $_SESSION['dados']['pergunta3'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -163,12 +142,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Equipe Médica </label>
+                                    <select name="pergunta4" id="pergunta4" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta4']) AND ( $_SESSION['dados']['pergunta4'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -183,12 +162,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Equipe de Enfermagem </label>
+                                    <select name="pergunta5" id="pergunta5" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta5']) AND ( $_SESSION['dados']['pergunta5'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -203,12 +182,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Equipe Multidisciplinar (assistente social, fisioterapia, psicólogo, nutricionista, fonoaudiólogo, dentista, farmacêutico) </label>
+                                    <select name="pergunta6" id="pergunta6" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta6']) AND ( $_SESSION['dados']['pergunta6'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -223,12 +202,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Assistência Farmacêutica </label>
+                                    <select name="pergunta7" id="pergunta7" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta7']) AND ( $_SESSION['dados']['pergunta7'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -243,12 +222,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Equipe de coleta (exame de laboratório) </label>
+                                    <select name="pergunta8" id="pergunta8" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta8']) AND ( $_SESSION['dados']['pergunta8'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -263,12 +242,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Realização de outros exames </label>
+                                    <select name="pergunta9" id="pergunta9" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta9']) AND ( $_SESSION['dados']['pergunta9'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -283,12 +262,12 @@ if (!empty($id)) {
                                     $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                                     ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                                    <label> Qualidade da alimentação </label>
+                                    <select name="pergunta10" id="pergunta10" class="form-control is-valid" required>
                                         <option value="">SELECIONAR</option>
                                         <?php
                                         while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                            if (isset($_SESSION['dados']['pergunta10']) AND ( $_SESSION['dados']['pergunta10'] == $row_sit_user['id'])) {
                                                 echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
                                             }else {
                                                 echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
@@ -299,23 +278,12 @@ if (!empty($id)) {
                                 </div>
 
                                 <div class="form-group col-md-12 was-validated">
-                                    <?php
-                                    $result_sit_user = "SELECT id, descricao_resposta FROM adms_resposta";
-                                    $resultado_sit_user = mysqli_query($conn, $result_sit_user);
-                                    ?>
-                                    <label> Pergunta </label>
-                                    <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
-                                        <option value="">SELECIONAR</option>
-                                        <?php
-                                        while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                            if (isset($_SESSION['dados']['adms_sits_usuario_id']) AND ( $_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
-                                                echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_resposta'] . "</option>";                                                
-                                            }else {
-                                                echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_resposta'] . "</option>";
-                                            }
-                                        }
-                                        ?>
-                                    </select>
+                                    <label> Com base em sua experiencia de uma nota de 0 á 10 </label>
+                                    <input name="pergunta11" type="number" class="form-control is-valid" id="pergunta11" min="1" max="10" placeholder="Nota de 0 à 10" value="<?php
+                                    if (isset($_SESSION['dados']['pergunta11'])) {
+                                        echo $_SESSION['dados']['pergunta11'];
+                                    }
+                                    ?>" required>
                                 </div>
                             </div>
 

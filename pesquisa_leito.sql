@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Mar-2023 às 11:33
+-- Tempo de geração: 06-Mar-2023 às 19:27
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -28,10 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `adms_avaliacao_feita` (
-  `id` int(11) NOT NULL COMMENT 'Identificador da tabela',
-  `adms_usuario_id` int(11) NOT NULL,
-  `adms_pergunta_id` int(11) NOT NULL,
-  `adms_resposta_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `adms_paciente_id` int(11) NOT NULL,
+  `pergunta1` int(11) NOT NULL,
+  `pergunta2` int(11) NOT NULL,
+  `pergunta3` int(11) NOT NULL,
+  `pergunta4` int(11) NOT NULL,
+  `pergunta5` int(11) NOT NULL,
+  `pergunta6` int(11) NOT NULL,
+  `pergunta7` int(11) NOT NULL,
+  `pergunta8` int(11) NOT NULL,
+  `pergunta9` int(11) NOT NULL,
+  `pergunta10` int(11) NOT NULL,
+  `pergunta11` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `cadastrador` int(11) NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -42,8 +51,9 @@ CREATE TABLE `adms_avaliacao_feita` (
 -- Extraindo dados da tabela `adms_avaliacao_feita`
 --
 
-INSERT INTO `adms_avaliacao_feita` (`id`, `adms_usuario_id`, `adms_pergunta_id`, `adms_resposta_id`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(1, 0, 0, 0, '2023-03-01 12:11:57', 1, NULL, NULL);
+INSERT INTO `adms_avaliacao_feita` (`id`, `adms_paciente_id`, `pergunta1`, `pergunta2`, `pergunta3`, `pergunta4`, `pergunta5`, `pergunta6`, `pergunta7`, `pergunta8`, `pergunta9`, `pergunta10`, `pergunta11`, `created`, `cadastrador`, `modified`, `editor`) VALUES
+(12, 52, 4, 2, 2, 2, 2, 2, 2, 2, 2, 4, 9, '2023-03-06 15:22:12', 1, NULL, NULL),
+(13, 190, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, '2023-03-06 15:23:58', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -252,7 +262,8 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (204, 1, 50, 1, 2, 3, 1, 54, '2018-05-03 00:04:59', NULL),
 (209, 1, 51, 1, 2, 3, 1, 55, '2018-05-04 12:42:15', NULL),
 (214, 1, 52, 1, 2, 3, 1, 56, '2018-05-04 13:10:17', NULL),
-(219, 1, 53, 1, 2, 3, 1, 57, '2018-05-05 16:36:02', NULL),
+(219, 1, 53, 2, 2, 3, 1, 57, '2018-05-05 16:36:02', '2023-03-02 15:27:24'),
+(895, 2, 125, 1, 1, 3, 7, 129, '2023-03-02 15:13:03', NULL),
 (892, 2, 124, 1, 2, 3, 7, 128, '2023-03-01 11:25:56', NULL),
 (636, 1, 118, 2, 2, 3, 1, 122, '2022-03-21 21:27:21', '2022-03-21 21:28:08'),
 (639, 1, 1, 2, 1, 1, 6, 1, '2023-02-23 08:26:35', '2023-03-01 07:59:59'),
@@ -308,6 +319,7 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (689, 1, 51, 1, 2, 3, 6, 55, '2023-02-23 08:26:35', NULL),
 (690, 1, 52, 1, 2, 3, 6, 56, '2023-02-23 08:26:35', NULL),
 (691, 1, 53, 1, 2, 3, 6, 57, '2023-02-23 08:26:35', NULL),
+(894, 2, 125, 1, 1, 3, 6, 129, '2023-03-02 15:13:03', NULL),
 (891, 2, 124, 1, 2, 3, 6, 128, '2023-03-01 11:25:56', NULL),
 (756, 2, 118, 1, 2, 3, 6, 122, '2023-02-23 08:26:36', NULL),
 (757, 1, 1, 2, 1, 1, 7, 1, '2023-02-24 07:39:21', '2023-03-01 07:37:28'),
@@ -363,6 +375,7 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (807, 1, 51, 1, 2, 3, 7, 55, '2023-02-24 07:39:22', NULL),
 (808, 2, 52, 1, 2, 3, 7, 56, '2023-02-24 07:39:22', '2023-03-01 07:53:01'),
 (809, 1, 53, 1, 2, 3, 7, 57, '2023-02-24 07:39:22', NULL),
+(893, 1, 125, 2, 2, 3, 1, 129, '2023-03-02 15:13:03', '2023-03-02 15:27:12'),
 (890, 1, 124, 1, 2, 3, 1, 128, '2023-03-01 11:25:56', NULL),
 (874, 1, 118, 1, 2, 3, 7, 122, '2023-02-24 07:39:22', '2023-03-01 07:36:27'),
 (875, 1, 120, 1, 1, 7, 1, 123, '2023-02-24 08:12:06', '2023-03-01 13:22:53'),
@@ -427,8 +440,10 @@ CREATE TABLE `adms_paciente` (
 --
 
 INSERT INTO `adms_paciente` (`id`, `nome_paciente`, `telefone`, `endereco`, `adms_situacao_paciente_id`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(1, 'Otto Bismark', '(11)5896-3245', 'Rua 01', 1, '2023-02-24 14:39:24', 1, NULL, NULL),
-(8, 'Agostinho Carraca', '(11)171851714', 'A grande Familia', 0, '2023-02-28 10:36:21', 1, NULL, NULL);
+(13, 'Otto Bismark', '(11)5896-3245', 'Rua 01', 1, '2023-02-24 14:39:24', 1, NULL, NULL),
+(53, 'Leonardo da Vinci', '11998898520', 'Italia', 2, '2023-03-06 14:30:16', 1, NULL, NULL),
+(171, 'Agostinho Carraca', '(11)171851714', 'A grande Familia', 2, '2023-02-28 10:36:21', 1, NULL, NULL),
+(190, 'Batman', '70707070', 'Gotham City', 1, '2023-03-06 14:42:21', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -514,6 +529,7 @@ INSERT INTO `adms_paginas` (`id`, `nome_pagina`, `endereco`, `obs`, `keywords`, 
 (56, 'Recuperar Login', 'acesso/recuper_login', 'FormulÃ¡rio para recuperar login', 'Recuperar Login', 'Recuperar Login', 'Paulo Albuquerque', 1, '', 0, 7, '1', 4, 1, '2018-05-04 13:10:17', NULL),
 (57, 'Atualizar a Senha', 'acesso/atual_senha', 'FormulÃ¡rio para atualizar a senha', 'Atualizar a Senha', 'Atualizar a Senha', 'Paulo Albuquerque', 1, '', 0, 7, '1', 4, 1, '2018-05-05 16:36:02', NULL),
 (128, 'Processa o cadastro da avaliação', 'processa/proc_cad_avaliacao', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Paulo Albuquerque', 2, '', 127, 2, '1', 4, 1, '2023-03-01 11:25:56', NULL),
+(129, 'Editar paciente', 'editar/edit_paciente', 'Editar paciente', 'Editar paciente', 'Editar paciente', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2023-03-02 15:13:03', NULL),
 (122, 'list_usuario_tables', 'listar/list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2022-03-21 21:27:21', '2023-02-24 12:43:32'),
 (123, 'Cadastro de paciente', 'cadastrar/cad_paciente', 'cadastrar os pacientes ', 'cadastrar os pacientes', 'cadastrar os pacientes', 'Paulo Albuquerque', 2, 'fa fa-medkit', 0, 2, '1', 4, 1, '2023-02-24 08:12:06', '2023-03-01 08:04:16'),
 (124, 'Processamento de cadastro paciente', 'processa/proc_cad_paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Paulo Albuquerque', 2, '', 123, 2, '1', 4, 1, '2023-02-24 11:12:36', NULL),
@@ -550,9 +566,7 @@ INSERT INTO `adms_pergunta` (`id`, `descricao_pergunta`, `created`, `cadastrador
 (7, 'Assistência Farmacêutica', '2023-02-28 19:18:34', 1, NULL, NULL),
 (8, 'Equipe de coleta (exame de laboratório)', '2023-02-28 19:18:34', 1, NULL, NULL),
 (9, 'Realização de outros exames', '2023-02-28 19:18:34', 1, NULL, NULL),
-(10, 'Qualidade da alimentação', '2023-02-28 19:18:34', 1, NULL, NULL),
-(11, 'teste', '2023-03-01 19:25:22', 1, NULL, NULL),
-(12, 'teste02', '2023-03-01 19:27:25', 2, NULL, NULL);
+(10, 'Qualidade da alimentação', '2023-02-28 19:18:34', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -879,7 +893,7 @@ ALTER TABLE `adms_usuarios`
 -- AUTO_INCREMENT de tabela `adms_avaliacao_feita`
 --
 ALTER TABLE `adms_avaliacao_feita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador da tabela', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `adms_cads_usuarios`
@@ -915,7 +929,7 @@ ALTER TABLE `adms_menus`
 -- AUTO_INCREMENT de tabela `adms_nivacs_pgs`
 --
 ALTER TABLE `adms_nivacs_pgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=893;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=896;
 
 --
 -- AUTO_INCREMENT de tabela `adms_niveis_acessos`
@@ -927,19 +941,19 @@ ALTER TABLE `adms_niveis_acessos`
 -- AUTO_INCREMENT de tabela `adms_paciente`
 --
 ALTER TABLE `adms_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT de tabela `adms_paginas`
 --
 ALTER TABLE `adms_paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT de tabela `adms_pergunta`
 --
 ALTER TABLE `adms_pergunta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `adms_resposta`
