@@ -23,6 +23,7 @@ if (!empty($SendCadPaciente)) {
     //validar nenhum campo vazio
     $erro = false;
     include_once 'lib/lib_vazio.php';
+    include_once 'lib/validar_cpf.php';
     $dados_validos = vazio($dados);
     if (!$dados_validos) {
         $erro = true;
@@ -30,11 +31,11 @@ if (!empty($SendCadPaciente)) {
     } 
 
         //Proibir cadastro de paciente duplicado
-        $result_paciente_dupli = "SELECT id FROM adms_paciente WHERE nome_paciente='" . $dados_validos['nome_paciente'] . "'";
+        $result_paciente_dupli = "SELECT id FROM adms_paciente WHERE cpf_doc='" . $dados_validos['cpf_doc'] . "'";
         $resultado_paciente_dupli = mysqli_query($conn, $result_paciente_dupli);
         if (($resultado_paciente_dupli) AND ( $resultado_paciente_dupli->num_rows != 0 )) {
             $erro = true;
-            $_SESSION['msg'] = "<div class='alert alert-danger'>Este nome de Paciente já está cadastrado!</div>";
+            $_SESSION['msg'] = "<div class='alert alert-warning'>Este CPF já está cadastrado no sistema, favor verificar!</div>";
         }
     }
     
@@ -47,9 +48,10 @@ if (!empty($SendCadPaciente)) {
         header("Location: $url_destino");
     } else {
         
-        $result_cad_paciente = "INSERT INTO adms_paciente (nome_paciente, telefone, endereco, adms_situacao_paciente_id, created, cadastrador) VALUES (
+        $result_cad_paciente = "INSERT INTO adms_paciente (nome_paciente, telefone, cpf_doc, endereco, adms_situacao_paciente_id, created, cadastrador) VALUES (
         '" . $dados_validos['nome_paciente'] . "',
         '" . $dados_validos['telefone'] . "',
+        '" . $dados_validos['cpf_doc'] . "',
         '" . $dados_validos['endereco'] . "',
         '" . $dados_validos['adms_situacao_paciente_id'] . "',
         NOW(),

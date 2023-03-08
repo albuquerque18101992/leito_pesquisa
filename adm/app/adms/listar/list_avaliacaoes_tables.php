@@ -17,14 +17,14 @@ $columns = array(
 );
 
 //Obter registros de numero total sem qualquer pesquisa
-$result_pg = "SELECT COUNT(id) AS num_result FROM adms_paciente WHERE atendido = 1";
+$result_pg = "SELECT COUNT(id) AS num_result FROM adms_paciente WHERE atendido = 2";
 $resultado_pg = mysqli_query($conn, $result_pg);
 $qnt_linhas = mysqli_fetch_assoc($resultado_pg);
 
 
 //Obter os dados a serem apresentados
 
-$result_usuarios = "SELECT * FROM adms_paciente WHERE atendido = 1";
+$result_usuarios = "SELECT * FROM adms_paciente WHERE atendido = 2";
 
 
 if (!empty($requestData['search']['value'])) {
@@ -46,13 +46,13 @@ $resultado_usuarios = mysqli_query($conn, $result_usuarios);
 require '../../../lib/lib_permissao.php';
 $btn_vis = carregar_btn('visualizar/vis_usuario', $conn);
 $btn_edit = carregar_btn('editar/edit_usuario', $conn);
-$btn_avaliacao = carregar_btn('cadastrar/cad_avaliacao', $conn);
 $btn_apagar = carregar_btn('processa/apagar_usuario', $conn);
+$btn_ok = carregar_btn('cadastrar/cad_avaliacao', $conn);
 //Iniciando as variaveis abaixo como vazio para nao dar erro, caso a permissão do botao for negativa
 $btn_vis_val = "";
 $btn_edit_val = "";
-$btn_avaliacao_val = "";
 $btn_apagar_val = "";
+$btn_avaliacao_ok = "";
 
 //Ler e criar o array de dados
 $dados = array();
@@ -70,16 +70,16 @@ while ($row_usuarios = mysqli_fetch_array($resultado_usuarios)) {
     if ($btn_edit) {
         $btn_edit_val = "<a href='" . pg . "/editar/edit_usuario?id=" . $row_usuarios['id'] . "' title='Editar' class='btn btn-outline-warning btn-sm'>Editar </a> ";
     }
-
-    if ($btn_avaliacao) {
-        $btn_avaliacao_val = "<a href='" . pg . "/cadastrar/cad_avaliacao?id=" . $row_usuarios['id'] . "' title='Avaliação do leito' class='btn btn-outline-info btn-sm'>Avaliação </a> ";
+    
+    if ($btn_ok) {
+        $btn_avaliacao_ok = "<div class='btn btn-success btn-sm'><i class='fa fa-check-circle' aria-hidden='true'></i> </div>";
     }
 
     if ($btn_apagar) {
         $btn_apagar_val = "<a href='" . pg . "/processa/apagar_usuario?id=" . $row_usuarios['id'] . "' title='Deletar' class='btn btn-outline-danger btn-sm apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'>Apagar </a> ";
     }
 
-    $dado[] = $btn_vis_val . $btn_edit_val . $btn_avaliacao_val. $btn_apagar_val;
+    $dado[] = $btn_vis_val . $btn_edit_val . $btn_apagar_val . $btn_avaliacao_ok;
 
     $dados[] = $dado;
 }

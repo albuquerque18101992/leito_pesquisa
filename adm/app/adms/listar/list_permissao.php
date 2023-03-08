@@ -54,13 +54,13 @@ if (!empty($id)) {
                                 $resultado_nome_nivac = mysqli_query($conn, $result_nome_nivac);
                                 $row_nome_nivac = mysqli_fetch_assoc($resultado_nome_nivac);
                                 ?>
-                                <h2 class="display-4 titulo">Listar Permissões - <?php echo $row_nome_nivac['nome']; ?></h2>
+                                <h2 class="display-4 titulo">Permissões - <?php echo $row_nome_nivac['nome']; ?></h2>
                             </div>
                             <div class="p-2">
                                 <?php
                                 $btn_list = carregar_btn('listar/list_niv_aces', $conn);
                                 if ($btn_list) {
-                                    echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-info btn-sm'>Voltar</a>";
+                                    echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-outline-info btn-sm'>Voltar</a>";
                                 }
                                 ?>
                             </div>

@@ -1,3 +1,20 @@
+<!--
+
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
+ 
+-->
 <nav class="sidebar">
     <ul class="list-unstyled">
         <?php

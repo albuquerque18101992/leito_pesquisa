@@ -72,7 +72,7 @@ while ($row_usuarios = mysqli_fetch_array($resultado_usuarios)) {
     $dado[] = $row_usuarios["nome_nivac"];
 
     if ($btn_vis) {
-        $btn_vis_val =  "<a href='" . pg . "/visualizar/vis_usuario?id=" . $row_usuarios['id'] . "' title='Visualizar' data-toggle='modal' data-target='#visualizarUsuario' class='btn btn-outline-primary btn-sm'>Visualizar</a> ";
+        $btn_vis_val =  "<a href='" . pg . "/visualizar/vis_usuario?id=" . $row_usuarios['id'] . "' title='Visualizar' /*data-toggle='modal' data-target='#visualizarUsuario'*/ class='btn btn-outline-primary btn-sm'>Visualizar</a> ";
     }
     
     if ($btn_edit) {

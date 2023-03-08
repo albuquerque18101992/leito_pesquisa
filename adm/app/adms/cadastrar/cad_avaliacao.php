@@ -70,7 +70,7 @@ if (!empty($id)) {
                         }
                         ?>
                         <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_avaliacao" enctype="multipart/form-data" autocomplete="off">  
-                            <input type="number" name="adms_paciente_id" id="adms_paciente_id" value="<?php
+                            <input type="hidden" name="adms_paciente_id" id="adms_paciente_id" value="<?php
                             if (isset($id)) {
                                 echo $id;
                             }

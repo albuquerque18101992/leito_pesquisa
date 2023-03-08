@@ -31,13 +31,13 @@ include_once 'app/adms/include/head.php';
             <div class="list-group-item">
                 <div class="d-flex">
                     <div class="mr-auto p-2">
-                        <h2 class="display-4 titulo">Listar Nível de Acesso</h2>
+                        <h2 class="display-4 titulo">Nível de Acesso</h2>
                     </div>
                     <div class="p-2">
                         <?php
                         $btn_sincr = carregar_btn('processa/proc_sincro_nivac_pg', $conn);
                         if ($btn_sincr) {
-                            echo "<a href='" . pg . "/processa/proc_sincro_nivac_pg' class='btn btn-dark btn-sm'>Sincronizar</a> ";
+                            echo "<a href='" . pg . "/processa/proc_sincro_nivac_pg' class='btn btn-outline-dark btn-sm'>Sincronizar</a> ";
                         }
                         $btn_cad = carregar_btn('cadastrar/cad_niv_aces', $conn);
                         if ($btn_cad) {
@@ -104,7 +104,7 @@ include_once 'app/adms/include/head.php';
 
                                                 $btn_list_per = carregar_btn('listar/list_permissao', $conn);
                                                 if ($btn_list_per) {
-                                                    echo "<a href='" . pg . "/listar/list_permissao?id=" . $row_niv_aces['id'] . "' class='btn btn-dark btn-sm'>Permissão</a> ";
+                                                    echo "<a href='" . pg . "/listar/list_permissao?id=" . $row_niv_aces['id'] . "' class='btn btn-outline-dark btn-sm'>Permissão</a> ";
                                                 }
 
                                                 $btn_vis = carregar_btn('visualizar/vis_niv_aces', $conn);

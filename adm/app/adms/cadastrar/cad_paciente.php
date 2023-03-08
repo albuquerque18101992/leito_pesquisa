@@ -65,13 +65,22 @@ include_once 'app/adms/include/head.php';
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label> Telefone </label>
                             <input name="telefone" type="text" class="form-control" id="telefone" placeholder="Numero de telefone" value="<?php
                                 if (isset($_SESSION['dados']['telefone'])) {
                                     echo $_SESSION['dados']['telefone'];
                                 }
                                 ?>">
+                        </div>
+
+                        <div class="form-group col-md-6 was-validated">
+                            <label> CPF </label>
+                            <input name="cpf_doc" type="text" class="form-control is-valid" id="cpf_doc" placeholder="Informe um CPF" value="<?php
+                                if (isset($_SESSION['dados']['cpf_doc'])) {
+                                    echo $_SESSION['dados']['cpf_doc'];
+                                }
+                                ?>" required>
                         </div>
                     </div>
 
@@ -94,11 +103,11 @@ include_once 'app/adms/include/head.php';
                             $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                             ?>
                             Situação do Usuário </label>
-                            <select name="adms_sits_usuario_id" id="adms_sits_usuario_id" class="form-control is-valid" required>
+                            <select name="adms_situacao_paciente_id" id="adms_situacao_paciente_id" class="form-control is-valid" required>
                                 <option value="">SELECIONAR</option>
                                 <?php
                                 while ($row_sit_user = mysqli_fetch_assoc($resultado_sit_user)) {
-                                    if (isset($_SESSION['dados']['adms_sits_usuario_id']) and ($_SESSION['dados']['adms_sits_usuario_id'] == $row_sit_user['id'])) {
+                                    if (isset($_SESSION['dados']['adms_situacao_paciente_id']) and ($_SESSION['dados']['adms_situacao_paciente_id'] == $row_sit_user['id'])) {
                                         echo "<option value='" . $row_sit_user['id'] . "' selected>" . $row_sit_user['descricao_situacao'] . "</option>";
                                     } else {
                                         echo "<option value='" . $row_sit_user['id'] . "'>" . $row_sit_user['descricao_situacao'] . "</option>";
@@ -120,3 +129,22 @@ include_once 'app/adms/include/head.php';
         ?>
     </div>
 </body>
+
+<script>
+    //Mascara para preencher o CPF no padrão -> 000.000.000-01
+    document.getElementById('cpf_doc').addEventListener('input', function(e) {
+
+    x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+    e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '-' + x[4] : '');
+
+    });
+
+
+    //Mascara para preencher o Celular no padrão -> (00)00000-0000
+    document.getElementById('telefone').addEventListener('input', function(e) {
+
+    cel = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+    e.target.value = !cel[2] ? cel[1] : cel[1] + '-' + cel[2] + (cel[3] ? '-' : '') + cel[3];
+
+    });
+</script>

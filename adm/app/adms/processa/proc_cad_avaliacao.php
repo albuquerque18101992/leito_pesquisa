@@ -37,6 +37,15 @@ if (!empty($SendCadAvaliacao)) {
             '" . $_SESSION['id'] . "')";
 
 
+        //Editar tabela adms_paciente coluna atendido para valor 2 que significa que avalição foi realizada
+        $result_paciente_atendido = "UPDATE adms_paciente SET
+               atendido = 2 ,
+               modified = NOW(),
+               editor = '" . $_SESSION['id'] . "'
+               WHERE id = '".$dados['adms_paciente_id']."'";
+        mysqli_query($conn, $result_paciente_atendido);
+
+
         mysqli_query($conn, $result_avaliacao);
         if (mysqli_insert_id($conn)) {
             unset($_SESSION['dados']);

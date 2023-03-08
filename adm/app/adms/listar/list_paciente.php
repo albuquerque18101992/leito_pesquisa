@@ -39,7 +39,7 @@ include_once 'app/adms/include/head.php';
                         <?php
                         $btn_cad = carregar_btn('cadastrar/cad_paciente', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_paciente' class='btn btn-success btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_paciente' class='btn btn-outline-success btn-sm'>Cadastrar</a>";
                         }
                         ?>
                     </div>
@@ -55,10 +55,10 @@ include_once 'app/adms/include/head.php';
                     <table id="listar-pacientes" class="table table-striped table-hover" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>id</th>
                                 <th>Nome</th>
                                 <th>Telefone</th>
-                                <th>Endereço</th>
+                                <th>CPF</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>

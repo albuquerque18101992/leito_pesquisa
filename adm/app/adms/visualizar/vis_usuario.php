@@ -64,7 +64,7 @@ if (!empty($id)) {
                                     <?php
                                     $btn_list = carregar_btn('listar/list_usuario', $conn);
                                     if ($btn_list) {
-                                        echo "<a href='" . pg . "/listar/list_usuario' class='btn btn-outline-info btn-sm'>Listar</a> ";
+                                        echo "<a href='" . pg . "/listar/list_usuario' class='btn btn-outline-info btn-sm'>Voltar</a> ";
                                     }
                                     $btn_edit = carregar_btn('editar/edit_usuario', $conn);
                                     if ($btn_edit) {
@@ -83,7 +83,7 @@ if (!empty($id)) {
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                         <?php
                                         if ($btn_list) {
-                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_usuario'>Listar</a>";
+                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_usuario'>Voltar</a>";
                                         }
                                         if ($btn_edit) {
                                             echo "<a class='dropdown-item' href='" . pg . "/editar/edit_usuario?id=" . $row_user_vis['id'] . "'>Editar</a>";

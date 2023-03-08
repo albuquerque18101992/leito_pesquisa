@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Mar-2023 às 19:27
+-- Tempo de geração: 08-Mar-2023 às 19:43
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -52,8 +52,8 @@ CREATE TABLE `adms_avaliacao_feita` (
 --
 
 INSERT INTO `adms_avaliacao_feita` (`id`, `adms_paciente_id`, `pergunta1`, `pergunta2`, `pergunta3`, `pergunta4`, `pergunta5`, `pergunta6`, `pergunta7`, `pergunta8`, `pergunta9`, `pergunta10`, `pergunta11`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(12, 52, 4, 2, 2, 2, 2, 2, 2, 2, 2, 4, 9, '2023-03-06 15:22:12', 1, NULL, NULL),
-(13, 190, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, '2023-03-06 15:23:58', 1, NULL, NULL);
+(29, 205, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, '2023-03-08 14:33:04', 1, NULL, NULL),
+(30, 206, 2, 2, 1, 1, 2, 1, 1, 1, 2, 1, 9, '2023-03-08 15:21:21', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -263,8 +263,10 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (209, 1, 51, 1, 2, 3, 1, 55, '2018-05-04 12:42:15', NULL),
 (214, 1, 52, 1, 2, 3, 1, 56, '2018-05-04 13:10:17', NULL),
 (219, 1, 53, 2, 2, 3, 1, 57, '2018-05-05 16:36:02', '2023-03-02 15:27:24'),
+(901, 2, 127, 1, 2, 3, 7, 131, '2023-03-08 15:29:04', NULL),
 (895, 2, 125, 1, 1, 3, 7, 129, '2023-03-02 15:13:03', NULL),
-(892, 2, 124, 1, 2, 3, 7, 128, '2023-03-01 11:25:56', NULL),
+(892, 1, 124, 1, 2, 3, 7, 128, '2023-03-01 11:25:56', '2023-03-08 09:31:35'),
+(898, 1, 126, 1, 2, 3, 7, 130, '2023-03-08 10:02:56', '2023-03-08 10:04:38'),
 (636, 1, 118, 2, 2, 3, 1, 122, '2022-03-21 21:27:21', '2022-03-21 21:28:08'),
 (639, 1, 1, 2, 1, 1, 6, 1, '2023-02-23 08:26:35', '2023-03-01 07:59:59'),
 (640, 1, 2, 2, 1, 4, 6, 4, '2023-02-23 08:26:35', '2023-03-01 08:00:00'),
@@ -319,14 +321,16 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (689, 1, 51, 1, 2, 3, 6, 55, '2023-02-23 08:26:35', NULL),
 (690, 1, 52, 1, 2, 3, 6, 56, '2023-02-23 08:26:35', NULL),
 (691, 1, 53, 1, 2, 3, 6, 57, '2023-02-23 08:26:35', NULL),
+(900, 2, 127, 1, 2, 3, 6, 131, '2023-03-08 15:29:04', NULL),
 (894, 2, 125, 1, 1, 3, 6, 129, '2023-03-02 15:13:03', NULL),
-(891, 2, 124, 1, 2, 3, 6, 128, '2023-03-01 11:25:56', NULL),
+(891, 1, 124, 1, 2, 3, 6, 128, '2023-03-01 11:25:56', '2023-03-08 09:34:48'),
+(897, 1, 126, 1, 2, 3, 6, 130, '2023-03-08 10:02:56', '2023-03-08 10:04:35'),
 (756, 2, 118, 1, 2, 3, 6, 122, '2023-02-23 08:26:36', NULL),
 (757, 1, 1, 2, 1, 1, 7, 1, '2023-02-24 07:39:21', '2023-03-01 07:37:28'),
 (758, 1, 2, 2, 1, 4, 7, 4, '2023-02-24 07:39:21', '2023-03-01 07:37:35'),
 (759, 1, 3, 1, 2, 3, 7, 2, '2023-02-24 07:39:21', NULL),
 (760, 1, 4, 1, 2, 3, 7, 3, '2023-02-24 07:39:21', NULL),
-(761, 1, 5, 1, 1, 2, 7, 5, '2023-02-24 07:39:21', '2023-03-01 07:37:40'),
+(761, 2, 5, 1, 1, 2, 7, 5, '2023-02-24 07:39:21', '2023-03-07 13:46:40'),
 (762, 2, 6, 1, 2, 2, 7, 6, '2023-02-24 07:39:21', NULL),
 (763, 2, 7, 1, 2, 5, 7, 7, '2023-02-24 07:39:21', NULL),
 (764, 2, 8, 1, 2, 5, 7, 8, '2023-02-24 07:39:21', NULL),
@@ -375,8 +379,10 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (807, 1, 51, 1, 2, 3, 7, 55, '2023-02-24 07:39:22', NULL),
 (808, 2, 52, 1, 2, 3, 7, 56, '2023-02-24 07:39:22', '2023-03-01 07:53:01'),
 (809, 1, 53, 1, 2, 3, 7, 57, '2023-02-24 07:39:22', NULL),
+(899, 1, 127, 1, 2, 3, 1, 131, '2023-03-08 15:29:04', NULL),
 (893, 1, 125, 2, 2, 3, 1, 129, '2023-03-02 15:13:03', '2023-03-02 15:27:12'),
 (890, 1, 124, 1, 2, 3, 1, 128, '2023-03-01 11:25:56', NULL),
+(896, 1, 126, 1, 2, 3, 1, 130, '2023-03-08 10:02:56', NULL),
 (874, 1, 118, 1, 2, 3, 7, 122, '2023-02-24 07:39:22', '2023-03-01 07:36:27'),
 (875, 1, 120, 1, 1, 7, 1, 123, '2023-02-24 08:12:06', '2023-03-01 13:22:53'),
 (876, 1, 120, 1, 1, 7, 6, 123, '2023-02-24 08:12:06', '2023-03-01 13:23:11'),
@@ -391,8 +397,8 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (885, 1, 122, 1, 2, 3, 6, 126, '2023-02-24 11:41:31', '2023-03-01 08:03:10'),
 (886, 1, 122, 1, 2, 3, 7, 126, '2023-02-24 11:41:31', '2023-03-01 07:36:08'),
 (887, 1, 123, 2, 2, 3, 1, 127, '2023-02-28 10:46:07', '2023-02-28 11:15:00'),
-(888, 1, 123, 2, 2, 7, 6, 127, '2023-02-28 10:46:07', '2023-03-01 08:04:01'),
-(889, 1, 123, 2, 2, 3, 7, 127, '2023-02-28 10:46:07', '2023-03-01 07:56:52');
+(888, 1, 123, 2, 2, 7, 6, 127, '2023-02-28 10:46:07', '2023-03-08 09:34:48'),
+(889, 1, 123, 2, 2, 3, 7, 127, '2023-02-28 10:46:07', '2023-03-08 09:31:35');
 
 -- --------------------------------------------------------
 
@@ -427,8 +433,10 @@ CREATE TABLE `adms_paciente` (
   `id` int(11) NOT NULL,
   `nome_paciente` varchar(220) NOT NULL,
   `telefone` varchar(220) DEFAULT NULL,
+  `cpf_doc` varchar(220) NOT NULL,
   `endereco` varchar(220) DEFAULT NULL,
   `adms_situacao_paciente_id` int(11) NOT NULL,
+  `atendido` int(11) NOT NULL DEFAULT 1,
   `created` datetime NOT NULL,
   `cadastrador` int(11) NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -439,11 +447,10 @@ CREATE TABLE `adms_paciente` (
 -- Extraindo dados da tabela `adms_paciente`
 --
 
-INSERT INTO `adms_paciente` (`id`, `nome_paciente`, `telefone`, `endereco`, `adms_situacao_paciente_id`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(13, 'Otto Bismark', '(11)5896-3245', 'Rua 01', 1, '2023-02-24 14:39:24', 1, NULL, NULL),
-(53, 'Leonardo da Vinci', '11998898520', 'Italia', 2, '2023-03-06 14:30:16', 1, NULL, NULL),
-(171, 'Agostinho Carraca', '(11)171851714', 'A grande Familia', 2, '2023-02-28 10:36:21', 1, NULL, NULL),
-(190, 'Batman', '70707070', 'Gotham City', 1, '2023-03-06 14:42:21', 1, NULL, NULL);
+INSERT INTO `adms_paciente` (`id`, `nome_paciente`, `telefone`, `cpf_doc`, `endereco`, `adms_situacao_paciente_id`, `atendido`, `created`, `cadastrador`, `modified`, `editor`) VALUES
+(205, 'Paulo Albquerque', '11-99837-2022', '408.754.818-09', 'Avenida Agenor de Oliveira', 2, 2, '2023-03-08 14:32:39', 1, '2023-03-08 14:33:04', 1),
+(206, 'Luiz Gonzaga', '11-05515-5221', '408.754.818-00', 'Ceara', 1, 2, '2023-03-08 14:41:53', 1, '2023-03-08 15:21:21', 1),
+(207, 'Wesley Safadão', '11-45454-4454', '445.450.944-50', 'Avenida Agenor de Oliveira', 1, 1, '2023-03-08 15:26:19', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -481,7 +488,7 @@ INSERT INTO `adms_paginas` (`id`, `nome_pagina`, `endereco`, `obs`, `keywords`, 
 (3, 'Validar Login', 'acesso/valida', 'Validar Login', 'Validar Login', 'Validar Login', 'Paulo Albuquerque', 1, NULL, 2, 7, '1', 4, 1, '2018-03-23 00:00:00', NULL),
 (5, 'Usuários', 'listar/list_usuario', 'Pagina para listar usuarios', 'Listar usuarios', 'Listar usuarios', 'Paulo Albuquerque', 2, 'fas fa-users', 0, 1, '1', 4, 1, '2018-03-23 00:00:00', '2021-04-28 23:41:39'),
 (6, 'Níveis de Acesso', 'listar/list_niv_aces', 'Pagina para listar nivel de acesso', 'Listar nivel de acesso', 'Listar nivel de acesso', 'Paulo Albuquerque', 2, 'fas fa-key', 0, 1, '1', 4, 1, '2018-03-23 00:00:00', '2021-04-28 23:41:27'),
-(7, 'Páginas', 'listar/list_pagina', 'Pagina para listar as paginas do ADM', 'Listar pagina', 'Listar pagina', 'Paulo Albuquerque', 2, 'fas fa-file-alt', 0, 1, '1', 4, 1, '2018-03-23 00:00:00', '2021-04-28 23:47:13'),
+(7, 'Telas', 'listar/list_pagina', 'Pagina para listar as paginas do ADM', 'Listar pagina', 'Listar pagina', 'Paulo Albuquerque', 2, 'fas fa-file-alt', 0, 1, '1', 4, 1, '2018-03-23 00:00:00', '2023-03-08 13:26:24'),
 (8, 'Menu', 'listar/list_menu', 'Pagina para listar os itens do menu', 'Pagina para listar os itens do menu', 'Pagina para listar os itens do menu', 'Paulo Albuquerque', 2, 'fab fa-elementor', 0, 1, '1', 4, 1, '2018-03-23 00:00:00', '2021-04-28 23:47:31'),
 (9, 'Cadastrar nivel de Acesso', 'cadastrar/cad_niv_aces', 'Pagina para Cadastrar NÃ­vel de Acesso', 'Cadastrar Nivel de Acesso', 'Cadastrar Nivel de Acesso', 'Paulo Albuquerque', 2, '', 0, 2, '1', 4, 1, '2018-03-23 00:00:00', '2023-03-01 07:29:17'),
 (10, 'Visualizar nivel de acesso', 'visualizar/vis_niv_aces', 'Pagina para Visualizar nivel de acesso', 'Pagina para Visualizar nivel de acesso', 'Pagina para Visualizar nivel de acesso', 'Paulo Albuquerque', 2, NULL, 0, 5, '1', 4, 1, '2018-03-23 00:00:00', NULL),
@@ -530,6 +537,8 @@ INSERT INTO `adms_paginas` (`id`, `nome_pagina`, `endereco`, `obs`, `keywords`, 
 (57, 'Atualizar a Senha', 'acesso/atual_senha', 'FormulÃ¡rio para atualizar a senha', 'Atualizar a Senha', 'Atualizar a Senha', 'Paulo Albuquerque', 1, '', 0, 7, '1', 4, 1, '2018-05-05 16:36:02', NULL),
 (128, 'Processa o cadastro da avaliação', 'processa/proc_cad_avaliacao', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Paulo Albuquerque', 2, '', 127, 2, '1', 4, 1, '2023-03-01 11:25:56', NULL),
 (129, 'Editar paciente', 'editar/edit_paciente', 'Editar paciente', 'Editar paciente', 'Editar paciente', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2023-03-02 15:13:03', NULL),
+(130, 'Litando avaliações feitas', 'listar/list_avaliacoes', 'Litando avaliações feitas', 'Litando avaliações feitas', 'Litando avaliações feitas', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2023-03-08 10:02:56', NULL),
+(131, 'processa lista avaliações feitas', 'listar/list_avaliacaoes_tables', 'processa lista  de avaliações feitas', 'processa lista avaliações feitas', 'processa lista avaliações feitas', 'Paulo Albuquerque', 2, '', 130, 1, '1', 4, 1, '2023-03-08 15:29:04', NULL),
 (122, 'list_usuario_tables', 'listar/list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2022-03-21 21:27:21', '2023-02-24 12:43:32'),
 (123, 'Cadastro de paciente', 'cadastrar/cad_paciente', 'cadastrar os pacientes ', 'cadastrar os pacientes', 'cadastrar os pacientes', 'Paulo Albuquerque', 2, 'fa fa-medkit', 0, 2, '1', 4, 1, '2023-02-24 08:12:06', '2023-03-01 08:04:16'),
 (124, 'Processamento de cadastro paciente', 'processa/proc_cad_paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Paulo Albuquerque', 2, '', 123, 2, '1', 4, 1, '2023-02-24 11:12:36', NULL),
@@ -577,6 +586,7 @@ INSERT INTO `adms_pergunta` (`id`, `descricao_pergunta`, `created`, `cadastrador
 CREATE TABLE `adms_resposta` (
   `id` int(11) NOT NULL,
   `descricao_resposta` varchar(220) NOT NULL,
+  `icon_ico` varchar(300) DEFAULT NULL,
   `created` datetime NOT NULL,
   `cadastrador` int(11) NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -587,11 +597,11 @@ CREATE TABLE `adms_resposta` (
 -- Extraindo dados da tabela `adms_resposta`
 --
 
-INSERT INTO `adms_resposta` (`id`, `descricao_resposta`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(1, 'Ruim', '2023-02-24 11:43:52', 1, NULL, NULL),
-(2, 'Boa', '2023-02-24 11:43:52', 1, NULL, NULL),
-(3, 'Excelente', '2023-02-24 11:44:09', 1, NULL, NULL),
-(4, 'Nao Utilizei', '2023-02-24 11:44:09', 1, NULL, NULL);
+INSERT INTO `adms_resposta` (`id`, `descricao_resposta`, `icon_ico`, `created`, `cadastrador`, `modified`, `editor`) VALUES
+(1, 'Ruim', '<i class=\'fa fa-frown-o\' aria-hidden=\'true\'></i>', '2023-02-24 11:43:52', 1, NULL, NULL),
+(2, 'Boa', '<i class=\'fa fa-smile-o\' aria-hidden=\'true\'></i>', '2023-02-24 11:43:52', 1, NULL, NULL),
+(3, 'Excelente', '<i class=\'fa fa-heart-o\' aria-hidden=\'true\'></i>', '2023-02-24 11:44:09', 1, NULL, NULL),
+(4, 'Nao Utilizei', '<i class=\"fa fa-window-close\" aria-hidden=\"true\"></i>', '2023-02-24 11:44:09', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -764,8 +774,8 @@ CREATE TABLE `adms_usuarios` (
 
 INSERT INTO `adms_usuarios` (`id`, `nome`, `apelido`, `email`, `num_cracha`, `usuario`, `senha`, `recuperar_senha`, `chave_descadastro`, `conf_email`, `imagem`, `adms_niveis_acesso_id`, `adms_sits_usuario_id`, `created`, `modified`) VALUES
 (1, 'Paulo Albuquerque', 'Paulo', 'paulo.albuquerque@ints.org.br', '18569', 'paulo.albuquerque', '$2y$10$WSFg.JKfk9sF5/tXqhxSke8DyKVnf5D1X8cx6w7KqXLDjIraI5NVK', NULL, NULL, NULL, 'b48123f3-5c5c-450d-a362-2215fd4c348e-copia.jpg', 1, 1, '2022-04-30 19:49:14', '2023-02-28 10:14:34'),
-(5, 'Colaborador adm 1', 'Administrador', 'adm1@adm1.com', '651546', 'adm01', '$2y$10$QKahp8Z.vQ2o5/tDYfRcd.LZd.9k.dBLzS5t8sef6PQZ3AsoiaFqe', NULL, NULL, NULL, NULL, 6, 1, '2023-03-01 07:44:04', '2023-03-01 07:59:09'),
-(4, 'Colaborador usuário 1', '', 'usuario@usuario.com.br', '1871', 'usuario', '$2y$10$WiKToH76QVeN1RfJPvwOI.c62LkD/PLNITOTjkWRZZ25bLyJcoDKy', NULL, NULL, NULL, NULL, 7, 1, '2023-03-01 07:34:37', NULL);
+(5, 'Usuário Administrador', 'Administrador', 'admin@admin.com', '00141', 'admin', '$2y$10$KzIOFEGZGTgY5ey4WZTb3Oxeydybh2mOducrLPBRXj4BeX4VjJL/C', NULL, NULL, NULL, NULL, 6, 1, '2023-03-01 07:44:04', '2023-03-08 14:38:42'),
+(4, 'Usuário', '', 'usuario@usuario.com.br', '1871', 'usuario', '$2y$10$5JS.WxBiCaJ4sj4W5wF46ORxA.8X4.meuUKrKe4UrxDImHIp.bckq', NULL, NULL, NULL, NULL, 7, 1, '2023-03-01 07:34:37', '2023-03-08 14:38:56');
 
 --
 -- Índices para tabelas despejadas
@@ -893,7 +903,7 @@ ALTER TABLE `adms_usuarios`
 -- AUTO_INCREMENT de tabela `adms_avaliacao_feita`
 --
 ALTER TABLE `adms_avaliacao_feita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `adms_cads_usuarios`
@@ -929,7 +939,7 @@ ALTER TABLE `adms_menus`
 -- AUTO_INCREMENT de tabela `adms_nivacs_pgs`
 --
 ALTER TABLE `adms_nivacs_pgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=896;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=902;
 
 --
 -- AUTO_INCREMENT de tabela `adms_niveis_acessos`
@@ -941,13 +951,13 @@ ALTER TABLE `adms_niveis_acessos`
 -- AUTO_INCREMENT de tabela `adms_paciente`
 --
 ALTER TABLE `adms_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT de tabela `adms_paginas`
 --
 ALTER TABLE `adms_paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT de tabela `adms_pergunta`
