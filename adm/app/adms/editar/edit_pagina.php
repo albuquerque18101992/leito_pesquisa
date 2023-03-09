@@ -70,10 +70,10 @@ if (!empty($id)) {
                             unset($_SESSION['msg']);
                         }
                         ?>
-                        <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_pagina">  
-                            <input type="hidden" name="id" value="<?php if (isset($row_edit_pg['id'])) {
-                    echo $row_edit_pg['id'];
-                } ?>">
+                        <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_edit_pagina">  
+                                    <input type="hidden" name="id" value="<?php if (isset($row_edit_pg['id'])) {
+                            echo $row_edit_pg['id'];
+                        } ?>">
                             
                             <div class="form-row">
                                 <div class="form-group col-md-5">

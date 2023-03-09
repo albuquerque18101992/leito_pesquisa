@@ -122,7 +122,7 @@ include_once 'app/adms/include/head.php';
                                                 ?>
                                             </span>
                                             <div class="dropdown d-block d-md-none">
-                                                <button class="btn btn-light dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Ações
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">

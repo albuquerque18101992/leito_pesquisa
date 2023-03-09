@@ -33,7 +33,7 @@ include_once 'app/adms/include/head.php';
                     unset($_SESSION['msg']);
                 }
                 ?>
-                <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_pagina">  
+                <form method="POST" action="<?php echo pg; ?>/processa/cadastrar/proc_cad_pagina">  
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label>

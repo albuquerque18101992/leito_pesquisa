@@ -50,7 +50,7 @@ include_once 'app/adms/include/head.php';
                     unset($_SESSION['msg']);
                 }
                 ?>
-                <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_paciente" enctype="multipart/form-data" autocomplete="off">
+                <form method="POST" action="<?php echo pg; ?>/processa/cadastrar/proc_cad_paciente" enctype="multipart/form-data" autocomplete="off">
                     <div class="form-row ">
                         <div class="form-group col-md-12 was-validated">
                             <label>

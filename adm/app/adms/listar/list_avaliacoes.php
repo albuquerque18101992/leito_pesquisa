@@ -62,14 +62,11 @@ include_once 'app/adms/include/head.php';
             
         </div>
         <?php
-        //include_once 'app/adms/include/rodape_lib.php';
+        include_once 'app/adms/include/rodape_lib.php';
         ?>
         
-        <script src="<?php echo pg; ?>/adm/assets/js/personalizado.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="<?php echo pg; ?>/assets/js/personalizado.js"></script>
+        <script src="<?php echo pg; ?>/assets/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 
         <script type="text/javascript">

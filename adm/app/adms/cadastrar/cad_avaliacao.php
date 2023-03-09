@@ -69,7 +69,7 @@ if (!empty($id)) {
                             unset($_SESSION['msg']);
                         }
                         ?>
-                        <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_avaliacao" enctype="multipart/form-data" autocomplete="off">  
+                        <form method="POST" action="<?php echo pg; ?>/processa/cadastrar/proc_cad_avaliacao" enctype="multipart/form-data" autocomplete="off">  
                             <input type="hidden" name="adms_paciente_id" id="adms_paciente_id" value="<?php
                             if (isset($id)) {
                                 echo $id;

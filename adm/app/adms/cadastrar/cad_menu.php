@@ -33,7 +33,7 @@ include_once 'app/adms/include/head.php';
                     unset($_SESSION['msg']);
                 }
                 ?>
-                <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_menu">  
+                <form method="POST" action="<?php echo pg; ?>/processa/cadastrar/proc_cad_menu">  
                     <div class="form-group">
                         <label>
                             <span tabindex="0" data-placement="top" data-toggle="tooltip" title="Nome do item de menu a ser apresentado no menu">

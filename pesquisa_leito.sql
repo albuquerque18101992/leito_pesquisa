@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Mar-2023 às 19:43
+-- Tempo de geração: 09-Mar-2023 às 19:54
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -264,8 +264,11 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (214, 1, 52, 1, 2, 3, 1, 56, '2018-05-04 13:10:17', NULL),
 (219, 1, 53, 2, 2, 3, 1, 57, '2018-05-05 16:36:02', '2023-03-02 15:27:24'),
 (901, 2, 127, 1, 2, 3, 7, 131, '2023-03-08 15:29:04', NULL),
+(907, 2, 129, 1, 2, 3, 7, 133, '2023-03-09 10:47:36', NULL),
+(910, 2, 130, 1, 2, 3, 7, 134, '2023-03-09 15:26:21', NULL),
 (895, 2, 125, 1, 1, 3, 7, 129, '2023-03-02 15:13:03', NULL),
 (892, 1, 124, 1, 2, 3, 7, 128, '2023-03-01 11:25:56', '2023-03-08 09:31:35'),
+(904, 2, 128, 1, 2, 3, 7, 132, '2023-03-09 10:08:03', NULL),
 (898, 1, 126, 1, 2, 3, 7, 130, '2023-03-08 10:02:56', '2023-03-08 10:04:38'),
 (636, 1, 118, 2, 2, 3, 1, 122, '2022-03-21 21:27:21', '2022-03-21 21:28:08'),
 (639, 1, 1, 2, 1, 1, 6, 1, '2023-02-23 08:26:35', '2023-03-01 07:59:59'),
@@ -322,8 +325,11 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (690, 1, 52, 1, 2, 3, 6, 56, '2023-02-23 08:26:35', NULL),
 (691, 1, 53, 1, 2, 3, 6, 57, '2023-02-23 08:26:35', NULL),
 (900, 2, 127, 1, 2, 3, 6, 131, '2023-03-08 15:29:04', NULL),
+(906, 2, 129, 1, 2, 3, 6, 133, '2023-03-09 10:47:36', NULL),
+(909, 2, 130, 1, 2, 3, 6, 134, '2023-03-09 15:26:21', NULL),
 (894, 2, 125, 1, 1, 3, 6, 129, '2023-03-02 15:13:03', NULL),
 (891, 1, 124, 1, 2, 3, 6, 128, '2023-03-01 11:25:56', '2023-03-08 09:34:48'),
+(903, 2, 128, 1, 2, 3, 6, 132, '2023-03-09 10:08:03', NULL),
 (897, 1, 126, 1, 2, 3, 6, 130, '2023-03-08 10:02:56', '2023-03-08 10:04:35'),
 (756, 2, 118, 1, 2, 3, 6, 122, '2023-02-23 08:26:36', NULL),
 (757, 1, 1, 2, 1, 1, 7, 1, '2023-02-24 07:39:21', '2023-03-01 07:37:28'),
@@ -380,8 +386,11 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (808, 2, 52, 1, 2, 3, 7, 56, '2023-02-24 07:39:22', '2023-03-01 07:53:01'),
 (809, 1, 53, 1, 2, 3, 7, 57, '2023-02-24 07:39:22', NULL),
 (899, 1, 127, 1, 2, 3, 1, 131, '2023-03-08 15:29:04', NULL),
+(905, 1, 129, 1, 2, 3, 1, 133, '2023-03-09 10:47:36', NULL),
+(908, 1, 130, 1, 2, 3, 1, 134, '2023-03-09 15:26:21', NULL),
 (893, 1, 125, 2, 2, 3, 1, 129, '2023-03-02 15:13:03', '2023-03-02 15:27:12'),
 (890, 1, 124, 1, 2, 3, 1, 128, '2023-03-01 11:25:56', NULL),
+(902, 1, 128, 1, 2, 3, 1, 132, '2023-03-09 10:08:03', NULL),
 (896, 1, 126, 1, 2, 3, 1, 130, '2023-03-08 10:02:56', NULL),
 (874, 1, 118, 1, 2, 3, 7, 122, '2023-02-24 07:39:22', '2023-03-01 07:36:27'),
 (875, 1, 120, 1, 1, 7, 1, 123, '2023-02-24 08:12:06', '2023-03-01 13:22:53'),
@@ -437,6 +446,7 @@ CREATE TABLE `adms_paciente` (
   `endereco` varchar(220) DEFAULT NULL,
   `adms_situacao_paciente_id` int(11) NOT NULL,
   `atendido` int(11) NOT NULL DEFAULT 1,
+  `baixa` int(11) NOT NULL DEFAULT 1,
   `created` datetime NOT NULL,
   `cadastrador` int(11) NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -447,10 +457,12 @@ CREATE TABLE `adms_paciente` (
 -- Extraindo dados da tabela `adms_paciente`
 --
 
-INSERT INTO `adms_paciente` (`id`, `nome_paciente`, `telefone`, `cpf_doc`, `endereco`, `adms_situacao_paciente_id`, `atendido`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(205, 'Paulo Albquerque', '11-99837-2022', '408.754.818-09', 'Avenida Agenor de Oliveira', 2, 2, '2023-03-08 14:32:39', 1, '2023-03-08 14:33:04', 1),
-(206, 'Luiz Gonzaga', '11-05515-5221', '408.754.818-00', 'Ceara', 1, 2, '2023-03-08 14:41:53', 1, '2023-03-08 15:21:21', 1),
-(207, 'Wesley Safadão', '11-45454-4454', '445.450.944-50', 'Avenida Agenor de Oliveira', 1, 1, '2023-03-08 15:26:19', 1, NULL, NULL);
+INSERT INTO `adms_paciente` (`id`, `nome_paciente`, `telefone`, `cpf_doc`, `endereco`, `adms_situacao_paciente_id`, `atendido`, `baixa`, `created`, `cadastrador`, `modified`, `editor`) VALUES
+(205, 'Paulo Albquerque', '11-99837-2022', '408.754.818-09', 'Avenida Agenor de Oliveira', 2, 2, 1, '2023-03-08 14:32:39', 1, '2023-03-08 14:33:04', 1),
+(206, 'Luiz Gonzaga', '11-05515-5221', '408.754.818-00', 'Ceara', 1, 2, 1, '2023-03-08 14:41:53', 1, '2023-03-08 15:21:21', 1),
+(208, 'José Bonifacio', '15-00000-0000', '000.000.000-05', 'Brasil - Portugal', 1, 1, 2, '2023-03-09 11:16:21', 1, NULL, NULL),
+(209, 'Fernando Mesquita', '65-16505-1601', '651.968.489-40', 'Treze de maio', 1, 1, 1, '2023-03-09 11:28:05', 1, NULL, NULL),
+(210, 'Manuel Gomes', '16-51651-6516', '551.651.651-65', 'Caneta azul', 2, 1, 1, '2023-03-09 15:52:57', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -493,55 +505,58 @@ INSERT INTO `adms_paginas` (`id`, `nome_pagina`, `endereco`, `obs`, `keywords`, 
 (9, 'Cadastrar nivel de Acesso', 'cadastrar/cad_niv_aces', 'Pagina para Cadastrar NÃ­vel de Acesso', 'Cadastrar Nivel de Acesso', 'Cadastrar Nivel de Acesso', 'Paulo Albuquerque', 2, '', 0, 2, '1', 4, 1, '2018-03-23 00:00:00', '2023-03-01 07:29:17'),
 (10, 'Visualizar nivel de acesso', 'visualizar/vis_niv_aces', 'Pagina para Visualizar nivel de acesso', 'Pagina para Visualizar nivel de acesso', 'Pagina para Visualizar nivel de acesso', 'Paulo Albuquerque', 2, NULL, 0, 5, '1', 4, 1, '2018-03-23 00:00:00', NULL),
 (11, 'Editar nivel de acesso', 'editar/edit_niv_aces', 'Pagina para editar nivel de acesso', 'Pagina para editar nivel de acesso', 'Pagina para editar nivel de acesso', 'Paulo Albuquerque', 2, NULL, 0, 3, '1', 4, 1, '2018-03-23 00:00:00', NULL),
-(12, 'Apagar nivel de acesso', 'processa/apagar_niv_aces', 'Pagina para apagar nivel de acesso', 'Pagina para apagar nivel de acesso', 'Pagina para apagar nivel de acesso', 'Paulo Albuquerque', 2, NULL, 0, 4, '1', 4, 1, '2018-03-23 00:00:00', NULL),
-(13, 'Proc o form cadastrar nivel de acesso', 'processa/proc_cad_niv_aces', 'Processa o formulario cadastrar nivel de acesso', 'Processa o formulario cadastrar nivel de acesso', 'Processa o formulario cadastrar nivel de acesso', 'Paulo Albuquerque', 2, NULL, 9, 2, '1', 4, 1, '2018-03-23 00:00:00', NULL),
-(14, 'Proc o form editar nivel de acesso', 'processa/proc_edit_niv_aces', NULL, 'Processa o formulario editar nivel de acesso', 'Processa o formulario editar nivel de acesso', 'Paulo Albuquerque', 2, NULL, 11, 3, '1', 4, 1, '2018-03-23 00:00:00', NULL),
+(12, 'Apagar nivel de acesso', 'processa/apagar/apagar_niv_aces', 'Pagina para apagar nivel de acesso', 'Pagina para apagar nivel de acesso', 'Pagina para apagar nivel de acesso', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2018-03-23 00:00:00', '2023-03-09 15:50:11'),
+(13, 'Proc o form cadastrar nivel de acesso', 'processa/cadastrar/proc_cad_niv_aces', 'Processa o formulario cadastrar nivel de acesso', 'Processa o formulario cadastrar nivel de acesso', 'Processa o formulario cadastrar nivel de acesso', 'Paulo Albuquerque', 2, '', 9, 2, '1', 4, 1, '2018-03-23 00:00:00', '2023-03-09 15:46:45'),
+(14, 'Proc o form editar nivel de acesso', 'processa/editar/proc_edit_niv_aces', NULL, 'Processa o formulario editar nivel de acesso', 'Processa o formulario editar nivel de acesso', 'Paulo Albuquerque', 2, NULL, 11, 3, '1', 4, 1, '2018-03-23 00:00:00', NULL),
 (15, 'Alterar ordem do nivel de acesso', 'processa/proc_ordem_niv_aces', 'Pagina para Alterar ordem do nivel de acesso', 'Alterar ordem do nivel de acesso', 'Alterar ordem do nivel de acesso', 'Paulo Albuquerque', 2, NULL, 0, 6, '1', 4, 1, '2018-03-23 00:00:00', NULL),
 (16, 'Cadastrar pagina', 'cadastrar/cad_pagina', 'Formulario para Cadastrar pagina', 'Cadastrar pagina', 'Cadastrar pagina', 'Paulo Albuquerque', 2, NULL, 0, 2, '1', 4, 1, '2018-03-23 00:00:00', NULL),
-(17, 'Procr o form cadastrar pagina', 'processa/proc_cad_pagina', 'Pagina para processar o formulario cadastrar pagina', 'Processar o formulario cadastrar pagina', 'Processar o formulario cadastrar pagina', 'Paulo Albuquerque', 2, NULL, 16, 2, '1', 4, 1, '2018-03-23 00:00:00', NULL),
+(17, 'Procr o form cadastrar pagina', 'processa/cadastrar/proc_cad_pagina', 'Pagina para processar o formulario cadastrar pagina', 'Processar o formulario cadastrar pagina', 'Processar o formulario cadastrar pagina', 'Paulo Albuquerque', 2, NULL, 16, 2, '1', 4, 1, '2018-03-23 00:00:00', NULL),
 (27, 'Proc Liberar PermissÃ£o', 'processa/proc_lib_per', 'PÃ¡gina para liberar permissÃ£o', 'Proc Liberar Permissao', 'Proc Liberar Permissao', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-03-21 21:56:03', NULL),
 (26, 'PermissÃ£o', 'listar/list_permissao', 'PÃ¡gina para listar as permissÃµes', 'Permissao', 'Permissao', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2018-03-21 20:16:19', NULL),
-(21, 'Apagar Pagina', 'processa/apagar_pagina', 'PÃ¡gina para Apagar PÃ¡gina', 'Apagar Pagina', 'Apagar Pagina', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2018-03-19 18:06:40', '2023-03-01 07:29:47'),
+(21, 'Apagar Pagina', 'processa/apagar/apagar_pagina', 'PÃ¡gina para Apagar PÃ¡gina', 'Apagar Pagina', 'Apagar Pagina', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2018-03-19 18:06:40', '2023-03-09 15:50:16'),
 (22, 'Visualizar Pagina', 'visualizar/vis_pagina', 'PÃ¡gina para visualizar detalhes da pÃ¡gina', 'Visualizar Pagina', 'Visualizar Pagina', 'Paulo Albuquerque', 2, '', 0, 5, '1', 4, 1, '2018-03-21 12:39:49', '2023-03-01 07:29:53'),
 (23, 'Editar Página', 'editar/edit_pagina', 'FormulÃ¡rio para Editar PÃ¡gina', 'Editar Pagina', 'Editar Pagina', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-03-21 16:43:09', '2021-04-28 23:45:13'),
-(24, 'Proc form edita pagina', 'processa/proc_edit_pagina', 'PÃ¡gina para processar o formulÃ¡rio editar a pÃ¡gina', 'Proc form edita pagina', 'Proc form edita pagina', 'Paulo Albuquerque', 2, '', 23, 3, '1', 4, 1, '2018-03-21 17:46:32', '2018-03-21 22:56:16'),
+(24, 'Proc form edita pagina', 'processa/editar/proc_edit_pagina', 'PÃ¡gina para processar o formulÃ¡rio editar a pÃ¡gina', 'Proc form edita pagina', 'Proc form edita pagina', 'Paulo Albuquerque', 2, '', 23, 3, '1', 4, 1, '2018-03-21 17:46:32', '2018-03-21 22:56:16'),
 (28, 'Liberar Menu', 'processa/proc_lib_menu', 'PÃ¡gina para Liberar item Menu', 'Liberar Menu', 'Liberar Menu', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-03-22 17:14:57', NULL),
 (29, 'Liberar Dropdown no menu', 'processa/proc_lib_dropdown', 'PÃ¡gina para Liberar Dropdown no menu', 'Liberar Dropdown no menu', 'Liberar Dropdown no menu', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-03-22 18:24:19', NULL),
 (30, 'Alterar Ordem do Menu', 'processa/proc_ordem_menu', 'PÃ¡gina para Alterar Ordem do Menu', 'Alterar Ordem do Menu', 'Alterar Ordem do Menu', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-03-22 19:21:32', NULL),
 (31, 'Sincronizar Paginas', 'processa/proc_sincro_nivac_pg', 'PÃ¡gina para Sincronizar Paginas com nÃ­vel de acesso', 'Sincronizar Paginas', 'Sincronizar Paginas', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-03-22 20:30:26', NULL),
 (32, 'Editar í­cone do menu', 'editar/edit_permissao', 'PÃ¡gina para editar o Ã­cone do item do menu', 'Editar icone do menu', 'Editar icone do menu', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-03-22 22:15:13', '2021-04-28 23:45:38'),
-(33, 'Proc form edita permissÃ£o', 'processa/proc_edit_permissao', 'PÃ¡gina para processar o formulÃ¡rio editar permissÃ£o', 'Proc form edita permissÃ£o', 'Proc form edita permissÃ£o', 'Paulo Albuquerque', 2, '', 32, 3, '1', 4, 1, '2018-03-22 22:27:12', '2018-03-22 22:27:46'),
+(33, 'Proc form edita permissÃ£o', 'processa/editar/proc_edit_permissao', 'PÃ¡gina para processar o formulÃ¡rio editar permissÃ£o', 'Proc form edita permissÃ£o', 'Proc form edita permissÃ£o', 'Paulo Albuquerque', 2, '', 32, 3, '1', 4, 1, '2018-03-22 22:27:12', '2018-03-22 22:27:46'),
 (34, 'Cadastrar Menu', 'cadastrar/cad_menu', 'PÃ¡gina para Cadastrar Menu', 'Cadastrar Menu', 'Cadastrar Menu', 'Paulo Albuquerque', 2, '', 0, 2, '1', 4, 1, '2018-04-04 10:23:29', NULL),
-(35, 'Proc Form Cad Menu', 'processa/proc_cad_menu', 'PÃ¡gina para processar o formulÃ¡rio cadastrar menu', 'Processar o formulario cadastrar menu', 'Processar o formulario cadastrar menu', 'Paulo Albuquerque', 2, '', 34, 2, '1', 4, 1, '2018-04-04 10:40:36', NULL),
+(35, 'Proc Form Cad Menu', 'processa/cadastrar/proc_cad_menu', 'PÃ¡gina para processar o formulÃ¡rio cadastrar menu', 'Processar o formulario cadastrar menu', 'Processar o formulario cadastrar menu', 'Paulo Albuquerque', 2, '', 34, 2, '1', 4, 1, '2018-04-04 10:40:36', '2023-03-09 15:48:01'),
 (36, 'Editar Menu', 'editar/edit_menu', 'FormulÃ¡rio para Editar Menu', 'Editar Menu', 'Editar Menu', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-04-04 12:26:09', '2018-04-04 12:27:40'),
-(37, 'Proc Form Edit Menu', 'processa/proc_edit_menu', 'Processar o formulÃ¡rio editar item de menu', 'Processar o formulario editar item de menu', 'Processar o formulario editar item de menu', 'Paulo Albuquerque', 2, '', 36, 3, '1', 4, 1, '2018-04-04 12:50:27', NULL),
+(37, 'Proc Form Edit Menu', 'processa/editar/proc_edit_menu', 'Processar o formulÃ¡rio editar item de menu', 'Processar o formulario editar item de menu', 'Processar o formulario editar item de menu', 'Paulo Albuquerque', 2, '', 36, 3, '1', 4, 1, '2018-04-04 12:50:27', NULL),
 (38, 'Visualizar Menu', 'visualizar/vis_menu', 'PÃ¡gina para Visualizar Menu', 'Visualizar Menu', 'Visualizar Menu', 'Paulo Albuquerque', 2, '', 0, 5, '1', 4, 1, '2018-04-09 15:22:37', NULL),
-(39, 'Apagar Menu', 'processa/apagar_menu', 'PÃ¡gina para Apagar Menu', 'Apagar Menu', 'Apagar Menu', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2018-04-09 15:54:43', NULL),
+(39, 'Apagar Menu', 'processa/apagar/apagar_menu', 'PÃ¡gina para Apagar Menu', 'Apagar Menu', 'Apagar Menu', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2018-04-09 15:54:43', '2023-03-09 15:50:23'),
 (40, 'Alterar ordem item menu', 'processa/proc_ordem_menu_item', 'PÃ¡gina para alterar ordem item menu', 'Alterar ordem item menu', 'Alterar ordem item menu', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-04-12 12:12:17', NULL),
 (41, 'Cadastrar usuário', 'cadastrar/cad_usuario', 'FormulÃ¡rio para cadastrar usuÃ¡rio', 'Cadastrar Usuario', 'Cadastrar Usuario', 'Paulo Albuquerque', 2, '', 0, 2, '1', 4, 1, '2018-04-14 21:23:48', '2021-04-28 23:45:33'),
-(42, 'Proc Form Cad User', 'processa/proc_cad_usuario', 'PÃ¡gina para processar a pÃ¡gina cadastrar usuÃ¡rio', 'Processar o formulario cadastrar usuario', 'Processar o formulario cadastrar usuario', 'Paulo Albuquerque', 2, '', 41, 2, '1', 4, 1, '2018-04-14 21:49:39', NULL),
+(42, 'Proc Form Cad User', 'processa/cadastrar/proc_cad_usuario', 'PÃ¡gina para processar a pÃ¡gina cadastrar usuÃ¡rio', 'Processar o formulario cadastrar usuario', 'Processar o formulario cadastrar usuario', 'Paulo Albuquerque', 2, '', 41, 2, '1', 4, 1, '2018-04-14 21:49:39', '2023-03-09 15:48:07'),
 (43, 'Visualizar usuário', 'visualizar/vis_usuario', 'PÃ¡gina para visualizar usuÃ¡rio', 'visualizar usuario', 'visualizar usuario', 'Paulo Albuquerque', 2, '', 0, 5, '1', 4, 1, '2018-04-20 17:50:56', '2023-03-01 07:29:07'),
 (44, 'Editar usuário', 'editar/edit_usuario', 'FormulÃ¡rio para editar o usuÃ¡rio', 'Formulario para editar o usuario', 'Formulario para editar o usuario', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-04-22 09:00:33', '2021-04-28 23:51:00'),
-(45, 'Proc Form Edit Usuario', 'processa/proc_edit_usuario', 'PÃ¡gina para processar o formulÃ¡rio editar usuÃ¡rio', 'Pagina para processar o formulÃ¡rio editar usuario', 'Pagina para processar o formulÃ¡rio editar usuario', 'Paulo Albuquerque', 2, '', 44, 3, '1', 4, 1, '2018-04-22 09:50:59', NULL),
-(46, 'Apagar usuario', 'processa/apagar_usuario', 'pagina para apagar  usuario', 'Apagar usuario', 'Apagar usuario', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2018-04-22 11:18:16', '2023-03-01 07:30:20'),
+(45, 'Proc Form Edit Usuario', 'processa/editar/proc_edit_usuario', 'PÃ¡gina para processar o formulÃ¡rio editar usuÃ¡rio', 'Pagina para processar o formulÃ¡rio editar usuario', 'Pagina para processar o formulÃ¡rio editar usuario', 'Paulo Albuquerque', 2, '', 44, 3, '1', 4, 1, '2018-04-22 09:50:59', NULL),
+(46, 'Apagar usuario', 'processa/apagar/apagar_usuario', 'pagina para apagar  usuario', 'Apagar usuario', 'Apagar usuario', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2018-04-22 11:18:16', '2023-03-09 15:50:03'),
 (47, 'Visualizar Perfil', 'visualizar/vis_perfil', 'UsuÃ¡rio Visualizar Perfil', 'Visualizar Perfil', 'Visualizar Perfil', 'Paulo Albuquerque', 2, '', 0, 5, '1', 4, 1, '2018-04-22 13:50:45', NULL),
 (48, 'Editar Perfil', 'editar/edit_perfil', 'FormulÃ¡rio para Editar Perfil', 'Editar Perfil', 'Editar Perfil', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2018-04-22 14:04:38', NULL),
-(49, 'Proc Form Edit Perfil', 'processa/proc_edit_perfil', 'PÃ¡gina para processar o formulÃ¡rio editar perfil', 'Processar o formulario editar perfil', 'Processar o formulario editar perfil', 'Paulo Albuquerque', 2, '', 48, 3, '1', 4, 1, '2018-04-22 14:15:52', NULL),
+(49, 'Proc Form Edit Perfil', 'processa/editar/proc_edit_perfil', 'PÃ¡gina para processar o formulÃ¡rio editar perfil', 'Processar o formulario editar perfil', 'Processar o formulario editar perfil', 'Paulo Albuquerque', 2, '', 48, 3, '1', 4, 1, '2018-04-22 14:15:52', NULL),
 (50, 'Cadastrar usuario no login', 'cadastrar/cad_user_login', 'pagina  para cadastrar usuário no login', 'Cadastrar usuario no login', 'Cadastrar usuario no login', 'Paulo Albuquerque', 1, '', 0, 2, '1', 4, 1, '2018-05-01 15:38:25', '2023-03-01 07:30:42'),
 (51, 'Cadastro Login', 'editar/edit_cad_user_login', 'FormulÃ¡rio para editar o nÃ­vel de acesso e a situaÃ§Ã£o do formulÃ¡rio cadastrar usuÃ¡rio na pÃ¡gina de login', 'Editar Cadastro Usuario login', 'Editar Cadastro Usuario login', 'Paulo Albuquerque', 2, 'fas fa-edit', 0, 3, '1', 4, 1, '2018-05-01 16:40:55', '2018-05-01 17:00:44'),
-(52, 'Proc Form Cad User Login', 'processa/proc_cad_user_login', 'PÃ¡gina para processar o formulÃ¡rio utilizado para editar o nÃ­vel de acesso e a situaÃ§Ã£o do formulÃ¡rio cadastrar usuÃ¡rio atravÃ©s da pÃ¡gina de login', 'Formulario cadastrar usuario no login', 'Formulario cadastrar usuario no login', 'Paulo Albuquerque', 2, '', 51, 3, '1', 4, 1, '2018-05-01 17:06:00', NULL),
+(52, 'Proc Form Cad User Login', 'processa/cadastrar/proc_cad_user_login', 'PÃ¡gina para processar o formulÃ¡rio utilizado para editar o nÃ­vel de acesso e a situaÃ§Ã£o do formulÃ¡rio cadastrar usuÃ¡rio atravÃ©s da pÃ¡gina de login', 'Formulario cadastrar usuario no login', 'Formulario cadastrar usuario no login', 'Paulo Albuquerque', 2, '', 51, 3, '1', 4, 1, '2018-05-01 17:06:00', '2023-03-09 15:48:28'),
 (53, 'Credenciais E-mail', 'editar/edit_cred_email', 'FormulÃ¡rio para editar as credenciais de envio de e-mail', 'Credenciais E-mail', 'Credenciais E-mail', 'Paulo Albuquerque', 2, 'fas fa-at', 0, 3, '1', 4, 1, '2018-05-02 23:57:08', '2018-05-02 23:57:35'),
-(54, 'Processar formulario credenciais e-mail', 'processa/proc_edit_cred_email', 'Pagina para processar o formulario  editar credenciais de envio de e-mail', 'Processar formulario credenciais e-mail', 'Processar formulario credenciais e-mail', 'Paulo Albuquerque', 2, '', 53, 3, '1', 4, 1, '2018-05-03 00:04:59', '2023-03-01 07:31:00'),
+(54, 'Processar formulario credenciais e-mail', 'processa/editar/proc_edit_cred_email', 'Pagina para processar o formulario  editar credenciais de envio de e-mail', 'Processar formulario credenciais e-mail', 'Processar formulario credenciais e-mail', 'Paulo Albuquerque', 2, '', 53, 3, '1', 4, 1, '2018-05-03 00:04:59', '2023-03-01 07:31:00'),
 (55, 'Validar E-mail', 'acesso/valida_email', 'PÃ¡gina para validar e-mail', 'Validar E-mail', 'Validar E-mail', 'Paulo Albuquerque', 1, '', 0, 3, '1', 4, 1, '2018-05-04 12:42:15', NULL),
 (56, 'Recuperar Login', 'acesso/recuper_login', 'FormulÃ¡rio para recuperar login', 'Recuperar Login', 'Recuperar Login', 'Paulo Albuquerque', 1, '', 0, 7, '1', 4, 1, '2018-05-04 13:10:17', NULL),
 (57, 'Atualizar a Senha', 'acesso/atual_senha', 'FormulÃ¡rio para atualizar a senha', 'Atualizar a Senha', 'Atualizar a Senha', 'Paulo Albuquerque', 1, '', 0, 7, '1', 4, 1, '2018-05-05 16:36:02', NULL),
-(128, 'Processa o cadastro da avaliação', 'processa/proc_cad_avaliacao', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Paulo Albuquerque', 2, '', 127, 2, '1', 4, 1, '2023-03-01 11:25:56', NULL),
+(128, 'Processa o cadastro da avaliação', 'processa/cadastrar/proc_cad_avaliacao', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Processa o cadastro da avaliação', 'Paulo Albuquerque', 2, '', 127, 2, '1', 4, 1, '2023-03-01 11:25:56', '2023-03-09 15:48:24'),
 (129, 'Editar paciente', 'editar/edit_paciente', 'Editar paciente', 'Editar paciente', 'Editar paciente', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2023-03-02 15:13:03', NULL),
 (130, 'Litando avaliações feitas', 'listar/list_avaliacoes', 'Litando avaliações feitas', 'Litando avaliações feitas', 'Litando avaliações feitas', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2023-03-08 10:02:56', NULL),
 (131, 'processa lista avaliações feitas', 'listar/list_avaliacaoes_tables', 'processa lista  de avaliações feitas', 'processa lista avaliações feitas', 'processa lista avaliações feitas', 'Paulo Albuquerque', 2, '', 130, 1, '1', 4, 1, '2023-03-08 15:29:04', NULL),
+(132, 'Visualizar paciente', 'visualizar/vis_paciente', 'Visualizar detalhes dos pacientes', 'Visualizar paciente', 'Visualizar paciente', 'Paulo Albuquerque', 2, '', 0, 5, '1', 4, 1, '2023-03-09 10:08:03', NULL),
+(133, 'Apagar paciente', 'processa/apagar/apagar_paciente', 'apagar registro de paciente do sistema', 'Apagar paciente', 'Apagar paciente', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2023-03-09 10:47:36', '2023-03-09 15:49:57'),
+(134, 'Processa editar de paciente', 'processa/editar/proc_edit_paciente', 'Processa editar de paciente', 'Processa editar de paciente', 'Processa editar de paciente', 'Paulo Albuquerque', 2, '', 129, 3, '1', 4, 1, '2023-03-09 15:26:21', NULL),
 (122, 'list_usuario_tables', 'listar/list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2022-03-21 21:27:21', '2023-02-24 12:43:32'),
 (123, 'Cadastro de paciente', 'cadastrar/cad_paciente', 'cadastrar os pacientes ', 'cadastrar os pacientes', 'cadastrar os pacientes', 'Paulo Albuquerque', 2, 'fa fa-medkit', 0, 2, '1', 4, 1, '2023-02-24 08:12:06', '2023-03-01 08:04:16'),
-(124, 'Processamento de cadastro paciente', 'processa/proc_cad_paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Paulo Albuquerque', 2, '', 123, 2, '1', 4, 1, '2023-02-24 11:12:36', NULL),
+(124, 'Processamento de cadastro paciente', 'processa/cadastrar/proc_cad_paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Paulo Albuquerque', 2, '', 123, 2, '1', 4, 1, '2023-02-24 11:12:36', '2023-03-09 15:48:18'),
 (125, 'Pacientes', 'listar/list_paciente', 'Listar os pacientes', 'Listar os pacientes', 'Listar os pacientes', 'Paulo Albuquerque', 2, 'fa fa-male', 0, 1, '1', 4, 1, '2023-02-24 11:18:54', '2023-03-01 08:03:19'),
 (126, 'Pacientes listado DATATABLES', 'listar/list_pacientes_tables', 'Listando os pacientes com o datatebles (list_pacientes_tables)', 'list_pacientes_tables', 'list_pacientes_tables', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2023-02-24 11:41:31', '2023-03-01 07:31:24'),
 (127, 'Cadastrar avaliação do leito', 'cadastrar/cad_avaliacao', 'Página para efetuar o cadastro do paciente em relação ao leito !', 'Cadastrar avaliação do leito', 'Cadastrar avaliação do leito', 'Paulo Albuquerque', 2, '', 0, 2, '1', 4, 1, '2023-02-28 10:46:07', '2023-03-01 08:03:50');
@@ -774,8 +789,7 @@ CREATE TABLE `adms_usuarios` (
 
 INSERT INTO `adms_usuarios` (`id`, `nome`, `apelido`, `email`, `num_cracha`, `usuario`, `senha`, `recuperar_senha`, `chave_descadastro`, `conf_email`, `imagem`, `adms_niveis_acesso_id`, `adms_sits_usuario_id`, `created`, `modified`) VALUES
 (1, 'Paulo Albuquerque', 'Paulo', 'paulo.albuquerque@ints.org.br', '18569', 'paulo.albuquerque', '$2y$10$WSFg.JKfk9sF5/tXqhxSke8DyKVnf5D1X8cx6w7KqXLDjIraI5NVK', NULL, NULL, NULL, 'b48123f3-5c5c-450d-a362-2215fd4c348e-copia.jpg', 1, 1, '2022-04-30 19:49:14', '2023-02-28 10:14:34'),
-(5, 'Usuário Administrador', 'Administrador', 'admin@admin.com', '00141', 'admin', '$2y$10$KzIOFEGZGTgY5ey4WZTb3Oxeydybh2mOducrLPBRXj4BeX4VjJL/C', NULL, NULL, NULL, NULL, 6, 1, '2023-03-01 07:44:04', '2023-03-08 14:38:42'),
-(4, 'Usuário', '', 'usuario@usuario.com.br', '1871', 'usuario', '$2y$10$5JS.WxBiCaJ4sj4W5wF46ORxA.8X4.meuUKrKe4UrxDImHIp.bckq', NULL, NULL, NULL, NULL, 7, 1, '2023-03-01 07:34:37', '2023-03-08 14:38:56');
+(5, 'Usuário Administrador', 'Administrador', 'admin@admin.com', '00141', 'admin', '$2y$10$KzIOFEGZGTgY5ey4WZTb3Oxeydybh2mOducrLPBRXj4BeX4VjJL/C', NULL, NULL, NULL, NULL, 6, 1, '2023-03-01 07:44:04', '2023-03-08 14:38:42');
 
 --
 -- Índices para tabelas despejadas
@@ -939,7 +953,7 @@ ALTER TABLE `adms_menus`
 -- AUTO_INCREMENT de tabela `adms_nivacs_pgs`
 --
 ALTER TABLE `adms_nivacs_pgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=902;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=911;
 
 --
 -- AUTO_INCREMENT de tabela `adms_niveis_acessos`
@@ -951,13 +965,13 @@ ALTER TABLE `adms_niveis_acessos`
 -- AUTO_INCREMENT de tabela `adms_paciente`
 --
 ALTER TABLE `adms_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
 
 --
 -- AUTO_INCREMENT de tabela `adms_paginas`
 --
 ALTER TABLE `adms_paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT de tabela `adms_pergunta`
