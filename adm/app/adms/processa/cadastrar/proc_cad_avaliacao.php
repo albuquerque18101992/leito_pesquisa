@@ -20,10 +20,10 @@ if (!empty($SendCadAvaliacao)) {
         $url_destino = pg . '/cadastrar/cad_usuario';
         header("Location: $url_destino");
     } else {
-        $result_avaliacao = "INSERT INTO adms_avaliacao_feita(adms_paciente_id, pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, pergunta6, pergunta7, pergunta8, pergunta9, pergunta10, pergunta11, created, cadastrador) VALUES (
+        $result_avaliacao = "INSERT INTO adms_avaliacao_feita(adms_paciente_id, adms_pergunta1_id, adms_pergunta2_id, pergunta3, pergunta4, pergunta5, pergunta6, pergunta7, pergunta8, pergunta9, pergunta10, nota_avaliacao, created, cadastrador) VALUES (
             '" . $dados['adms_paciente_id'] . "',
-            '" . $dados['pergunta1'] . "',
-            '" . $dados['pergunta2'] . "',
+            '" . $dados['adms_pergunta1_id'] . "',
+            '" . $dados['adms_pergunta2_id'] . "',
             '" . $dados['pergunta3'] . "',
             '" . $dados['pergunta4'] . "',
             '" . $dados['pergunta5'] . "',
@@ -32,7 +32,7 @@ if (!empty($SendCadAvaliacao)) {
             '" . $dados['pergunta8'] . "',
             '" . $dados['pergunta9'] . "',
             '" . $dados['pergunta10'] . "',
-            '" . $dados['pergunta11'] . "',
+            '" . $dados['nota_avaliacao'] . "',
             NOW(),
             '" . $_SESSION['id'] . "')";
 

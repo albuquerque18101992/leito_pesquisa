@@ -13,7 +13,7 @@
  * ---------------------------------------------------------------------
  */
 
- 
+
 if (!isset($seg)) {
     exit;
 }
@@ -33,9 +33,19 @@ include_once 'app/adms/include/head.php';
             <div class="list-group-item">
                 <div class="d-flex">
                     <div class="mr-auto p-2">
-                        <h2 class="display-4 titulo"><div class='btn btn-success btn-sm'><i class='fa fa-check-circle' aria-hidden='true'></i> </div> Avaliações realizadas</h2>
+                        <h2 class="display-4 titulo">
+                            <div class='btn btn-success btn-sm'><i class='fa fa-check-circle' aria-hidden='true'></i> </div> Avaliações realizadas
+                        </h2>
                     </div>
-                    
+                    <div class="p-2">
+                        <?php
+                        $btn_cad = carregar_btn('exportar/exporta_excel', $conn);
+                        if ($btn_cad) {
+                            echo "<a href='" . pg . "/exportar/exporta_excel' class='btn btn-outline-dark btn-sm'>Exportar</a>";
+                        }
+                        ?>
+                    </div>
+
                 </div>
                 <?php
                 if (isset($_SESSION['msg'])) {
@@ -59,12 +69,12 @@ include_once 'app/adms/include/head.php';
                 </div>
 
             </div>
-            
+
         </div>
         <?php
         include_once 'app/adms/include/rodape_lib.php';
         ?>
-        
+
         <script src="<?php echo pg; ?>/assets/js/personalizado.js"></script>
         <script src="<?php echo pg; ?>/assets/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>

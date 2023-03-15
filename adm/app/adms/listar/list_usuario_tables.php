@@ -56,7 +56,7 @@ $resultado_usuarios = mysqli_query($conn, $result_usuarios);
 require '../../../lib/lib_permissao.php';
 $btn_vis = carregar_btn('visualizar/vis_usuario', $conn);
 $btn_edit = carregar_btn('editar/edit_usuario', $conn);
-$btn_apagar = carregar_btn('processa/apagar_usuario', $conn);
+$btn_apagar = carregar_btn('processa/apagar/apagar_usuario', $conn);
 //Iniciando as variaveis abaixo como vazio para nao dar erro, caso a permissão do botao for negativa
 $btn_vis_val = "";
 $btn_edit_val = "";
@@ -80,7 +80,7 @@ while ($row_usuarios = mysqli_fetch_array($resultado_usuarios)) {
     }
 
     if ($btn_apagar) {
-        $btn_apagar_val = "<a href='" . pg . "/processa/apagar_usuario?id=" . $row_usuarios['id'] . "' title='Deletar' class='btn btn-outline-danger btn-sm apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'>Apagar </a> ";
+        $btn_apagar_val = "<a href='" . pg . "/processa/apagar/apagar_usuario?id=" . $row_usuarios['id'] . "' title='Deletar' class='btn btn-outline-danger btn-sm apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'>Apagar </a> ";
     }
 
     $dado[] = $btn_vis_val . $btn_edit_val . $btn_apagar_val;

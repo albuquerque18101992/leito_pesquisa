@@ -16,7 +16,7 @@ include_once 'app/adms/include/head.php';
             <div class="list-group-item">
                 <div class="d-flex">
                     <div class="mr-auto p-2">
-                        <h2 class="display-4 titulo">Listar Menu</h2>
+                        <h2 class="display-4 titulo">Menu</h2>
                     </div>
                     <div class="p-2">
                         <?php
@@ -97,9 +97,9 @@ include_once 'app/adms/include/head.php';
                                                 if ($btn_edit) {
                                                     echo "<a href='" . pg . "/editar/edit_menu?id=" . $row_menu['id'] . "' class='btn btn-outline-warning btn-sm'>Editar </a> ";
                                                 }
-                                                $btn_apagar = carregar_btn('processa/apagar_menu', $conn);
+                                                $btn_apagar = carregar_btn('processa/apagar/apagar_menu', $conn);
                                                 if ($btn_apagar) {
-                                                    echo "<a href='" . pg . "/processa/apagar_menu?id=" . $row_menu['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
+                                                    echo "<a href='" . pg . "/processa/apagar/apagar_menu?id=" . $row_menu['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
                                                 }
                                                 ?>
                                             </span>
@@ -116,7 +116,7 @@ include_once 'app/adms/include/head.php';
                                                         echo "<a class='dropdown-item' href='" . pg . "/editar/edit_menu?id=" . $row_menu['id'] . "'>Editar</a>";
                                                     }
                                                     if ($btn_apagar) {
-                                                        echo "<a class='dropdown-item' href='" . pg . "/processa/apagar_menu?id=" . $row_menu['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
+                                                        echo "<a class='dropdown-item' href='" . pg . "/processa/apagar/apagar_menu?id=" . $row_menu['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
                                                     }
                                                     ?>
                                                 </div>

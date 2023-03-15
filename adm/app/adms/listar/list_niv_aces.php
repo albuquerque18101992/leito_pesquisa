@@ -13,13 +13,14 @@
  * ---------------------------------------------------------------------
  */
 
- 
+
 if (!isset($seg)) {
     exit;
 }
 include_once 'app/adms/include/head.php';
 ?>
-<body>    
+
+<body>
     <?php
     include_once 'app/adms/include/header.php';
     ?>
@@ -35,10 +36,17 @@ include_once 'app/adms/include/head.php';
                     </div>
                     <div class="p-2">
                         <?php
+                        //Ir para página de telas
+                        $btn_telas = carregar_btn('listar/list_pagina', $conn);
+                        if ($btn_telas) {
+                            echo "<a href='" . pg . "/listar/list_pagina' class='btn btn-outline-info btn-sm'>Telas</a> ";
+                        }
+
                         $btn_sincr = carregar_btn('processa/proc_sincro_nivac_pg', $conn);
                         if ($btn_sincr) {
                             echo "<a href='" . pg . "/processa/proc_sincro_nivac_pg' class='btn btn-outline-dark btn-sm'>Sincronizar</a> ";
                         }
+                        
                         $btn_cad = carregar_btn('cadastrar/cad_niv_aces', $conn);
                         if ($btn_cad) {
                             echo "<a href='" . pg . "/cadastrar/cad_niv_aces' class='btn btn-outline-success btn-sm'>Cadastrar</a>";
@@ -66,8 +74,8 @@ include_once 'app/adms/include/head.php';
                     $resul_niv_aces = "SELECT * FROM adms_niveis_acessos WHERE ordem > '" . $_SESSION['ordem'] . "' ORDER BY ordem ASC LIMIT $inicio, $qnt_result_pg";
                 }
                 $resultado_niv_aces = mysqli_query($conn, $resul_niv_aces);
-                if (($resultado_niv_aces) AND ( $resultado_niv_aces->num_rows != 0)) {
-                    ?>
+                if (($resultado_niv_aces) and ($resultado_niv_aces->num_rows != 0)) {
+                ?>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -82,7 +90,7 @@ include_once 'app/adms/include/head.php';
                                 <?php
                                 $qnt_linhas_exe = 1;
                                 while ($row_niv_aces = mysqli_fetch_assoc($resultado_niv_aces)) {
-                                    ?>
+                                ?>
                                     <tr>
                                         <th><?php echo $row_niv_aces['id']; ?></th>
                                         <td><?php echo $row_niv_aces['nome']; ?></td>
@@ -93,11 +101,11 @@ include_once 'app/adms/include/head.php';
                                                 $btn_or_nivac = carregar_btn('processa/proc_ordem_niv_aces', $conn);
                                                 if ($qnt_linhas_exe == 1) {
                                                     if ($btn_or_nivac) {
-                                                        echo "<button class='btn btn-light btn-sm disabled'><i class='fas fa-angle-double-up'></i></button> ";
+                                                        echo "<button class='btn btn-info btn-sm disabled'><i class='fas fa-angle-double-up'></i></button> ";
                                                     }
                                                 } else {
                                                     if ($btn_or_nivac) {
-                                                        echo "<a href='" . pg . "/processa/proc_ordem_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-light btn-sm'><i class='fas fa-angle-double-up'></i></a> ";
+                                                        echo "<a href='" . pg . "/processa/proc_ordem_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-info btn-sm'><i class='fas fa-angle-double-up'></i></a> ";
                                                     }
                                                 }
                                                 $qnt_linhas_exe++;
@@ -141,7 +149,7 @@ include_once 'app/adms/include/head.php';
                                             </div>
                                         </td>
                                     </tr>
-                                    <?php
+                                <?php
                                 }
                                 ?>
 
@@ -183,15 +191,15 @@ include_once 'app/adms/include/head.php';
                         echo "</li>";
                         echo "</ul>";
                         echo "</nav>";
-                        ?>                        
+                        ?>
                     </div>
-                    <?php
+                <?php
                 } else {
-                    ?>
+                ?>
                     <div class="alert alert-danger" role="alert">
                         Nenhum registro encontrado!
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
 
@@ -203,5 +211,3 @@ include_once 'app/adms/include/head.php';
 
     </div>
 </body>
-
-

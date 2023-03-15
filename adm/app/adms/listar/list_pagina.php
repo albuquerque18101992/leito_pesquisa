@@ -4,7 +4,8 @@ if (!isset($seg)) {
 }
 include_once 'app/adms/include/head.php';
 ?>
-<body>    
+
+<body>
     <?php
     include_once 'app/adms/include/header.php';
     ?>
@@ -20,9 +21,16 @@ include_once 'app/adms/include/head.php';
                     </div>
                     <div class="p-2">
                         <?php
+                        //Redireciona para listagem de niveis de acesso
+                        $btn_niv_acessos = carregar_btn('listar/list_niv_aces', $conn);
+                        if ($btn_niv_acessos) {
+                            echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-outline-dark btn-sm'>Acessos</a> ";
+                        }
+
+
                         $btn_cad = carregar_btn('cadastrar/cad_pagina', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_pagina' class='btn btn-outline-success btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_pagina' class='btn btn-outline-success btn-sm'>Cadastrar</a> ";
                         }
                         ?>
                     </div>
@@ -52,8 +60,8 @@ include_once 'app/adms/include/head.php';
                     /* $resul_niv_aces = "SELECT * FROM adms_niveis_acessos WHERE ordem > '" . $_SESSION['ordem'] . "' ORDER BY ordem ASC LIMIT $inicio, $qnt_result_pg"; */
                 }
                 $resultado_pg = mysqli_query($conn, $resul_pg);
-                if (($resultado_pg) AND ( $resultado_pg->num_rows != 0)) {
-                    ?>
+                if (($resultado_pg) and ($resultado_pg->num_rows != 0)) {
+                ?>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -68,7 +76,7 @@ include_once 'app/adms/include/head.php';
                             <tbody>
                                 <?php
                                 while ($row_pg = mysqli_fetch_assoc($resultado_pg)) {
-                                    ?>
+                                ?>
                                     <tr>
                                         <th class="border"><?php echo $row_pg['id']; ?></th>
                                         <td class="border"><?php echo $row_pg['nome_pagina']; ?></td>
@@ -86,9 +94,9 @@ include_once 'app/adms/include/head.php';
                                                 if ($btn_edit) {
                                                     echo "<a href='" . pg . "/editar/edit_pagina?id=" . $row_pg['id'] . "' class='btn btn-outline-warning btn-sm'>Editar </a> ";
                                                 }
-                                                $btn_apagar = carregar_btn('processa/apagar_pagina', $conn);
+                                                $btn_apagar = carregar_btn('processa/apagar/apagar_pagina', $conn);
                                                 if ($btn_apagar) {
-                                                    echo "<a href='" . pg . "/processa/apagar_pagina?id=" . $row_pg['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
+                                                    echo "<a href='" . pg . "/processa/apagar/apagar_pagina?id=" . $row_pg['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
                                                 }
                                                 ?>
                                             </span>
@@ -105,14 +113,14 @@ include_once 'app/adms/include/head.php';
                                                         echo "<a class='dropdown-item' href='" . pg . "/editar/edit_pagina?id=" . $row_pg['id'] . "'>Editar</a>";
                                                     }
                                                     if ($btn_apagar) {
-                                                        echo "<a class='dropdown-item' href='" . pg . "/processa/apagar_pagina?id=" . $row_pg['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
+                                                        echo "<a class='dropdown-item' href='" . pg . "/processa/apagar/apagar_pagina?id=" . $row_pg['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
                                                     }
                                                     ?>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    <?php
+                                <?php
                                 }
                                 ?>
 
@@ -156,7 +164,7 @@ include_once 'app/adms/include/head.php';
                         echo "</nav>";
                         ?>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
             </div>
@@ -167,5 +175,3 @@ include_once 'app/adms/include/head.php';
 
     </div>
 </body>
-
-

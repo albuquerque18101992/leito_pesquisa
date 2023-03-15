@@ -88,7 +88,7 @@ $row_usuario = mysqli_fetch_assoc($nivel_usuario);
                         echo "</div>";
                     }
 
-                    $result_pacientes = "SELECT * FROM adms_paciente WHERE atendido = 1";
+                    $result_pacientes = "SELECT * FROM adms_paciente WHERE atendido = 1 AND baixa = 1";
                     $resultado_pacientes = mysqli_query($conn, $result_pacientes);
                     $total_pacientes = mysqli_num_rows($resultado_pacientes);
 
