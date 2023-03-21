@@ -65,7 +65,7 @@ $row_usuario = mysqli_fetch_assoc($nivel_usuario);
                 <div class="d-flex">
                     <div class="mr-auto p2">
                         <h2 class="display-4 titulo"><?php echo $row_nivel_acesso['nome'] ?></h2>
-                        <kbd><?php echo "Nome: ". $row_usuario['nome'] ." Crachá: ". $row_usuario['num_cracha']?></kbd>
+                        <kbd><?php echo "Nome: " . $row_usuario['nome'] . " Crachá: " . $row_usuario['num_cracha'] ?></kbd>
                     </div>
                 </div>
                 <br>
@@ -119,20 +119,21 @@ $row_usuario = mysqli_fetch_assoc($nivel_usuario);
                     ?>
                 </div>
 
-                
-                    <div class="card text-center">
-                        <div class="card-header">
-                            Tecnologia da Informação - T.I
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Em caso de dúvidas</h5>
-                            <p class="card-text">Em caso de necessidade abrir chamado na ferramenta GLPI informando o ocorrido!</p>
-                            <a href="http://177.66.152.194:4321/glpi/" target="_blank" class="btn btn-primary">GLPI</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <?php echo date('d/m/Y')?>
-                        </div>
+
+
+                <div class="card text-center">
+                    <div class="card-header">
+                        Tecnologia da Informação - T.I
                     </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Em caso de dúvidas</h5>
+                        <p class="card-text">Em caso de necessidade abrir chamado na ferramenta GLPI informando o ocorrido!</p>
+                        <a href="http://177.66.152.194:4321/glpi/" target="_blank" class="btn btn-primary">GLPI</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <?php echo date('d/m/Y') ?>
+                    </div>
+                </div>
 
 
                 <?php

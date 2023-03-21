@@ -42,7 +42,7 @@ if (($resultado_edit_user) AND ( $resultado_edit_user->num_rows != 0)) {
                         unset($_SESSION['msg']);
                     }
                     ?>
-                    <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_perfil" enctype="multipart/form-data">  
+                    <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_edit_perfil" enctype="multipart/form-data">  
                         <div class="form-row">
                             <div class="form-group col-md-6 was-validated">
                                 <label>                                

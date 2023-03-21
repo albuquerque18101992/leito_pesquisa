@@ -72,7 +72,7 @@ if ($id) {
                             unset($_SESSION['msg']);
                         }
                         ?>
-                        <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_niv_aces">                    
+                        <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_edit_niv_aces">                    
                             <input type="hidden" name="id" value="<?php if (isset($row_nivac_ed['id'])) {
                     echo $row_nivac_ed['id'];
                 } ?>">

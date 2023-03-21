@@ -13,7 +13,7 @@
  * ---------------------------------------------------------------------
  */
 
- 
+
 if (!isset($seg)) {
     exit;
 }
@@ -37,9 +37,16 @@ include_once 'app/adms/include/head.php';
                     </div>
                     <div class="p-2">
                         <?php
+
+                        $btn_av = carregar_btn('listar/list_avaliacoes', $conn);
+                        if ($btn_av) {
+                            echo "<a href='" . pg . "/listar/list_avaliacoes' class='btn btn-outline-primary btn-sm'>Ir para avaliações</a> ";
+                        }
+
+
                         $btn_cad = carregar_btn('cadastrar/cad_paciente', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/cadastrar/cad_paciente' class='btn btn-outline-success btn-sm'>Cadastrar</a>";
+                            echo "<a href='" . pg . "/cadastrar/cad_paciente' class='btn btn-outline-success btn-sm'>Cadastrar</a> ";
                         }
                         ?>
                     </div>
@@ -59,6 +66,7 @@ include_once 'app/adms/include/head.php';
                                 <th>Nome</th>
                                 <th>Telefone</th>
                                 <th>CPF</th>
+                                <th>Avaliar</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -66,30 +74,12 @@ include_once 'app/adms/include/head.php';
                 </div>
 
             </div>
-
-            <div class="modal fade" id="visualizarPaciente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Usuário: ID</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Informações de cada um dos usuários
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <?php
         include_once 'app/adms/include/rodape_lib.php';
         ?>
-        
+
         <script src="<?php echo pg; ?>/assets/js/personalizado.js"></script>
         <script src="<?php echo pg; ?>/assets/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>

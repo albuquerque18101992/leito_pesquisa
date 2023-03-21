@@ -84,7 +84,7 @@ if (!empty($id)) {
                             unset($_SESSION['msg']);
                         }
                         ?>
-                        <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_paciente" enctype="multipart/form-data">
+                        <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_edit_paciente" enctype="multipart/form-data">
 
                             <div class="form-row ">
                                 <div class="form-group col-md-12 was-validated">

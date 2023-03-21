@@ -13,7 +13,8 @@ $columns = array(
     1 => 'nome_paciente',
     2 => 'telefone',
     3 => 'cpf_doc',
-    4 => 'botao'
+    4 => 'botao',
+    5 => 'teste'
 );
 
 //Obter registros de numero total sem qualquer pesquisa
@@ -23,7 +24,6 @@ $qnt_linhas = mysqli_fetch_assoc($resultado_pg);
 
 
 //Obter os dados a serem apresentados
-
 $result_usuarios = "SELECT * FROM adms_paciente WHERE atendido = 1 AND baixa = 1";
 
 
@@ -48,11 +48,14 @@ $btn_vis = carregar_btn('visualizar/vis_paciente', $conn);
 $btn_edit = carregar_btn('editar/edit_paciente', $conn);
 $btn_avaliacao = carregar_btn('cadastrar/cad_avaliacao', $conn);
 $btn_apagar = carregar_btn('processa/apagar/apagar_paciente', $conn);
+$btn_acoes = carregar_btn('visualizar/vis_paciente', $conn);
+
 //Iniciando as variaveis abaixo como vazio para nao dar erro, caso a permissão do botao for negativa
 $btn_vis_val = "";
 $btn_edit_val = "";
 $btn_avaliacao_val = "";
 $btn_apagar_val = "";
+$btn_acoes_ok = "";
 
 //Ler e criar o array de dados
 $dados = array();
@@ -64,11 +67,13 @@ while ($row_usuarios = mysqli_fetch_array($resultado_usuarios)) {
     $dado[] = $row_usuarios["cpf_doc"];
 
     if ($btn_vis) {
-        $btn_vis_val =  "<a href='" . pg . "/visualizar/vis_paciente?id=" . $row_usuarios['id'] . "' title='Visualizar' class='btn btn-outline-primary btn-sm'>Visualizar</a> ";
+        $btn_vis_val =  "<a class='dropdown-item' href='" . pg . "/visualizar/vis_paciente?id=" . $row_usuarios['id'] . "'>Visualizar</a>  ";
+
     }
     
     if ($btn_edit) {
-        $btn_edit_val = "<a href='" . pg . "/editar/edit_paciente?id=" . $row_usuarios['id'] . "' title='Editar' class='btn btn-outline-warning btn-sm'>Editar </a> ";
+        $btn_edit_val = "<a class='dropdown-item' href='" . pg . "/editar/edit_paciente?id=" . $row_usuarios['id'] . "'>Editar</a> ";
+  
     }
 
     if ($btn_avaliacao) {
@@ -76,10 +81,27 @@ while ($row_usuarios = mysqli_fetch_array($resultado_usuarios)) {
     }
 
     if ($btn_apagar) {
-        $btn_apagar_val = "<a href='" . pg . "/processa/apagar/apagar_paciente?id=" . $row_usuarios['id'] . "' title='Deletar' class='btn btn-outline-danger btn-sm apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'>Apagar </a> ";
+        $btn_apagar_val = "<a class='dropdown-item' href='" . pg . "/processa/apagar/apagar_paciente?id=" . $row_usuarios['id'] . "' class='apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'>Apagar</a> ";
     }
 
-    $dado[] = $btn_vis_val . $btn_edit_val . $btn_avaliacao_val. $btn_apagar_val;
+    
+
+    if ($btn_acoes) {
+        $btn_acoes_ok = 
+        "   <div class='dropdown d-block'>
+                <button class='btn btn-primary dropdown-toggle btn-sm' type='button' id='acoesListar' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    Ações
+                </button>
+                <div class='dropdown-menu dropdown-menu-right' aria-labelledby='acoesListar'>
+                    $btn_vis_val  $btn_edit_val $btn_apagar_val
+                </div>
+            </div>
+        ";
+    }
+
+    $dado[] = $btn_avaliacao_val;
+    
+    $dado[] = $btn_acoes_ok;
 
     $dados[] = $dado;
 }

@@ -1,10 +1,6 @@
 <?php
-/*
-    $opcoes = $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    foreach ($opcoes as $opcao) {
-    echo $opcao . "<br>";
-    }
-*/
+
+
 if (!isset($seg)) {
     exit;
 }
@@ -20,21 +16,23 @@ if (!empty($SendCadAvaliacao)) {
         $url_destino = pg . '/cadastrar/cad_usuario';
         header("Location: $url_destino");
     } else {
-        $result_avaliacao = "INSERT INTO adms_avaliacao_feita(adms_paciente_id, adms_pergunta1_id, adms_pergunta2_id, pergunta3, pergunta4, pergunta5, pergunta6, pergunta7, pergunta8, pergunta9, pergunta10, nota_avaliacao, created, cadastrador) VALUES (
-            '" . $dados['adms_paciente_id'] . "',
-            '" . $dados['adms_pergunta1_id'] . "',
-            '" . $dados['adms_pergunta2_id'] . "',
-            '" . $dados['pergunta3'] . "',
-            '" . $dados['pergunta4'] . "',
-            '" . $dados['pergunta5'] . "',
-            '" . $dados['pergunta6'] . "',
-            '" . $dados['pergunta7'] . "',
-            '" . $dados['pergunta8'] . "',
-            '" . $dados['pergunta9'] . "',
-            '" . $dados['pergunta10'] . "',
-            '" . $dados['nota_avaliacao'] . "',
-            NOW(),
-            '" . $_SESSION['id'] . "')";
+
+        //Ler as perguntas e as respostas
+        $result_avaliacao = "INSERT INTO adms_leitos_questoes(adms_paciente_id, questao1, questao2, questao3, questao4, questao5, questao6, questao7, questao8, questao9, questao10, nota_avaliacao, created, cadastrador) VALUES (
+                '" . $dados['adms_paciente_id'] . "',
+                '" . $dados['questao1'] . "',
+                '" . $dados['questao2'] . "',
+                '" . $dados['questao3'] . "',
+                '" . $dados['questao4'] . "',
+                '" . $dados['questao5'] . "',
+                '" . $dados['questao6'] . "',
+                '" . $dados['questao7'] . "',
+                '" . $dados['questao8'] . "',
+                '" . $dados['questao9'] . "',
+                '" . $dados['questao10'] . "',
+                '" . $dados['nota_avaliacao'] . "',
+                NOW(),
+                '" . $_SESSION['id'] . "')";
 
 
         //Editar tabela adms_paciente coluna atendido para valor 2 que significa que avalição foi realizada
@@ -42,7 +40,7 @@ if (!empty($SendCadAvaliacao)) {
                atendido = 2 ,
                modified = NOW(),
                editor = '" . $_SESSION['id'] . "'
-               WHERE id = '".$dados['adms_paciente_id']."'";
+               WHERE id = '" . $dados['adms_paciente_id'] . "'";
         mysqli_query($conn, $result_paciente_atendido);
 
 
@@ -54,7 +52,6 @@ if (!empty($SendCadAvaliacao)) {
             $url_destino = pg . '/listar/list_paciente';
             header("Location: $url_destino");
         } else {
-            //$dados['apelido'] = $dados_apelido;
             $_SESSION['dados'] = $dados;
             $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: Avaliação não realizada!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='trues'>&times;</span></button></div>";
             $url_destino = pg . '/listar/list_paciente';

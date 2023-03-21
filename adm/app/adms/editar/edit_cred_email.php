@@ -33,7 +33,7 @@ if (($resultado_conf_email) AND ( $resultado_conf_email->num_rows != 0)) {
                         unset($_SESSION['msg']);
                     }
                     ?>
-                    <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_cred_email" enctype="multipart/form-data">                       
+                    <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_edit_cred_email" enctype="multipart/form-data">                       
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label>

@@ -33,7 +33,7 @@ if (($resultado_edit_caduser) AND ( $resultado_edit_caduser->num_rows != 0)) {
                         unset($_SESSION['msg']);
                     }
                     ?>
-                    <form method="POST" action="<?php echo pg; ?>/processa/proc_cad_user_login" enctype="multipart/form-data">                       
+                    <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_cad_user_login" enctype="multipart/form-data">                       
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <?php

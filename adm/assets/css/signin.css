@@ -16,7 +16,7 @@ body {
   justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #185597;
+  background-color: #E2DEDE;
 }
 
 .form-signin {
@@ -24,7 +24,7 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 35px;
 }
 .form-signin .checkbox {

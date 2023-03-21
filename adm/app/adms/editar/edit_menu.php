@@ -70,7 +70,7 @@ if (!empty($id)) {
                             unset($_SESSION['msg']);
                         }
                         ?>
-                        <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_menu">  
+                        <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_edit_menu">  
                             <input type="hidden" name="id" value="<?php
                             if (isset($row_edit_men['id'])) {
                                 echo $row_edit_men['id'];

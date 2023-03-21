@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Mar-2023 às 19:54
+-- Tempo de geração: 16-Mar-2023 às 12:02
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `adms_avaliacao_feita` (
   `id` int(11) NOT NULL,
   `adms_paciente_id` int(11) NOT NULL,
-  `pergunta1` int(11) NOT NULL,
-  `pergunta2` int(11) NOT NULL,
+  `adms_pergunta1_id` int(11) NOT NULL,
+  `adms_pergunta2_id` int(11) NOT NULL,
   `pergunta3` int(11) NOT NULL,
   `pergunta4` int(11) NOT NULL,
   `pergunta5` int(11) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `adms_avaliacao_feita` (
   `pergunta8` int(11) NOT NULL,
   `pergunta9` int(11) NOT NULL,
   `pergunta10` int(11) NOT NULL,
-  `pergunta11` int(11) NOT NULL,
+  `nota_avaliacao` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `cadastrador` int(11) NOT NULL,
   `modified` datetime DEFAULT NULL,
@@ -51,9 +51,15 @@ CREATE TABLE `adms_avaliacao_feita` (
 -- Extraindo dados da tabela `adms_avaliacao_feita`
 --
 
-INSERT INTO `adms_avaliacao_feita` (`id`, `adms_paciente_id`, `pergunta1`, `pergunta2`, `pergunta3`, `pergunta4`, `pergunta5`, `pergunta6`, `pergunta7`, `pergunta8`, `pergunta9`, `pergunta10`, `pergunta11`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(29, 205, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, '2023-03-08 14:33:04', 1, NULL, NULL),
-(30, 206, 2, 2, 1, 1, 2, 1, 1, 1, 2, 1, 9, '2023-03-08 15:21:21', 1, NULL, NULL);
+INSERT INTO `adms_avaliacao_feita` (`id`, `adms_paciente_id`, `adms_pergunta1_id`, `adms_pergunta2_id`, `pergunta3`, `pergunta4`, `pergunta5`, `pergunta6`, `pergunta7`, `pergunta8`, `pergunta9`, `pergunta10`, `nota_avaliacao`, `created`, `cadastrador`, `modified`, `editor`) VALUES
+(1, 1, 1, 2, 1, 2, 2, 1, 2, 1, 1, 2, 9, '2023-03-15 09:52:17', 1, NULL, NULL),
+(1992, 2, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 6, '2023-03-15 10:29:42', 1, NULL, NULL),
+(1993, 1871, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 10, '2023-03-15 13:48:22', 1, NULL, NULL),
+(1994, 2000, 2, 1, 4, 1, 1, 1, 1, 2, 3, 4, 1, '2023-03-15 14:28:58', 1, NULL, NULL),
+(1995, 2000, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, '2023-03-15 14:29:36', 1, NULL, NULL),
+(1996, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, '2023-03-15 15:10:30', 1, NULL, NULL),
+(1997, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, '2023-03-15 15:16:36', 1, NULL, NULL),
+(1998, 1871, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, '2023-03-15 15:17:44', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -156,7 +162,8 @@ INSERT INTO `adms_grps_pgs` (`id`, `nome`, `ordem`, `created`, `modified`) VALUE
 (4, 'Apagar', 4, '2018-03-23 00:00:00', NULL),
 (5, 'Visualizar', 5, '2018-03-23 00:00:00', NULL),
 (6, 'Outros', 6, '2018-03-23 00:00:00', NULL),
-(7, 'Acesso', 7, '2018-03-23 00:00:00', NULL);
+(7, 'Acesso', 7, '2018-03-23 00:00:00', NULL),
+(8, 'Exportar', 8, '2023-03-15 13:59:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -264,12 +271,16 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (214, 1, 52, 1, 2, 3, 1, 56, '2018-05-04 13:10:17', NULL),
 (219, 1, 53, 2, 2, 3, 1, 57, '2018-05-05 16:36:02', '2023-03-02 15:27:24'),
 (901, 2, 127, 1, 2, 3, 7, 131, '2023-03-08 15:29:04', NULL),
+(922, 2, 134, 1, 2, 3, 7, 138, '2023-03-15 09:59:01', NULL),
+(919, 2, 133, 1, 2, 3, 7, 137, '2023-03-15 09:27:30', NULL),
+(913, 2, 131, 1, 2, 3, 7, 135, '2023-03-15 09:19:06', NULL),
 (907, 2, 129, 1, 2, 3, 7, 133, '2023-03-09 10:47:36', NULL),
 (910, 2, 130, 1, 2, 3, 7, 134, '2023-03-09 15:26:21', NULL),
 (895, 2, 125, 1, 1, 3, 7, 129, '2023-03-02 15:13:03', NULL),
 (892, 1, 124, 1, 2, 3, 7, 128, '2023-03-01 11:25:56', '2023-03-08 09:31:35'),
 (904, 2, 128, 1, 2, 3, 7, 132, '2023-03-09 10:08:03', NULL),
 (898, 1, 126, 1, 2, 3, 7, 130, '2023-03-08 10:02:56', '2023-03-08 10:04:38'),
+(916, 2, 132, 1, 2, 3, 7, 136, '2023-03-15 09:23:16', NULL),
 (636, 1, 118, 2, 2, 3, 1, 122, '2022-03-21 21:27:21', '2022-03-21 21:28:08'),
 (639, 1, 1, 2, 1, 1, 6, 1, '2023-02-23 08:26:35', '2023-03-01 07:59:59'),
 (640, 1, 2, 2, 1, 4, 6, 4, '2023-02-23 08:26:35', '2023-03-01 08:00:00'),
@@ -325,12 +336,16 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (690, 1, 52, 1, 2, 3, 6, 56, '2023-02-23 08:26:35', NULL),
 (691, 1, 53, 1, 2, 3, 6, 57, '2023-02-23 08:26:35', NULL),
 (900, 2, 127, 1, 2, 3, 6, 131, '2023-03-08 15:29:04', NULL),
+(921, 2, 134, 1, 2, 3, 6, 138, '2023-03-15 09:59:01', NULL),
+(918, 2, 133, 1, 2, 3, 6, 137, '2023-03-15 09:27:30', NULL),
+(912, 2, 131, 1, 2, 3, 6, 135, '2023-03-15 09:19:06', NULL),
 (906, 2, 129, 1, 2, 3, 6, 133, '2023-03-09 10:47:36', NULL),
 (909, 2, 130, 1, 2, 3, 6, 134, '2023-03-09 15:26:21', NULL),
 (894, 2, 125, 1, 1, 3, 6, 129, '2023-03-02 15:13:03', NULL),
 (891, 1, 124, 1, 2, 3, 6, 128, '2023-03-01 11:25:56', '2023-03-08 09:34:48'),
 (903, 2, 128, 1, 2, 3, 6, 132, '2023-03-09 10:08:03', NULL),
 (897, 1, 126, 1, 2, 3, 6, 130, '2023-03-08 10:02:56', '2023-03-08 10:04:35'),
+(915, 2, 132, 1, 2, 3, 6, 136, '2023-03-15 09:23:16', NULL),
 (756, 2, 118, 1, 2, 3, 6, 122, '2023-02-23 08:26:36', NULL),
 (757, 1, 1, 2, 1, 1, 7, 1, '2023-02-24 07:39:21', '2023-03-01 07:37:28'),
 (758, 1, 2, 2, 1, 4, 7, 4, '2023-02-24 07:39:21', '2023-03-01 07:37:35'),
@@ -386,12 +401,16 @@ INSERT INTO `adms_nivacs_pgs` (`id`, `permissao`, `ordem`, `dropdown`, `lib_menu
 (808, 2, 52, 1, 2, 3, 7, 56, '2023-02-24 07:39:22', '2023-03-01 07:53:01'),
 (809, 1, 53, 1, 2, 3, 7, 57, '2023-02-24 07:39:22', NULL),
 (899, 1, 127, 1, 2, 3, 1, 131, '2023-03-08 15:29:04', NULL),
+(920, 1, 134, 1, 2, 3, 1, 138, '2023-03-15 09:59:01', NULL),
+(917, 1, 133, 2, 2, 3, 1, 137, '2023-03-15 09:27:30', '2023-03-15 09:37:56'),
+(911, 1, 131, 1, 2, 3, 1, 135, '2023-03-15 09:19:06', NULL),
 (905, 1, 129, 1, 2, 3, 1, 133, '2023-03-09 10:47:36', NULL),
 (908, 1, 130, 1, 2, 3, 1, 134, '2023-03-09 15:26:21', NULL),
 (893, 1, 125, 2, 2, 3, 1, 129, '2023-03-02 15:13:03', '2023-03-02 15:27:12'),
 (890, 1, 124, 1, 2, 3, 1, 128, '2023-03-01 11:25:56', NULL),
 (902, 1, 128, 1, 2, 3, 1, 132, '2023-03-09 10:08:03', NULL),
 (896, 1, 126, 1, 2, 3, 1, 130, '2023-03-08 10:02:56', NULL),
+(914, 1, 132, 1, 2, 3, 1, 136, '2023-03-15 09:23:16', NULL),
 (874, 1, 118, 1, 2, 3, 7, 122, '2023-02-24 07:39:22', '2023-03-01 07:36:27'),
 (875, 1, 120, 1, 1, 7, 1, 123, '2023-02-24 08:12:06', '2023-03-01 13:22:53'),
 (876, 1, 120, 1, 1, 7, 6, 123, '2023-02-24 08:12:06', '2023-03-01 13:23:11'),
@@ -458,11 +477,10 @@ CREATE TABLE `adms_paciente` (
 --
 
 INSERT INTO `adms_paciente` (`id`, `nome_paciente`, `telefone`, `cpf_doc`, `endereco`, `adms_situacao_paciente_id`, `atendido`, `baixa`, `created`, `cadastrador`, `modified`, `editor`) VALUES
-(205, 'Paulo Albquerque', '11-99837-2022', '408.754.818-09', 'Avenida Agenor de Oliveira', 2, 2, 1, '2023-03-08 14:32:39', 1, '2023-03-08 14:33:04', 1),
-(206, 'Luiz Gonzaga', '11-05515-5221', '408.754.818-00', 'Ceara', 1, 2, 1, '2023-03-08 14:41:53', 1, '2023-03-08 15:21:21', 1),
-(208, 'José Bonifacio', '15-00000-0000', '000.000.000-05', 'Brasil - Portugal', 1, 1, 2, '2023-03-09 11:16:21', 1, NULL, NULL),
-(209, 'Fernando Mesquita', '65-16505-1601', '651.968.489-40', 'Treze de maio', 1, 1, 1, '2023-03-09 11:28:05', 1, NULL, NULL),
-(210, 'Manuel Gomes', '16-51651-6516', '551.651.651-65', 'Caneta azul', 2, 1, 1, '2023-03-09 15:52:57', 1, NULL, NULL);
+(1, 'Reginaldo Rossi', '11-99898-9898', '401.650.616-10', 'Paulista', 1, 2, 1, '2023-03-15 09:51:45', 1, '2023-03-15 15:10:30', 1),
+(2, '50 Cent', '50-50505-0505', '505.050.505-05', 'EUA', 1, 2, 1, '2023-03-15 10:29:27', 1, '2023-03-15 15:16:36', 1),
+(1871, 'Freddie Mercury', '56-16515-6165', '561.650.165-06', 'Inglaterra', 2, 2, 1, '2023-03-15 13:48:03', 1, '2023-03-15 15:17:44', 1),
+(2000, 'Son Goku', '10-16516-5061', '616.189.181-89', 'Japão', 1, 1, 1, '2023-03-15 14:21:21', 1, '2023-03-15 14:29:36', 1);
 
 -- --------------------------------------------------------
 
@@ -554,6 +572,10 @@ INSERT INTO `adms_paginas` (`id`, `nome_pagina`, `endereco`, `obs`, `keywords`, 
 (132, 'Visualizar paciente', 'visualizar/vis_paciente', 'Visualizar detalhes dos pacientes', 'Visualizar paciente', 'Visualizar paciente', 'Paulo Albuquerque', 2, '', 0, 5, '1', 4, 1, '2023-03-09 10:08:03', NULL),
 (133, 'Apagar paciente', 'processa/apagar/apagar_paciente', 'apagar registro de paciente do sistema', 'Apagar paciente', 'Apagar paciente', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2023-03-09 10:47:36', '2023-03-09 15:49:57'),
 (134, 'Processa editar de paciente', 'processa/editar/proc_edit_paciente', 'Processa editar de paciente', 'Processa editar de paciente', 'Processa editar de paciente', 'Paulo Albuquerque', 2, '', 129, 3, '1', 4, 1, '2023-03-09 15:26:21', NULL),
+(135, 'Apagar avaliações feitas', 'processa/apagar/apagar_avalia_realizada', 'Apagar avaliações feitas', 'Apagar avaliações feitas', 'Apagar avaliações feitas', 'Paulo Albuquerque', 2, '', 0, 4, '1', 4, 1, '2023-03-15 09:19:06', NULL),
+(136, 'Editar av realizada', 'editar/edit_avalia_realizada', 'Editar avaliação realizada pelo paicente', 'Editar av realizada', 'Editar av realizada', 'Paulo Albuquerque', 2, '', 0, 3, '1', 4, 1, '2023-03-15 09:23:16', '2023-03-15 09:24:58'),
+(137, 'Visualizar avaliação feita', 'visualizar/vis_avalia_realizada', 'Visualizar detalhes da avaliação feita pelo paciente ', 'Visualizar avaliação feita', 'Visualizar avaliação feita', 'Paulo Albuquerque', 2, '', 0, 5, '1', 4, 1, '2023-03-15 09:27:30', NULL),
+(138, 'Excel avaliações feitas', 'exportar/exporta_excel', 'Botão de exportar excel de avaliações feitas pelo paciente', 'Excel avaliações feitas', 'Excel avaliações feitas', 'Paulo Albuquerque', 2, '', 0, 8, '1', 4, 1, '2023-03-15 09:59:01', '2023-03-15 10:00:11'),
 (122, 'list_usuario_tables', 'listar/list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'list_usuario_tables', 'Paulo Albuquerque', 2, '', 0, 1, '1', 4, 1, '2022-03-21 21:27:21', '2023-02-24 12:43:32'),
 (123, 'Cadastro de paciente', 'cadastrar/cad_paciente', 'cadastrar os pacientes ', 'cadastrar os pacientes', 'cadastrar os pacientes', 'Paulo Albuquerque', 2, 'fa fa-medkit', 0, 2, '1', 4, 1, '2023-02-24 08:12:06', '2023-03-01 08:04:16'),
 (124, 'Processamento de cadastro paciente', 'processa/cadastrar/proc_cad_paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Processamento de cadastro paciente', 'Paulo Albuquerque', 2, '', 123, 2, '1', 4, 1, '2023-02-24 11:12:36', '2023-03-09 15:48:18'),
@@ -788,8 +810,7 @@ CREATE TABLE `adms_usuarios` (
 --
 
 INSERT INTO `adms_usuarios` (`id`, `nome`, `apelido`, `email`, `num_cracha`, `usuario`, `senha`, `recuperar_senha`, `chave_descadastro`, `conf_email`, `imagem`, `adms_niveis_acesso_id`, `adms_sits_usuario_id`, `created`, `modified`) VALUES
-(1, 'Paulo Albuquerque', 'Paulo', 'paulo.albuquerque@ints.org.br', '18569', 'paulo.albuquerque', '$2y$10$WSFg.JKfk9sF5/tXqhxSke8DyKVnf5D1X8cx6w7KqXLDjIraI5NVK', NULL, NULL, NULL, 'b48123f3-5c5c-450d-a362-2215fd4c348e-copia.jpg', 1, 1, '2022-04-30 19:49:14', '2023-02-28 10:14:34'),
-(5, 'Usuário Administrador', 'Administrador', 'admin@admin.com', '00141', 'admin', '$2y$10$KzIOFEGZGTgY5ey4WZTb3Oxeydybh2mOducrLPBRXj4BeX4VjJL/C', NULL, NULL, NULL, NULL, 6, 1, '2023-03-01 07:44:04', '2023-03-08 14:38:42');
+(1, 'Paulo Albuquerque', 'Paulo', 'paulo.albuquerque@ints.org.br', '18569', 'paulo.albuquerque', '$2y$10$WSFg.JKfk9sF5/tXqhxSke8DyKVnf5D1X8cx6w7KqXLDjIraI5NVK', NULL, NULL, NULL, 'b48123f3-5c5c-450d-a362-2215fd4c348e-copia.jpg', 1, 1, '2022-04-30 19:49:14', '2023-02-28 10:14:34');
 
 --
 -- Índices para tabelas despejadas
@@ -917,7 +938,7 @@ ALTER TABLE `adms_usuarios`
 -- AUTO_INCREMENT de tabela `adms_avaliacao_feita`
 --
 ALTER TABLE `adms_avaliacao_feita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1999;
 
 --
 -- AUTO_INCREMENT de tabela `adms_cads_usuarios`
@@ -941,7 +962,7 @@ ALTER TABLE `adms_cors`
 -- AUTO_INCREMENT de tabela `adms_grps_pgs`
 --
 ALTER TABLE `adms_grps_pgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `adms_menus`
@@ -953,7 +974,7 @@ ALTER TABLE `adms_menus`
 -- AUTO_INCREMENT de tabela `adms_nivacs_pgs`
 --
 ALTER TABLE `adms_nivacs_pgs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=911;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=923;
 
 --
 -- AUTO_INCREMENT de tabela `adms_niveis_acessos`
@@ -965,13 +986,13 @@ ALTER TABLE `adms_niveis_acessos`
 -- AUTO_INCREMENT de tabela `adms_paciente`
 --
 ALTER TABLE `adms_paciente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2001;
 
 --
 -- AUTO_INCREMENT de tabela `adms_paginas`
 --
 ALTER TABLE `adms_paginas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT de tabela `adms_pergunta`
@@ -1025,7 +1046,7 @@ ALTER TABLE `adms_tps_pgs`
 -- AUTO_INCREMENT de tabela `adms_usuarios`
 --
 ALTER TABLE `adms_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

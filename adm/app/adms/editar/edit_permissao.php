@@ -45,7 +45,7 @@ if (!empty($id)) {
                             unset($_SESSION['msg']);
                         }
                         ?>
-                        <form method="POST" action="<?php echo pg; ?>/processa/proc_edit_permissao">  
+                        <form method="POST" action="<?php echo pg; ?>/processa/editar/proc_edit_permissao">  
                             <input type="hidden" name="id" value="<?php echo $row_edit_pg['id']; ?>">
                             
                             <div class="form-row">                                

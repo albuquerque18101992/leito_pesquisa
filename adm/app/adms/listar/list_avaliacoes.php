@@ -39,9 +39,14 @@ include_once 'app/adms/include/head.php';
                     </div>
                     <div class="p-2">
                         <?php
+                         $btn_cad = carregar_btn('listar/list_paciente', $conn);
+                         if ($btn_cad) {
+                             echo "<a href='" . pg . "/listar/list_paciente' class='btn btn-outline-primary btn-sm'>Ir para pacientes</a> ";
+                         }
+                         
                         $btn_cad = carregar_btn('exportar/exporta_excel', $conn);
                         if ($btn_cad) {
-                            echo "<a href='" . pg . "/exportar/exporta_excel' class='btn btn-outline-dark btn-sm'>Exportar</a>";
+                            echo "<a href='" . pg . "/exportar/exporta_excel' class='btn btn-outline-dark btn-sm'>Exportar</a> ";
                         }
                         ?>
                     </div>
