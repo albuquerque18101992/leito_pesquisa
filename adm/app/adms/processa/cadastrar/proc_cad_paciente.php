@@ -48,11 +48,12 @@ if (!empty($SendCadPaciente)) {
         header("Location: $url_destino");
     } else {
         
-        $result_cad_paciente = "INSERT INTO adms_paciente (nome_paciente, telefone, cpf_doc, endereco, adms_situacao_paciente_id, created, cadastrador) VALUES (
+        $result_cad_paciente = "INSERT INTO adms_paciente (nome_paciente, telefone, cpf_doc, endereco, adms_leito_id, adms_situacao_paciente_id, created, cadastrador) VALUES (
         '" . $dados_validos['nome_paciente'] . "',
         '" . $dados_validos['telefone'] . "',
         '" . $dados_validos['cpf_doc'] . "',
         '" . $dados_validos['endereco'] . "',
+        '" . $dados_validos['adms_leito_id'] . "',
         '" . $dados_validos['adms_situacao_paciente_id'] . "',
         NOW(),
         '" . $_SESSION['id'] . "')";

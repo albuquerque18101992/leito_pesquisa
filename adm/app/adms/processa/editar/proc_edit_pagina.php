@@ -1,8 +1,23 @@
 <?php
 
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
+
 if (!isset($seg)) {
     exit;
 }
+
 $SendEditPg = filter_input(INPUT_POST, 'SendEditPg', FILTER_SANITIZE_STRING);
 if ($SendEditPg) {
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -11,7 +26,7 @@ if ($SendEditPg) {
     $dados_obs = $dados['obs'];
     $dados_icone = $dados['icone'];
     unset($dados['obs'], $dados['icone']);
-    //var_dump($dados);
+
     //validar nenhum campo vazio
     $erro = false;
     include_once 'lib/lib_vazio.php';
@@ -21,9 +36,9 @@ if ($SendEditPg) {
         $_SESSION['msg'] = "<div class='alert alert-danger'>Necessário preencher todos os campos para editar a página!</div>";
     } else {
         //Proibir cadastro de página duplicado
-        $result_paginas = "SELECT id FROM adms_paginas WHERE endereco='" . $dados_validos['endereco'] . "' AND adms_tps_pg_id='" . $dados_validos['adms_tps_pg_id'] . "' AND id<>'".$dados['id']."' ";
+        $result_paginas = "SELECT id FROM adms_paginas WHERE endereco='" . $dados_validos['endereco'] . "' AND adms_tps_pg_id='" . $dados_validos['adms_tps_pg_id'] . "' AND id<>'" . $dados['id'] . "' ";
         $resultado_paginas = mysqli_query($conn, $result_paginas);
-        if (($resultado_paginas) AND ( $resultado_paginas->num_rows != 0 )) {
+        if (($resultado_paginas) and ($resultado_paginas->num_rows != 0)) {
             $erro = true;
             $_SESSION['msg'] = "<div class='alert alert-danger'>Este endereço já está cadastrado!</div>";
         }
@@ -34,7 +49,7 @@ if ($SendEditPg) {
         $dados['obs'] = trim($dados_obs);
         $dados['icone'] = $dados_icone;
         $_SESSION['dados'] = $dados;
-        $url_destino = pg . '/editar/edit_pagina?id='.$dados['id'];
+        $url_destino = pg . '/editar/edit_pagina?id=' . $dados['id'];
         header("Location: $url_destino");
     } else {
         $result_pg_up = "UPDATE adms_paginas SET
@@ -53,11 +68,11 @@ if ($SendEditPg) {
                 adms_sits_pg_id='" . $dados_validos['adms_sits_pg_id'] . "',
                 modified=NOW() 
                 WHERE id='" . $dados_validos['id'] . "'";
-        
+
         mysqli_query($conn, $result_pg_up);
-               
+
         if (mysqli_affected_rows($conn)) {
-            unset($_SESSION['dados']);            
+            unset($_SESSION['dados']);
             $_SESSION['msg'] = "<div class='alert alert-success'>Página editada!</div>";
             $url_destino = pg . '/listar/list_pagina';
             header("Location: $url_destino");
@@ -66,7 +81,7 @@ if ($SendEditPg) {
             $dados['icone'] = $dados_icone;
             $_SESSION['dados'] = $dados;
             $_SESSION['msg'] = "<div class='alert alert-danger'>Página não editada!</div>";
-            $url_destino = pg . '/editar/edit_pagina?id='.$dados['id'];
+            $url_destino = pg . '/editar/edit_pagina?id=' . $dados['id'];
             header("Location: $url_destino");
         }
     }

@@ -33,22 +33,29 @@ $columns = array(
 );
 
 //Obter registros de numero total sem qualquer pesquisa
-$result_pg = "SELECT COUNT(id) AS num_result FROM adms_paciente WHERE atendido = 2";
+$result_pg = "SELECT COUNT(id) AS num_result FROM adms_leitos_questoes";
 $resultado_pg = mysqli_query($conn, $result_pg);
 $qnt_linhas = mysqli_fetch_assoc($resultado_pg);
 
 
 //Obter os dados a serem apresentados
-
-$result_avaliacao = "SELECT * FROM adms_paciente WHERE atendido = 2";
+$result_avaliacao = "SELECT user.*, 
+paciente.nome_paciente,
+telefone_pac.telefone,
+cpf.cpf_doc
+FROM adms_leitos_questoes user
+INNER JOIN adms_paciente paciente ON paciente.id=user.adms_paciente_id
+INNER JOIN adms_paciente telefone_pac ON telefone_pac.id=user.adms_paciente_id
+INNER JOIN adms_paciente cpf ON cpf.id=user.adms_paciente_id
+WHERE 1=1";
 
 
 if (!empty($requestData['search']['value'])) {
     // se houver um parametro de pesquisa, $requestData['search']['value'] contem o parametro de pesquisa
-    $result_avaliacao .= " AND ( id LIKE '%" . $requestData['search']['value'] . "%' ";
-    $result_avaliacao .= " OR nome_paciente LIKE '%" . $requestData['search']['value'] . "%' ";
-    $result_avaliacao .= " OR telefone LIKE '%" . $requestData['search']['value'] . "%' ";
-    $result_avaliacao .= " OR cpf_doc LIKE '%" . $requestData['search']['value'] . "%' )";
+    $result_avaliacao .= " AND ( user.id LIKE '%" . $requestData['search']['value'] . "%' ";
+    $result_avaliacao .= " OR paciente.nome_paciente LIKE '%" . $requestData['search']['value'] . "%' ";
+    $result_avaliacao .= " OR telefone_pac.telefone LIKE '%" . $requestData['search']['value'] . "%' ";
+    $result_avaliacao .= " OR cpf.cpf_doc LIKE '%" . $requestData['search']['value'] . "%' )";
 }
 
 
@@ -81,14 +88,12 @@ while ($row_avaliacoes = mysqli_fetch_array($resultado_avaliacoes)) {
 
     if ($btn_vis) {
         $btn_vis_val =  "<a class='dropdown-item' href='" . pg . "/visualizar/vis_avalia_realizada?id=" . $row_avaliacoes['id'] . "'>Visualizar</a> ";
-
-        
     }
-    
+
     if ($btn_edit) {
         $btn_edit_val = "<a class='dropdown-item' href='" . pg . "/editar/edit_avalia_realizada?id=" . $row_avaliacoes['id'] . "'>Editar</a> ";
     }
-    
+
 
     if ($btn_apagar) {
         $btn_apagar_val = "<a class='dropdown-item' href='" . pg . "/processa/apagar/apagar_avalia_realizada?id=" . $row_avaliacoes['id'] . "' class='apagar_rg' data-confirm='VOCÊ TEM CERTEZA QUE QUER EXCLUÍR O ITEM SELECIONADO?'>Apagar</a> ";
@@ -96,8 +101,8 @@ while ($row_avaliacoes = mysqli_fetch_array($resultado_avaliacoes)) {
 
 
     if ($btn_acoes) {
-        $btn_acoes_ok = 
-        "   <div class='dropdown d-block'>
+        $btn_acoes_ok =
+            "   <div class='dropdown d-block'>
                 <button class='btn btn-primary dropdown-toggle btn-sm' type='button' id='acoesListar' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     Ações
                 </button>

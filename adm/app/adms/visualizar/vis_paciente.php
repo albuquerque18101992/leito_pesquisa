@@ -101,17 +101,17 @@ if (!empty($id)) {
                             <dd class="col-sm-9"><?php echo $row_paciente_vis['endereco']; ?></dd>
 
                             <dt class="col-sm-3">Situação</dt>
-                            <dd class="col-sm-9"><?php echo $row_paciente_vis['adms_situacao_paciente_id']; ?></dd>
+                            <dd class="col-sm-9"><?php echo $row_paciente_vis['nome_sit']; ?></dd>
 
                             <dt class="col-sm-3 text-truncate">Data do Cadastro</dt>
                             <dd class="col-sm-9"><?php echo date('d/m/Y H:i:s', strtotime($row_paciente_vis['created'])); ?></dd>
 
                             <dt class="col-sm-3 text-truncate">Data de Edição</dt>
                             <dd class="col-sm-9"><?php
-                                if (!empty($row_paciente_vis['modified'])) {
-                                    echo date('d/m/Y H:i:s', strtotime($row_paciente_vis['modified']));
-                                }
-                                ?>
+                                                    if (!empty($row_paciente_vis['modified'])) {
+                                                        echo date('d/m/Y H:i:s', strtotime($row_paciente_vis['modified']));
+                                                    }
+                                                    ?>
                             </dd>
 
 

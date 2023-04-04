@@ -56,15 +56,15 @@ if (!empty($id)) {
                                     <?php
                                     $btn_list = carregar_btn('listar/list_pagina', $conn);
                                     if ($btn_list) {
-                                        echo "<a href='" . pg . "/listar/list_pagina' class='btn btn-outline-info btn-sm'>Listar</a> ";
+                                        echo "<a href='" . pg . "/listar/list_pagina' class='btn btn-outline-info btn-sm'>Voltar</a> ";
                                     }
                                     $btn_edit = carregar_btn('editar/edit_pagina', $conn);
                                     if ($btn_edit) {
                                         echo "<a href='" . pg . "/editar/edit_pagina?id=" . $row_pg_vis['id'] . "' class='btn btn-outline-warning btn-sm'>Editar </a> ";
                                     }
-                                    $btn_apagar = carregar_btn('processa/apagar_pagina', $conn);
+                                    $btn_apagar = carregar_btn('processa/apagar/apagar_pagina', $conn);
                                     if ($btn_apagar) {
-                                        echo "<a href='" . pg . "/processa/apagar_pagina?id=" . $row_pg_vis['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
+                                        echo "<a href='" . pg . "/processa/apagar/apagar_pagina?id=" . $row_pg_vis['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
                                     }
                                     ?>
                                 </span>
@@ -75,13 +75,13 @@ if (!empty($id)) {
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                         <?php
                                         if ($btn_list) {
-                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_pagina'>Listar</a>";
+                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_pagina'>Voltar</a>";
                                         }
                                         if ($btn_edit) {
                                             echo "<a class='dropdown-item' href='" . pg . "/editar/edit_pagina?id=" . $row_pg_vis['id'] . "'>Editar</a>";
                                         }
                                         if ($btn_apagar) {
-                                            echo "<a class='dropdown-item' href='" . pg . "/processa/apagar_pagina?id=" . $row_pg_vis['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
+                                            echo "<a class='dropdown-item' href='" . pg . "/processa/apagar/apagar_pagina?id=" . $row_pg_vis['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
                                         }
                                         ?>
                                     </div>

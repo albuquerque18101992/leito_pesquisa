@@ -97,12 +97,33 @@ include_once 'app/adms/include/head.php';
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-12 was-validated">
+                        <div class="form-group col-md-6 was-validated">
+                            <?php
+                            $result_leito = "SELECT * FROM adms_leitos ORDER BY leito_num ASC";
+                            $resultado_leito = mysqli_query($conn, $result_leito);
+                            ?>
+                            <label> Leito </label>
+                            <select name="adms_leito_id" id="adms_leito_id" class="form-control is-valid" required>
+                                <option value="">SELECIONAR</option>
+                                <?php
+                                while ($row_leito = mysqli_fetch_assoc($resultado_leito)) {
+                                    if (isset($_SESSION['dados']['adms_leito_id']) and ($_SESSION['dados']['adms_leito_id'] == $row_leito['id'])) {
+                                        echo "<option value='" . $row_leito['id'] . "' selected>" . $row_leito['leito_num'] . "</option>";
+                                    } else {
+                                        echo "<option value='" . $row_leito['id'] . "'>" . $row_leito['leito_num'] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-md-6 was-validated">
                             <?php
                             $result_sit_user = "SELECT * FROM adms_situacao_paciente ORDER BY descricao_situacao ASC";
                             $resultado_sit_user = mysqli_query($conn, $result_sit_user);
                             ?>
-                            Situação do Usuário </label>
+                            <label> Situação do Usuário </label>
                             <select name="adms_situacao_paciente_id" id="adms_situacao_paciente_id" class="form-control is-valid" required>
                                 <option value="">SELECIONAR</option>
                                 <?php

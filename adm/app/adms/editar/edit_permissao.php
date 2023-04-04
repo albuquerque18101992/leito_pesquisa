@@ -34,7 +34,7 @@ if (!empty($id)) {
                                 <?php
                                 $btn_list = carregar_btn('listar/list_permissao', $conn);
                                 if ($btn_list) {
-                                    echo "<a href='" . pg . "/listar/list_permissao?id=".$row_edit_pg['adms_niveis_acesso_id']."' class='btn btn-outline-info btn-sm'>Listar</a> ";
+                                    echo "<a href='" . pg . "/listar/list_permissao?id=".$row_edit_pg['adms_niveis_acesso_id']."' class='btn btn-outline-info btn-sm'>Voltar</a> ";
                                 }
                                 ?>
                             </div>

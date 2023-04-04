@@ -1,4 +1,19 @@
 <?php
+
+
+/**
+ * ---------------------------------------------------------------------
+ * Gestão de ativo
+ * Inicio de projeto 2020
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsavel: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * ---------------------------------------------------------------------
+ */
+
+
 if (!isset($seg)) {
     exit;
 }
@@ -32,7 +47,7 @@ if (!empty($id)) {
                                     <?php
                                     $btn_list = carregar_btn('listar/list_pagina', $conn);
                                     if ($btn_list) {
-                                        echo "<a href='" . pg . "/listar/list_pagina' class='btn btn-outline-info btn-sm'>Listar</a> ";
+                                        echo "<a href='" . pg . "/listar/list_pagina' class='btn btn-outline-info btn-sm'>Voltar</a> ";
                                     }
                                     $btn_vis = carregar_btn('visualizar/vis_pagina', $conn);
                                     if ($btn_vis) {
@@ -51,7 +66,7 @@ if (!empty($id)) {
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                         <?php
                                         if ($btn_list) {
-                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_pagina'>Listar</a>";
+                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_pagina'>Voltar</a>";
                                         }
                                         if ($btn_vis) {
                                             echo "<a class='dropdown-item' href='" . pg . "/visualizar/vis_pagina?id=" . $row_edit_pg['id'] . "'>Visualizar</a>";

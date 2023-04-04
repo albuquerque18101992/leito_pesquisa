@@ -34,7 +34,7 @@ if ($id) {
                                     <?php
                                     $btn_list = carregar_btn('listar/list_niv_aces', $conn);
                                     if ($btn_list) {
-                                        echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-outline-info btn-sm'>Listar</a> ";
+                                        echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-outline-info btn-sm'>Voltar</a> ";
                                     }
                                     $btn_vis = carregar_btn('visualizar/vis_niv_aces', $conn);
                                     if ($btn_vis) {
@@ -53,7 +53,7 @@ if ($id) {
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                         <?php
                                         if ($btn_list) {
-                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_niv_aces'>Listar</a>";
+                                            echo "<a class='dropdown-item' href='" . pg . "/listar/list_niv_aces'>Voltar</a>";
                                         }
                                         if ($btn_vis) {
                                             echo "<a class='dropdown-item' href='" . pg . "/visualizar/vis_niv_aces?id=" . $row_nivac_ed['id'] . "'>Visualizar</a>";

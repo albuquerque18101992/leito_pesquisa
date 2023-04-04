@@ -44,12 +44,6 @@ $row_usuario = mysqli_fetch_assoc($nivel_usuario);
         background-color: #185597;
     }
 
-    @media (max-width: 575.98px) {
-        #esconder {
-            display: none;
-        }
-
-    }
 </style>
 
 <body>
@@ -111,7 +105,7 @@ $row_usuario = mysqli_fetch_assoc($nivel_usuario);
                     echo "<div class ='card bg-primary menu'>";
                     echo "<a class='dropdown-item hvr-icon-wobble-vertical' href='" . pg . "/listar/list_avaliacoes' id='esconder'>";
                     echo "<i class = 'fa fa-clipboard fa-2x hvr-icon text-white'></i>";
-                    echo "<h6 class = 'card-title text-white'>Avaliações realizadas</h6>";
+                    echo "<h6 class = 'card-title text-white'>Avaliações</h6>";
                     echo "<h2 class='text-white'>$total_pacientes_avali</h2>";
                     echo "</a>";
                     echo "</div>";

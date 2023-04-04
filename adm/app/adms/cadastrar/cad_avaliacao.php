@@ -1,4 +1,22 @@
 <?php
+
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
+
+
+//Segurança para não consiguir acessa páginas indo direto na URL .
+
 if (!isset($seg)) {
     exit;
 }
@@ -8,9 +26,14 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 if (!empty($id)) {
 
     $result_edit_user = "SELECT meus_paciente.*,
-    situacao.descricao_situacao, situacao.id
+    situacao.descricao_situacao, 
+    situacao.id,
+    leito_quarto.leito_num,
+    leito_sala.sala_num
     FROM adms_paciente meus_paciente
-    INNER JOIN adms_situacao_paciente situacao ON situacao.id=meus_paciente.adms_situacao_paciente_id
+    INNER JOIN adms_situacao_paciente situacao ON situacao.id=meus_paciente.adms_situacao_paciente_id    
+    INNER JOIN adms_leitos leito_sala ON leito_sala.id=meus_paciente.adms_leito_id
+    INNER JOIN adms_leitos leito_quarto ON leito_quarto.id=meus_paciente.adms_leito_id
     WHERE meus_paciente.id='$id' LIMIT 1";
 
     $resultado_edit_user = mysqli_query($conn, $result_edit_user);
@@ -33,7 +56,7 @@ if (!empty($id)) {
                     <div class="list-group-item">
                         <div class="d-flex">
                             <div class="mr-auto p-2">
-                                <h2 class="display-4 titulo">Avaliação de Leito</h2>
+                                <h2 class="display-4 titulo">Avaliação de Leito <?php echo $row_edit_user['leito_num']?> Sala <?php echo $row_edit_user['sala_num']?></h2>
                                 <kbd><?php echo $row_edit_user['descricao_situacao'] . " - " . $row_edit_user['nome_paciente'] . " id:" . $id ?></kbd>
                             </div>
                             <div class="p-2">
@@ -60,6 +83,12 @@ if (!empty($id)) {
                             <input type="hidden" name="adms_paciente_id" id="adms_paciente_id" value="<?php
                                 if (isset($id)) {
                                     echo $id;
+                                }
+                                ?>">
+
+                            <input type="hidden" name="adms_leito_id" id="adms_leito_id" value="<?php
+                                if (isset($id)) {
+                                    echo $row_edit_user['adms_leito_id'];
                                 }
                                 ?>">
 
@@ -289,9 +318,10 @@ if (!empty($id)) {
 
                                 <div class="form-group col-md-12 was-validated">
                                     <label> Com base em sua experiencia de uma nota de 0 á 10 </label>
-                                    <input name="nota_avaliacao" type="number" class="form-control is-valid" id="nota_avaliacao" min="0" max="10" placeholder="Nota de 0 à 10" value="<?php if (isset($_SESSION['dados']['nota_avaliacao'])) {
-                                                                                                                                                                                            echo $_SESSION['dados']['nota_avaliacao'];
-                                                                                                                                                                                        } ?>" required>
+                                    <input name="nota_avaliacao" type="number" class="form-control is-valid" id="nota_avaliacao" min="0" max="10" placeholder="Nota de 0 à 10"value="
+                                    <?php if (isset($_SESSION['dados']['nota_avaliacao'])) {
+                                        echo $_SESSION['dados']['nota_avaliacao'];
+                                    } ?>" required>
                                 </div>
                             </div>
 

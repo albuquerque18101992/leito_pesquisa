@@ -91,12 +91,10 @@ if (!empty($id)) {
                                     <label>
                                         Nome
                                     </label>
-                                    <input name="nome_paciente" type="text" class="form-control is-valid" id="nome_paciente" placeholder="Nome completo do usuário" value="<?php
-                                        if (isset($_SESSION['dados']['nome_paciente'])) {
-                                            echo $_SESSION['dados']['nome_paciente'];
-                                        } elseif (isset($row_edit_user['nome_paciente'])) {
-                                            echo $row_edit_user['nome_paciente'];
-                                        }
+                                    <input name="nome_paciente" type="text" class="form-control is-valid" id="nome_paciente" placeholder="Nome completo do usuário" value="<?php if (isset($_SESSION['dados']['nome_paciente'])) { 
+                                        echo $_SESSION['dados']['nome_paciente'];
+                                    } elseif (isset($row_edit_user['nome_paciente'])) { 
+                                        echo $row_edit_user['nome_paciente'];}
                                         ?>" required>
                                 </div>
                             </div>
@@ -140,7 +138,30 @@ if (!empty($id)) {
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-12 was-validated">
+                                <div class="form-group col-md-6 was-validated">
+                                    <?php
+                                    $result_leito = "SELECT * FROM adms_leitos ORDER BY leito_num ASC";
+                                    $resultado_leito = mysqli_query($conn, $result_leito);
+                                    ?>
+                                    <label> Leito </label>
+                                    <select name="adms_leito_id" id="adms_leito_id" class="form-control is-valid" required>
+                                        <option value="">SELECIONAR</option>
+                                        <?php
+                                        while ($row_leito = mysqli_fetch_assoc($resultado_leito)) {
+                                            if (isset($_SESSION['dados']['adms_leito_id']) and ($_SESSION['dados']['adms_leito_id'] == $row_leito['id'])) {
+                                                echo "<option value='" . $row_leito['id'] . "' selected>" . $row_leito['leito_num'] . "</option>";
+                                            } elseif (!isset($_SESSION['dados']['adms_leito_id']) and (isset($row_edit_user['adms_leito_id']) and ($row_edit_user['adms_leito_id'] == $row_leito['id']))) {
+                                                echo "<option value='" . $row_leito['id'] . "' selected>" . $row_leito['leito_num'] . "</option>";
+                                            } else {
+                                                echo "<option value='" . $row_leito['id'] . "'>" . $row_leito['leito_num'] . "</option>";
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group col-md-6 was-validated">
                                     <?php
                                     $result_sit_user = "SELECT id, descricao_situacao FROM adms_situacao_paciente ORDER BY descricao_situacao ASC";
                                     $resultado_sit_user = mysqli_query($conn, $result_sit_user);
@@ -174,26 +195,28 @@ if (!empty($id)) {
                 <?php
                 include_once 'app/adms/include/rodape_lib.php';
                 ?>
-                <script>
-                    function previewImagem() {
-                        var imagem = document.querySelector('input[name=imagem').files[0];
-                        var preview = document.querySelector('#preview-user');
+        <script>
+            //Mascara para preencher o CPF no padrão -> 000.000.000-01
+            document.getElementById('cpf_doc').addEventListener('input', function(e) {
 
-                        var reader = new FileReader();
+            x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : x[1] + '.' + x[2] + (x[3] ? '.' : '') + x[3] + (x[4] ? '-' + x[4] : '');
 
-                        reader.onloadend = function() {
-                            preview.src = reader.result;
-                        }
+            });
 
-                        if (imagem) {
-                            reader.readAsDataURL(imagem);
-                        } else {
-                            preview.src = "";
-                        }
-                    }
-                </script>
+
+            //Mascara para preencher o Celular no padrão -> (00)00000-0000
+            document.getElementById('telefone').addEventListener('input', function(e) {
+
+            cel = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !cel[2] ? cel[1] : cel[1] + '-' + cel[2] + (cel[3] ? '-' : '') + cel[3];
+
+            });
+        </script>
+        
             </div>
         </body>
+        
 <?php
         unset($_SESSION['dados']);
     } else {

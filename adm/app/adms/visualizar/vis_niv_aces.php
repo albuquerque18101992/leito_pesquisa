@@ -48,15 +48,15 @@ include_once 'app/adms/include/head.php';
                         <?php
                         $btn_list = carregar_btn('listar/list_niv_aces', $conn);
                         if ($btn_list) {
-                            echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-outline-info btn-sm'>Listar</a> ";
+                            echo "<a href='" . pg . "/listar/list_niv_aces' class='btn btn-outline-info btn-sm'>Voltar</a> ";
                         }
                         $btn_edit = carregar_btn('editar/edit_niv_aces', $conn);
                         if ($btn_edit) {
                             echo "<a href='" . pg . "/editar/edit_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-outline-warning btn-sm'>Editar </a> ";
                         }
-                        $btn_apagar = carregar_btn('processa/apagar_niv_aces', $conn);
+                        $btn_apagar = carregar_btn('processa/apagar/apagar_niv_aces', $conn);
                         if ($btn_apagar) {
-                            echo "<a href='" . pg . "/processa/apagar_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
+                            echo "<a href='" . pg . "/processa/apagar/apagar_niv_aces?id=" . $row_niv_aces['id'] . "' class='btn btn-outline-danger btn-sm' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a> ";
                         }
                         ?>
                         </span>
@@ -67,13 +67,13 @@ include_once 'app/adms/include/head.php';
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
                                 <?php
                                 if ($btn_list) {
-                                    echo "<a class='dropdown-item' href='" . pg . "/listar/list_niv_aces'>Listar</a>";
+                                    echo "<a class='dropdown-item' href='" . pg . "/listar/list_niv_aces'>Voltar</a>";
                                 }
                                 if ($btn_edit) {
                                     echo "<a class='dropdown-item' href='" . pg . "/editar/edit_niv_aces?id=" . $row_niv_aces['id'] . "'>Editar</a>";
                                 }
                                 if ($btn_apagar) {
-                                    echo "<a class='dropdown-item' href='" . pg . "/processa/apagar_niv_aces?id=" . $row_niv_aces['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
+                                    echo "<a class='dropdown-item' href='" . pg . "/processa/apagar/apagar_niv_aces?id=" . $row_niv_aces['id'] . "' data-confirm='Tem certeza de que deseja excluir o item selecionado?'>Apagar</a>";
                                 }
                                 ?>
                             </div>

@@ -1,6 +1,19 @@
 <?php
 
 
+/**
+ * ---------------------------------------------------------------------
+ * Avaliação de Leito do Hospital Municipal Integrado - Santo Amaro - HISA
+ * Inicio do projeto 02/2023
+ * ---------------------------------------------------------------------
+ * Desenvolvido pela equipe de sistemas
+ * ---------------------------------------------------------------------
+ * Desenvolvedor responsável: Paulo Albuquerque - https://github.com/albuquerque18101992
+ * Coordenador: Wellington Santos
+ * Supervisor: Lucas Texeira
+ * ---------------------------------------------------------------------
+ */
+
 if (!isset($seg)) {
     exit;
 }
@@ -18,7 +31,8 @@ if (!empty($SendCadAvaliacao)) {
     } else {
 
         //Ler as perguntas e as respostas
-        $result_avaliacao = "INSERT INTO adms_leitos_questoes(adms_paciente_id, questao1, questao2, questao3, questao4, questao5, questao6, questao7, questao8, questao9, questao10, nota_avaliacao, created, cadastrador) VALUES (
+        $result_avaliacao = "INSERT INTO adms_leitos_questoes(adms_leito_id, adms_paciente_id, questao1, questao2, questao3, questao4, questao5, questao6, questao7, questao8, questao9, questao10, nota_avaliacao, created, cadastrador) VALUES (
+                '" . $dados['adms_leito_id'] . "',
                 '" . $dados['adms_paciente_id'] . "',
                 '" . $dados['questao1'] . "',
                 '" . $dados['questao2'] . "',
